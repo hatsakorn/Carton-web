@@ -3,7 +3,7 @@ import Assign from "../pageAdmin/Assign";
 import HomeAdmin from "../pageAdmin/HomeAdmi";
 // import Promotion from "../pageAdmin/Promotion";
 import HomePage from "../pageCustomer/HomePage";
-import LoginP from "../pageCustomer/LoginP";
+// import LoginP from "../pageCustomer/LoginP";
 import Package from "../pageCustomer/Package";
 // import Package from "../pageCustomer/Package";
 import Scan from "../pageEmployee/Scan";
