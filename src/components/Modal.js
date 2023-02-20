@@ -4,24 +4,19 @@ export default function Modal({ open, onClose, children, title }) {
       <div
         onMouseDown={onClose}
         className={` ${
-          open ? '' : 'hidden'
-        } flex fixed top-0 inset-0  backdrop-blur-sm  justify-center items-center rounded`}
+          open ? "" : " hidden"
+        } modal fixed  top-0 left-0  backdrop-blur-sm  justify-center items-center  w-full h-full outline-none overflow-x-hidden  overflow-y-auto`}
       >
         <div
-          onMouseDown={e => e.stopPropagation()}
-          className='flex w-auto h-auto shadow-lg shadow-stone-400 rounded-md '
+          onMouseDown={(e) => e.stopPropagation()}
+          className="modal-dialog relative w-auto shadow-lg shadow-stone-400 rounded  "
         >
-          <div className='bg-green grow'>
-            <div className='flex bg-red  '>
-              <h1 className=' mx-auto  font-bold text-[40px]'>{title}</h1>
-            </div>
+          <div className="modal-content relative flex flex-col w-full">
+            <h1 className="  mt-3 mx-auto font-bold text-[30px] mb-7 ">
+              {title}
+            </h1>
 
-            <div className=' mx-auto'>
-              {children}
-              {/* <div className='w-[600px] h-[500px] bg-stone-600 rounded-md'>
-                body
-              </div> */}
-            </div>
+            <div className=" mx-auto">{children}</div>
           </div>
         </div>
       </div>

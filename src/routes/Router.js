@@ -6,6 +6,7 @@ import HomePage from "../pageCustomer/HomePage";
 import LoginP from "../pageCustomer/LoginP";
 import Payment from "../pageCustomer/Payment";
 import Scan from "../pageEmployee/Scan";
+import Example from "../template/Example";
 
 const router = createBrowserRouter([
   //for customer
@@ -24,7 +25,10 @@ const router = createBrowserRouter([
   // add page of the history og the payment
 
   //for employee
-  { path: "/scan", element: <Scan /> }
+  { path: "/scan", element: <Scan /> },
+
+  // for test
+  { path: "/example", element: <Example /> }
 ]);
 
 export default function Router() {
