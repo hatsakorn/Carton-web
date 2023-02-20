@@ -10,6 +10,7 @@ import Package from "../pageCustomer/Package";
 import Scan from "../pageEmployee/Scan";
 import Example from "../template/Example";
 import LoginPage from "../pageCustomer/LoginPage";
+import Employee from "../pageAdmin/Employee";
 
 const router = createBrowserRouter([
   //for customer
@@ -25,6 +26,8 @@ const router = createBrowserRouter([
   // how admin have register and how they register is that not
   { path: "/homeAdmin", element: <HomeAdmin /> },
   { path: "/assign", element: <Assign /> },
+  { path: "/employee", element: <Employee /> },
+
   // add page of the admin to confirm of the payment
   // add page of the history og the payment
 
