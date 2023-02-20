@@ -11,7 +11,7 @@ export default function Login() {
         </div>
 
         <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-          <i clasName="fa-solid fa-house  text-zinc-50 text-3xl m-4"></i>
+          <i className="fa-solid fa-house  text-zinc-50 text-3xl m-4"></i>
         </div>
         <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
           <i className="fa-solid fa-dolly  text-zinc-50 text-3xl m-4"></i>
