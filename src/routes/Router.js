@@ -3,6 +3,7 @@ import Assign from "../pageAdmin/Assign";
 import HomeAdmin from "../pageAdmin/HomeAdmi";
 // import Promotion from "../pageAdmin/Promotion";
 import HomePage from "../pageCustomer/HomePage";
+import PackagePage from "../pageCustomer/PackagePage";
 import LoginP from "../pageCustomer/LoginP";
 import Payment from "../pageCustomer/Payment";
 import Scan from "../pageEmployee/Scan";
@@ -14,13 +15,13 @@ const router = createBrowserRouter([
   { path: "/", element: <LoginP /> },
   { path: "/home", element: <HomePage /> },
   { path: "/payment", element: <Payment /> },
+  { path: "/package", element: <PackagePage /> },
   // can customer see the history of payment
 
   // for Admin
   // how admin have register and how they register is that not
   { path: "/homeAdmin", element: <HomeAdmin /> },
   { path: "/assign", element: <Assign /> },
-  // { path: "/promotion", element: <Promotion /> },
   // add page of the admin to confirm of the payment
   // add page of the history og the payment
 
