@@ -7,11 +7,12 @@ import LoginP from "../pageCustomer/LoginP";
 import Payment from "../pageCustomer/Payment";
 import Scan from "../pageEmployee/Scan";
 import Example from "../template/Example";
+import LoginPage from "../pageCustomer/LoginPage";
 
 const router = createBrowserRouter([
   //for customer
   // /Login for Redirect if auth
-  { path: "/", element: <LoginP /> },
+  { path: "/", element: <LoginPage /> },
   { path: "/home", element: <HomePage /> },
   { path: "/payment", element: <Payment /> },
   // can customer see the history of payment
