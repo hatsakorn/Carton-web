@@ -13,7 +13,7 @@ export default function PackagePage() {
     <>
       <div>
         <div className="flex justify-center">
-          <button onClick={() => setOpen(true)}>
+          <button>
             Add New Carton
             <i class="fa-solid fa-plus"></i>
           </button>

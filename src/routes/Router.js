@@ -4,18 +4,21 @@ import HomeAdmin from "../pageAdmin/HomeAdmi";
 // import Promotion from "../pageAdmin/Promotion";
 import HomePage from "../pageCustomer/HomePage";
 import PackagePage from "../pageCustomer/PackagePage";
-import LoginP from "../pageCustomer/LoginP";
-import Payment from "../pageCustomer/Payment";
+// import LoginP from "../pageCustomer/LoginP";
+import Package from "../pageCustomer/Package";
+// import Package from "../pageCustomer/Package";
 import Scan from "../pageEmployee/Scan";
 import Example from "../template/Example";
+import LoginPage from "../pageCustomer/LoginPage";
 
 const router = createBrowserRouter([
   //for customer
   // /Login for Redirect if auth
-  { path: "/", element: <LoginP /> },
+  { path: "/", element: <LoginPage /> },
   { path: "/home", element: <HomePage /> },
-  { path: "/payment", element: <Payment /> },
-  { path: "/package", element: <PackagePage /> },
+  // { path: "/payment", element: <Payment /> },
+  // { path: "/package", element: <PackagePage /> },
+  { path: "/package", element: <Package /> },
   // can customer see the history of payment
 
   // for Admin
