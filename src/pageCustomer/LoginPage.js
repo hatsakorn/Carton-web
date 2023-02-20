@@ -1,8 +1,12 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import { Link } from "react-router-dom";
 import Example from "../template/Example";
+import { useState } from "react";
+import RegisterModalT from "../template/RegisterModalT";
+import Modal from "../components/Modal";
 
 export default function Login() {
+  const [open, setOpen] = useState(false);
   return (
     <div className="flex justify-between">
       <div className="flex-col flex justify-evenly text-center w-20">
@@ -11,7 +15,7 @@ export default function Login() {
         </div>
 
         <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-          <i clasName="fa-solid fa-house  text-zinc-50 text-3xl m-4"></i>
+          <i className="fa-solid fa-house  text-zinc-50 text-3xl m-4"></i>
         </div>
         <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
           <i className="fa-solid fa-dolly  text-zinc-50 text-3xl m-4"></i>
@@ -75,10 +79,23 @@ export default function Login() {
               <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md hover:bg-blue focus:outline-none focus:bg-purple-600 drop-shadow-xl">
                 Login
               </button>
-              <Link>
-                <Example />
-              </Link>
             </form>
+            <div>
+              {" "}
+              <button
+                onClick={() => setOpen(true)}
+                className="bg-sky-600 rounded m-3 p-1 hover:opacity-70"
+              >
+                Register
+              </button>
+              <Modal
+                open={open}
+                onClose={() => setOpen(false)}
+                title={"Create an Account"}
+              >
+                <RegisterModalT onClose={() => setOpen(false)} />
+              </Modal>
+            </div>
           </div>
           <hr />
         </div>
