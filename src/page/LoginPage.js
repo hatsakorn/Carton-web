@@ -2,11 +2,30 @@ import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 
 export default function Login() {
   return (
-    <div className="flex-row">
-      <i className="flex">A</i>
-      <i className="flex">A</i>
-      <i className="flex">A</i>
-      <body className="flex justify-center bg-gradient-to-r bg-white rounded-2xl shadow-md  ml-20">
+    <div className="flex justify-between">
+      <div className="flex-col flex justify-evenly text-center w-20">
+        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
+          <i className="fa-solid fa-circle-user text-zinc-50 text-3xl m-4"></i>
+        </div>
+
+        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
+          <i clasName="fa-solid fa-house  text-zinc-50 text-3xl m-4"></i>
+        </div>
+        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
+          <i className="fa-solid fa-dolly  text-zinc-50 text-3xl m-4"></i>
+        </div>
+
+        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
+          <i className="fa-solid fa-car  text-zinc-50 text-3xl m-4"></i>
+        </div>
+        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
+          <i className="fa-solid fa-qrcode  text-zinc-50 text-3xl m-4"></i>
+        </div>
+        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
+          <i className="fa-solid fa-gear  text-zinc-50 text-3xl m-4"></i>
+        </div>
+      </div>
+      <body className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden h-14 mr-20"></div>
         <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center  text-blue-700 ">
