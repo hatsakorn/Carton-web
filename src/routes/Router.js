@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Assign from "../pageAdmin/Assign";
 import HomeAdmin from "../pageAdmin/HomeAdmi";
-import Promotion from "../pageAdmin/Promotion";
+// import Promotion from "../pageAdmin/Promotion";
 import HomePage from "../pageCustomer/HomePage";
 import LoginP from "../pageCustomer/LoginP";
 import Payment from "../pageCustomer/Payment";
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
   // how admin have register and how they register is that not
   { path: "/homeAdmin", element: <HomeAdmin /> },
   { path: "/assign", element: <Assign /> },
-  { path: "/promotion", element: <Promotion /> },
+  // { path: "/promotion", element: <Promotion /> },
   // add page of the admin to confirm of the payment
   // add page of the history og the payment
 
