@@ -1,4 +1,6 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { Link } from "react-router-dom";
+import Example from "../template/Example";
 
 export default function Login() {
   return (
@@ -73,6 +75,9 @@ export default function Login() {
               <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md hover:bg-blue focus:outline-none focus:bg-purple-600 drop-shadow-xl">
                 Login
               </button>
+              <Link>
+                <Example />
+              </Link>
             </form>
           </div>
           <hr />

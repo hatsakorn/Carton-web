@@ -6,10 +6,9 @@ export default function Example() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div>Example</div>
       <button
         onClick={() => setOpen(true)}
-        className="bg-sky-600 rounded m-3 p-3 hover:opacity-70"
+        className="bg-sky-600 rounded m-3 p-1 hover:opacity-70"
       >
         Register
       </button>

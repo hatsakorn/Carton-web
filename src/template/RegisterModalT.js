@@ -3,7 +3,7 @@ import Input from "../components/Input";
 export default function RegisterModalT({ onClose }) {
   return (
     <>
-      <form className="m-3">
+      <form className="m-3 ">
         <h1>User Name</h1>
         <Input placeholder={"Enter your  Username"} />
         <h1>Company Name</h1>
@@ -23,7 +23,7 @@ export default function RegisterModalT({ onClose }) {
         <Input placeholder={"Password"} />
         <h1>Confirm Password </h1>
         <Input placeholder={"Enter Confirm Password"} />
-        <div className="bg-blue-600 rounded flex justify-center h-[50px] my-7">
+        <div className="bg-blue-600 rounded flex justify-center h-[50px] my-7 shadow-xl">
           <button className="text-white text-xl font-semibold">
             Create an Account
           </button>
