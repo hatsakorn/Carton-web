@@ -4,6 +4,7 @@ import Example from "../template/Example";
 import { useState } from "react";
 import RegisterModalT from "../template/RegisterModalT";
 import Modal from "../components/Modal";
+import RegisterFrom from "../auth/RegisterForm";
 
 export default function Login() {
   const [open, setOpen] = useState(false);
@@ -91,9 +92,10 @@ export default function Login() {
               <Modal
                 open={open}
                 onClose={() => setOpen(false)}
-                title={"Create an Account"}
+                // title={"Create an Account"}
               >
-                <RegisterModalT onClose={() => setOpen(false)} />
+                {/* <RegisterModalT onClose={() => setOpen(false)} /> */}
+                <RegisterFrom onClose={() => setOpen(false)} />
               </Modal>
             </div>
           </div>
