@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "../components/Modal";
 // import RegisterModalT from "./RegisterModalT";
 import AssignModal from "../pageAdmin/AssignModal";
+import SubmitFormPackage from "../pageCustomer/SubmitFormPackage";
 
 export default function Example() {
   const [open, setOpen] = useState(false);
@@ -19,7 +20,8 @@ export default function Example() {
         // title={"Create an Account"}
       >
         {/* <RegisterModalT onClose={() => setOpen(false)} /> */}
-        <AssignModal onClose={() => setOpen(false)} />
+        {/* <AssignModal onClose={() => setOpen(false)} /> */}
+        <SubmitFormPackage onClose={() => setOpen(false)} />
       </Modal>
     </>
   );

@@ -211,7 +211,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="relative  flex-col mt-10 flex justify-between min-h-screen overflow-hidden h-14  ">
+        <div className="relative  flex-col mt-20 flex justify-between min-h-screen overflow-hidden h-14  ">
           <div className=" w-70 h-70 p-6  bg-blue-700  rounded-xl shadow-md lg:max-w-xl">
             <CircularProgressbar
               className=" p-7"
@@ -219,29 +219,29 @@ export default function HomePage() {
               text={`${percentage}%`}
             ></CircularProgressbar>
           </div>
-          <div className=" w-60 p-3 bg-white rounded-md lg:max-w-xl flex row justify-between mr-10">
+          {/* <div className=" w-60 p-3 bg-white rounded-md lg:max-w-xl flex row justify-between mr-10">
             <div className="flex text-xs">Received</div>
             <div className="flex text-xs">Sent</div>
             <div className="flex text-xs">Expeted</div>
-          </div>
+          </div> */}
 
-          <div className=" w-70 h-96 pr-10 bg-white rounded-md lg:max-w-xl flex-row ">
-            <div className="flex justify-between">
-              <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
+          <div className=" w-70 h-96 pr-10 bg-white rounded-md lg:max-w-xl flex-row mb-10">
+            <div className="flex justify-between m-2 ">
+              <div className="flex  bg-blue-700 hover:bg-blue-400 m-2 rounded-xl shadow-xl  ">
                 <i className=" fa-solid fa-box   text-slate-100 text-3xl m-4"></i>
               </div>
               <span className="flex ml-10">sdfsdfs</span>
             </div>
 
-            <div className="flex justify-between">
-              <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
+            <div className="flex justify-between m-2 ">
+              <div className="flex  bg-blue-700 hover:bg-blue-400 m-2 rounded-xl shadow-xl ">
                 <i className=" fa-solid fa-box text-slate-100 text-3xl m-4 "></i>
               </div>
               <span className="flex ml-10 ">sdfsdfs</span>
             </div>
 
-            <div className="flex justify-between">
-              <div className="flex bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
+            <div className="flex justify-between m-2 ">
+              <div className="flex bg-blue-700 hover:bg-blue-400 m-2 rounded-xl shadow-xl ">
                 <i className=" fa-solid fa-box  text-slate-100 text-3xl m-4 "></i>
               </div>
               <span className="flex ml-10">sdfsdfs</span>

@@ -10,6 +10,7 @@ import Package from "../pageCustomer/Package";
 import Scan from "../pageEmployee/Scan";
 import Example from "../template/Example";
 import LoginPage from "../pageCustomer/LoginPage";
+import SubmitFormPackage from "../pageCustomer/SubmitFormPackage";
 
 const router = createBrowserRouter([
   //for customer
@@ -32,7 +33,12 @@ const router = createBrowserRouter([
   { path: "/scan", element: <Scan /> },
 
   // for test
-  { path: "/example", element: <Example /> }
+  {
+    path: "/example",
+    element: <SubmitFormPackage />
+
+    // <Example />
+  }
 ]);
 
 export default function Router() {
