@@ -11,9 +11,9 @@ export default function RegisterModalT({ onClose }) {
         <Input placeholder={"Enter your  Username"} />
         <h1>Company Name</h1>
         <Input placeholder={"Enter company name"} />
-        <h1>Name</h1>
+        <h1>First Name</h1>
         <Input placeholder={"Enter your name"} />
-        <h1>Surname</h1>
+        <h1>Last Name</h1>
         <Input placeholder={"Enter your surname"} />
         <h1>Telephone Number</h1>
         <Input placeholder={"Enter your Telephone Number"} />
