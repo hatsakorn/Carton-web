@@ -48,7 +48,7 @@ export default function RegisterFrom() {
   // const reqister
   return (
     <div className="flex justify-between">
-      <body className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
+      <div className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
         <div className="w-full h-[] p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center  text-blue-700 ">
             Create an Account
@@ -206,7 +206,7 @@ export default function RegisterFrom() {
             </form>
           </div>
         </div>
-      </body>
+      </div>
     </div>
   );
 }

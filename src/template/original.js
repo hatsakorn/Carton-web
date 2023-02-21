@@ -21,7 +21,7 @@
       <i className="fa-solid fa-gear  text-zinc-50 text-3xl m-4"></i>
     </div>
   </div>
-  <body className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
+  <div className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden h-14 mr-20"></div>
-  </body>
+  </div>
 </div>;

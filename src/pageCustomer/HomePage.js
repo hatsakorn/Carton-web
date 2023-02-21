@@ -31,7 +31,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <body className="flex justify-between bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
+      <div className="flex justify-between bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
         <div className="w-full justify-between">
           <div className="flex-row justify-between">
             <div className="flex justify-between my-5">
@@ -248,7 +248,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </body>
+      </div>
     </div>
   );
 }
