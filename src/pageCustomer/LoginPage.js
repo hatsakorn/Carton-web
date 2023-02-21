@@ -1,4 +1,4 @@
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+// import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import { Link } from "react-router-dom";
 import Example from "../template/Example";
 import { useState } from "react";
@@ -143,7 +143,6 @@ export default function Login() {
   //     //       <TextInput
   //     //         id="email1"
   //     //         type="email"
-  //     //         placeholder="name@flowbite.com"
   //     //         required={true}
   //     //       />
   //     //     </div>

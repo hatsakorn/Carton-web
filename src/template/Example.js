@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "../components/Modal";
-import RegisterModalT from "./RegisterModalT";
+// import RegisterModalT from "./RegisterModalT";
+import AssignModal from "../pageAdmin/AssignModal";
 
 export default function Example() {
   const [open, setOpen] = useState(false);
@@ -15,9 +16,10 @@ export default function Example() {
       <Modal
         open={open}
         onClose={() => setOpen(false)}
-        title={"Create an Account"}
+        // title={"Create an Account"}
       >
-        <RegisterModalT onClose={() => setOpen(false)} />
+        {/* <RegisterModalT onClose={() => setOpen(false)} /> */}
+        <AssignModal onClose={() => setOpen(false)} />
       </Modal>
     </>
   );
