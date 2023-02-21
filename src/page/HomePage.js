@@ -29,7 +29,7 @@ export default function HomePage() {
           <i className="fa-solid fa-gear  text-zinc-50 text-3xl m-4"></i>
         </div>
       </div>
-      <body className="flex justify-between bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
+      <div className="flex justify-between bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
         <div className="flex-row">
           <div className="flex">sdf</div>
           <div className="flex">ds</div>
@@ -60,7 +60,7 @@ export default function HomePage() {
             <div className="flex">sdf</div>
           </div>
         </div>
-      </body>
+      </div>
     </div>
   );
 }

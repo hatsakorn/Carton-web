@@ -5,9 +5,33 @@ import { useState } from "react";
 import RegisterModalT from "../template/RegisterModalT";
 import Modal from "../components/Modal";
 import RegisterFrom from "../auth/RegisterForm";
+import useAuth from "../hooks/useAuth";
+
+const initialInput = {
+  username: "",
+  password: ""
+};
 
 export default function Login() {
   const [open, setOpen] = useState(false);
+  const [input, setInput] = useState(initialInput);
+
+  const { login } = useAuth();
+
+  const handleChangeInput = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmitForm = async (e) => {
+    e.preventDefault();
+    try {
+      await login(input);
+      setInput(initialInput);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="flex justify-between">
       <div className="flex-col flex justify-evenly text-center w-20">
@@ -32,33 +56,31 @@ export default function Login() {
           <i className="fa-solid fa-gear  text-zinc-50 text-3xl m-4"></i>
         </div>
       </div>
-      <body className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
+      <div className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden h-14 mr-20"></div>
         <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center  text-blue-700 ">
             Log in
             <p className="mt-8 text-xs font-light text-center text-gray-700">
-              Let’s login to your account and start your calorie management
+              Let’s login to your account and start Carton
             </p>
           </h1>
           <div>
-            <form
-              className="mt-6"
-              //  onSubmit={handleSubmitForm}
-            >
+            <form className="mt-6" onSubmit={handleSubmitForm}>
               <div className="mb-2">
                 <label
                   htmlFor="email"
                   className="block text-sm font-semibold text-gray-800"
                 >
-                  Email
+                  Username
                 </label>
                 <input
                   type="text"
                   className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                  placeholder="Email address or phone number"
-                  // value={emailOrMobile}
-                  // onChange={(e) => setEmailOrMobile(e.target.value)}
+                  placeholder="Your username"
+                  name="username"
+                  value={input.username}
+                  onChange={handleChangeInput}
                 />
               </div>
 
@@ -72,12 +94,16 @@ export default function Login() {
                 <input
                   type="password"
                   className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                  placeholder="Password"
-                  // value={password}
-                  // onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Your password"
+                  name="password"
+                  value={input.password}
+                  onChange={handleChangeInput}
                 />
               </div>
-              <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md hover:bg-blue focus:outline-none focus:bg-purple-600 drop-shadow-xl">
+              <button
+                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md hover:bg-blue focus:outline-none focus:bg-purple-600 drop-shadow-xl"
+                type="submit"
+              >
                 Login
               </button>
             </form>
@@ -101,7 +127,7 @@ export default function Login() {
           </div>
           <hr />
         </div>
-      </body>
+      </div>
     </div>
   );
 
