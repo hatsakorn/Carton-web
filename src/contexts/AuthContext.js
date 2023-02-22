@@ -11,6 +11,7 @@ import {
 export const AuthContext = createContext();
 
 export default function AuthContextProvider({ children }) {
+  const [check, setCheck] = useState([]);
   const [authenticatedUser, setAuthenticatedUser] = useState(
     getAccessToken() ? true : null
   );
@@ -19,6 +20,7 @@ export default function AuthContextProvider({ children }) {
     const fetchAuthUser = async () => {
       try {
         const res = await authApi.getMe();
+        setCheck(res.data.user);
         setAuthenticatedUser(res.data.user);
       } catch (err) {
         removeAccessToken();
@@ -31,9 +33,11 @@ export default function AuthContextProvider({ children }) {
 
   const login = async (input) => {
     const res = await authApi.login(input);
-    console.log(res.data);
     setAccessToken(res.data.accessToken);
     setAuthenticatedUser(jwtDecode(res.data.accessToken));
+    console.log(authenticatedUser);
+    console.log(res.data);
+    console.log(res);
   };
 
   //   const logout = () => {

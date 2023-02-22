@@ -7,8 +7,12 @@ import Example from "../template/Example";
 import LoginPage from "../pageCustomer/LoginPage";
 import Employee from "../pageAdmin/Employee";
 // import Scan from "../pageEmployee/Scan";
-import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
+import RedirectAuthenticate, {
+  OnlyAdminAndUser,
+  RedirectAdmin
+} from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
+import ProtectRoute from "../feature/auth/ProtectRoute";
 
 const router = createBrowserRouter([
   // for test
@@ -22,17 +26,33 @@ const router = createBrowserRouter([
       </RedirectAuthenticate>
     )
   },
+  // for Admin
   {
-    element: <AuthLayout />,
+    element: (
+      <ProtectRoute>
+        <AuthLayout />
+      </ProtectRoute>
+    ),
+
     children: [
-      { path: "/home", element: <HomePage /> },
-      { path: "/package", element: <Package /> },
-      // for Admin
-      { path: "/homeAdmin", element: <HomeAdmin /> },
+      {
+        path: "/home",
+        element: <RedirectAdmin />
+      },
+      {
+        path: "/package",
+        element: (
+          <OnlyAdminAndUser>
+            <Package />
+          </OnlyAdminAndUser>
+        )
+      },
+      // { path: "/homeAdmin", element: <HomeAdmin /> },
       { path: "/assign", element: <Assign /> },
       { path: "/employee", element: <Employee /> }
     ]
   }
+
   // { path: "/invoice" }
 
   //for employee
