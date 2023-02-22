@@ -9,7 +9,7 @@ const initialInput = {
   lastName: "",
   email: "",
   password: "",
-  // confirmPassword: "",
+  confirmPassword: "",
   telephoneNumber: ""
 };
 
@@ -27,6 +27,7 @@ export default function RegisterEmployeeForm({ onClose }) {
       const result = validateRegisterEmployee(input);
       if (result) {
         setError(result);
+        console.log(result, " hIIIIIII");
       } else {
         setError({});
         await authApi.registerEmployee(input);
@@ -35,6 +36,8 @@ export default function RegisterEmployeeForm({ onClose }) {
       }
     } catch (err) {
       console.log(err.response?.data.Message);
+      console.log(err.response.data.message);
+      console.log(input);
     }
   };
   return (
@@ -48,6 +51,11 @@ export default function RegisterEmployeeForm({ onClose }) {
           onChange={handleChangeInput}
           error={error.username}
         />
+        {error && (
+          <small className=" flex -mt-3 mb-3 font-bold text-red ">
+            {error.username}
+          </small>
+        )}
         <h1>First Name</h1>
         <Input
           name="firstName"
@@ -55,7 +63,12 @@ export default function RegisterEmployeeForm({ onClose }) {
           onChange={handleChangeInput}
           error={error.firstName}
           placeholder={"Enter your firstName"}
-        />
+        />{" "}
+        {error && (
+          <small className=" flex -mt-3 mb-3 font-bold text-red ">
+            {error.firstName}
+          </small>
+        )}
         <h1>Surname</h1>
         <Input
           name="lastName"
@@ -63,7 +76,12 @@ export default function RegisterEmployeeForm({ onClose }) {
           onChange={handleChangeInput}
           error={error.lastName}
           placeholder={"Enter your surname"}
-        />
+        />{" "}
+        {error && (
+          <small className=" flex -mt-3 mb-3 font-bold text-red ">
+            {error.lastName}
+          </small>
+        )}
         <h1>Telephone Number</h1>
         <Input
           name="telephoneNumber"
@@ -71,8 +89,12 @@ export default function RegisterEmployeeForm({ onClose }) {
           onChange={handleChangeInput}
           error={error.telephoneNumber}
           placeholder={"Enter your Telephone Number"}
-        />
-
+        />{" "}
+        {error && (
+          <small className=" flex -mt-3 mb-3 font-bold text-red ">
+            {error.telephoneNumber}
+          </small>
+        )}
         <h1>Email</h1>
         <Input
           name="email"
@@ -80,7 +102,12 @@ export default function RegisterEmployeeForm({ onClose }) {
           onChange={handleChangeInput}
           error={error.email}
           placeholder={"Enter your Email"}
-        />
+        />{" "}
+        {error && (
+          <small className=" flex -mt-3 mb-3 font-bold text-red ">
+            {error.email}
+          </small>
+        )}
         <h1>Password</h1>
         <Input
           name="password"
@@ -88,15 +115,25 @@ export default function RegisterEmployeeForm({ onClose }) {
           onChange={handleChangeInput}
           error={error.password}
           placeholder={"Password"}
-        />
-        {/* <h1>Confirm Password </h1>
+        />{" "}
+        {error && (
+          <small className=" flex -mt-3 mb-3 font-bold text-red ">
+            {error.password}
+          </small>
+        )}
+        <h1>Confirm Password </h1>
         <Input
           name="confirmPassword"
           value={input.confirmPassword}
           onChange={handleChangeInput}
           error={error.confirmPassword}
           placeholder={"Enter Confirm Password"}
-        /> */}
+        />{" "}
+        {error && (
+          <small className=" flex -mt-3 mb-3 font-bold text-red ">
+            {error.confirmPassword}
+          </small>
+        )}
         <div className="bg-blue-600 rounded flex justify-center h-[50px] my-7 shadow-xl">
           <button type="submit" className="text-white text-xl font-semibold">
             Create an Account
