@@ -5,12 +5,16 @@ import HomePage from "../pageCustomer/HomePage";
 import Package from "../pageCustomer/Package";
 import Example from "../template/Example";
 import LoginPage from "../pageCustomer/LoginPage";
+<<<<<<< HEAD
+import SubmitFormPackage from "../pageCustomer/SubmitFormPackage";
+=======
 import Employee from "../pageAdmin/Employee";
 // import Scan from "../pageEmployee/Scan";
 import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
 import Scan from "../pageEmployee/Scan";
 import HomePage1 from "../page/HomePage";
+>>>>>>> develop
 
 const router = createBrowserRouter([
   // for test
@@ -40,6 +44,18 @@ const router = createBrowserRouter([
   // { path: "/invoice" }
 
   //for employee
+<<<<<<< HEAD
+  { path: "/scan", element: <Scan /> },
+
+  // for test
+  {
+    path: "/example",
+    element: <SubmitFormPackage />
+
+    // <Example />
+  }
+=======
+>>>>>>> develop
 ]);
 
 export default function Router() {
