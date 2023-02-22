@@ -1,8 +1,4 @@
-// import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-import { Link } from "react-router-dom";
-import Example from "../template/Example";
 import { useState } from "react";
-import RegisterModalT from "../template/RegisterModalT";
 import Modal from "../components/Modal";
 import RegisterFrom from "../auth/RegisterForm";
 import useAuth from "../hooks/useAuth";
@@ -78,6 +74,7 @@ export default function åLogin() {
                   onChange={handleChangeInput}
                 />
               </div>
+
               <button
                 className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md hover:bg-blue focus:outline-none focus:bg-purple-600 drop-shadow-xl"
                 type="submit"

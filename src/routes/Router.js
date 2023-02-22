@@ -9,6 +9,8 @@ import Employee from "../pageAdmin/Employee";
 // import Scan from "../pageEmployee/Scan";
 import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
+import Scan from "../pageEmployee/Scan";
+import HomePage1 from "../page/HomePage";
 
 const router = createBrowserRouter([
   // for test
@@ -30,13 +32,14 @@ const router = createBrowserRouter([
       // for Admin
       { path: "/homeAdmin", element: <HomeAdmin /> },
       { path: "/assign", element: <Assign /> },
-      { path: "/employee", element: <Employee /> }
+      { path: "/employee", element: <Employee /> },
+      { path: "/scan", element: <Scan /> },
+      { path: "/HomePage", element: <HomePage1 /> }
     ]
   }
   // { path: "/invoice" }
 
   //for employee
-  // { path: "/scan", element: <Scan /> },
 ]);
 
 export default function Router() {
