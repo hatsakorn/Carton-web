@@ -9,9 +9,9 @@ export default function Modal({ open, onClose, children, title }) {
       >
         <div
           onMouseDown={(e) => e.stopPropagation()}
-          className="modal-dialog relative w-auto shadow-lg shadow-stone-400 rounded  "
+          className="modal-dialog relative min-w-fit shadow-lg shadow-stone-400 rounded-xl "
         >
-          <div className="modal-content relative flex flex-col w-full">
+          <div className="modal-content relative flex flex-col w-full bg-white rounded-xl ">
             <h1 className="  mt-3 mx-auto font-bold text-[30px] mb-7 ">
               {title}
             </h1>
