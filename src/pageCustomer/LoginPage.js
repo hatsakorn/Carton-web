@@ -12,13 +12,8 @@ const initialInput = {
   password: ""
 };
 
-export default function Login() {
+export default function åLogin() {
   const [open, setOpen] = useState(false);
-<<<<<<< HEAD
-  return (
-    <div className="flex justify-between">
-      <body className="flex justify-center bg-gradient-to-r bg-white  shadow-md w-full">
-=======
   const [input, setInput] = useState(initialInput);
 
   const { login } = useAuth();
@@ -40,7 +35,6 @@ export default function Login() {
   return (
     <div className="flex justify-between">
       <div className="flex justify-center bg-gradient-to-r bg-white shadow-md w-full">
->>>>>>> cadaaf8de19c278652b1ee45503b2b01261a5ea8
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden h-14 mr-20"></div>
         <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center  text-blue-700 ">
