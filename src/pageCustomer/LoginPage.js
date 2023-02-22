@@ -1,8 +1,4 @@
-// import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-import { Link } from "react-router-dom";
-import Example from "../template/Example";
 import { useState } from "react";
-import RegisterModalT from "../template/RegisterModalT";
 import Modal from "../components/Modal";
 import RegisterFrom from "../auth/RegisterForm";
 import useAuth from "../hooks/useAuth";
@@ -14,11 +10,6 @@ const initialInput = {
 
 export default function Login() {
   const [open, setOpen] = useState(false);
-<<<<<<< HEAD
-  return (
-    <div className="flex justify-between">
-      <body className="flex justify-center bg-gradient-to-r bg-white  shadow-md w-full">
-=======
   const [input, setInput] = useState(initialInput);
 
   const { login } = useAuth();
@@ -40,7 +31,6 @@ export default function Login() {
   return (
     <div className="flex justify-between">
       <div className="flex justify-center bg-gradient-to-r bg-white shadow-md w-full">
->>>>>>> cadaaf8de19c278652b1ee45503b2b01261a5ea8
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden h-14 mr-20"></div>
         <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center  text-blue-700 ">
@@ -84,6 +74,7 @@ export default function Login() {
                   onChange={handleChangeInput}
                 />
               </div>
+
               <button
                 className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md hover:bg-blue focus:outline-none focus:bg-purple-600 drop-shadow-xl"
                 type="submit"

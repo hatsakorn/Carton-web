@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function NavSideBar() {
   return (
@@ -8,18 +9,26 @@ function NavSideBar() {
       </div>
 
       <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-        <i className="fa-solid fa-house  text-zinc-50 text-3xl m-4"></i>
+        <Link to={"/homeAdmin"}>
+          <i className="fa-solid fa-house  text-zinc-50 text-3xl m-4"></i>
+        </Link>
       </div>
 
       <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-        <i className="fa-solid fa-dolly  text-zinc-50 text-3xl m-4"></i>
+        <Link to={"/package"}>
+          <i className="fa-solid fa-dolly  text-zinc-50 text-3xl m-4"></i>
+        </Link>
       </div>
 
       <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-        <i className="fa-solid fa-car  text-zinc-50 text-3xl m-4"></i>
+        <Link to={"/assign"}>
+          <i className="fa-solid fa-paper-plane  text-zinc-50 text-3xl m-4"></i>
+        </Link>
       </div>
       <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-        <i className="fa-solid fa-qrcode  text-zinc-50 text-3xl m-4"></i>
+        <Link to={"/scan"}>
+          <i className="fa-solid fa-qrcode  text-zinc-50 text-3xl m-4"></i>
+        </Link>
       </div>
       <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
         <i className="fa-solid fa-gear  text-zinc-50 text-3xl m-4"></i>
