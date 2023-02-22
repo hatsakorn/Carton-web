@@ -1,35 +1,50 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Assign from "../pageAdmin/Assign";
 import HomeAdmin from "../pageAdmin/HomeAdmi";
-// import Promotion from "../pageAdmin/Promotion";
 import HomePage from "../pageCustomer/HomePage";
-// import PackagePage from "../pageCustomer/PackagePage";
-// import LoginP from "../pageCustomer/LoginP";
 import Package from "../pageCustomer/Package";
-// import Package from "../pageCustomer/Package";
-import Scan from "../pageEmployee/Scan";
 import Example from "../template/Example";
 import LoginPage from "../pageCustomer/LoginPage";
+<<<<<<< HEAD
 import SubmitFormPackage from "../pageCustomer/SubmitFormPackage";
+=======
+import Employee from "../pageAdmin/Employee";
+// import Scan from "../pageEmployee/Scan";
+import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
+import AuthLayout from "../layouts/AuthLayout";
+import Scan from "../pageEmployee/Scan";
+import HomePage1 from "../page/HomePage";
+>>>>>>> develop
 
 const router = createBrowserRouter([
+  // for test
+  { path: "/example", element: <Example /> },
   //for customer
-  // /Login for Redirect if auth
-  { path: "/", element: <LoginPage /> },
-  { path: "/home", element: <HomePage /> },
-  // { path: "/payment", element: <Payment /> },
-  // { path: "/package", element: <PackagePage /> },
-  { path: "/package", element: <Package /> },
-  // can customer see the history of payment
-
-  // for Admin
-  // how admin have register and how they register is that not
-  { path: "/homeAdmin", element: <HomeAdmin /> },
-  { path: "/assign", element: <Assign /> },
-  // add page of the admin to confirm of the payment
-  // add page of the history og the payment
+  {
+    path: "/",
+    element: (
+      <RedirectAuthenticate>
+        <LoginPage />
+      </RedirectAuthenticate>
+    )
+  },
+  {
+    element: <AuthLayout />,
+    children: [
+      { path: "/home", element: <HomePage /> },
+      { path: "/package", element: <Package /> },
+      // for Admin
+      { path: "/homeAdmin", element: <HomeAdmin /> },
+      { path: "/assign", element: <Assign /> },
+      { path: "/employee", element: <Employee /> },
+      { path: "/scan", element: <Scan /> },
+      { path: "/HomePage", element: <HomePage1 /> }
+    ]
+  }
+  // { path: "/invoice" }
 
   //for employee
+<<<<<<< HEAD
   { path: "/scan", element: <Scan /> },
 
   // for test
@@ -39,6 +54,8 @@ const router = createBrowserRouter([
 
     // <Example />
   }
+=======
+>>>>>>> develop
 ]);
 
 export default function Router() {

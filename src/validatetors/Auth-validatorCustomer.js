@@ -15,6 +15,14 @@ const customerRegisterSchema = Joi.object({
     "string.alphanum": "password must contain number or alphabet",
     "string.min": "password mush have at least 6 characters"
   }),
+  confirmPassword: Joi.string()
+    .valid(Joi.ref("password"))
+    .required()
+    .trim()
+    .messages({
+      "any.only": "Password and Confirm password did not match",
+      "string.empty": "Confirm password is required"
+    }),
 
   companyName: Joi.string().trim().required().messages({
     "string.empty": "lastName is required"

@@ -1,3 +1,5 @@
+import Joi from "joi";
+
 const employeeRegisterSchema = Joi.object({
   firstName: Joi.string().trim().required().messages({
     "any.required": "first name is required",
@@ -15,6 +17,14 @@ const employeeRegisterSchema = Joi.object({
     "string.alphanum": "password must contain number or alphabet",
     "string.min": "password mush have at least 6 characters"
   }),
+  confirmPassword: Joi.string()
+    .valid(Joi.ref("password"))
+    .required()
+    .trim()
+    .messages({
+      "any.only": "Password and Confirm password did not match",
+      "string.empty": "Confirm password is required"
+    }),
 
   telephoneNumber: Joi.string()
     .alphanum()
@@ -33,3 +43,18 @@ const employeeRegisterSchema = Joi.object({
     "string.base": "user name must be a string"
   })
 });
+
+const validateRegisterEmployee = (input) => {
+  const { error } = employeeRegisterSchema.validate(input, {
+    abortEarly: false
+  });
+  if (error) {
+    const result = error.details.reduce((acc, el) => {
+      acc[el.path[0]] = el.message;
+      return acc;
+    }, {});
+    return result;
+  }
+};
+
+export default validateRegisterEmployee;
