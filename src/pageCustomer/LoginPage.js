@@ -10,29 +10,7 @@ export default function Login() {
   const [open, setOpen] = useState(false);
   return (
     <div className="flex justify-between">
-      <div className="flex-col flex justify-evenly text-center w-20">
-        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
-          <i className="fa-solid fa-circle-user text-zinc-50 text-3xl m-4"></i>
-        </div>
-
-        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-          <i className="fa-solid fa-house  text-zinc-50 text-3xl m-4"></i>
-        </div>
-        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-          <i className="fa-solid fa-dolly  text-zinc-50 text-3xl m-4"></i>
-        </div>
-
-        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-          <i className="fa-solid fa-car  text-zinc-50 text-3xl m-4"></i>
-        </div>
-        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-          <i className="fa-solid fa-qrcode  text-zinc-50 text-3xl m-4"></i>
-        </div>
-        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-          <i className="fa-solid fa-gear  text-zinc-50 text-3xl m-4"></i>
-        </div>
-      </div>
-      <body className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
+      <body className="flex justify-center bg-gradient-to-r bg-white  shadow-md w-full">
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden h-14 mr-20"></div>
         <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center  text-blue-700 ">
@@ -82,10 +60,9 @@ export default function Login() {
               </button>
             </form>
             <div>
-              {" "}
               <button
                 onClick={() => setOpen(true)}
-                className="bg-sky-600 rounded m-3 p-1 hover:opacity-70"
+                className="bg-sky-600 rounded m-3 p-1 hover:opacity-70 text-white "
               >
                 Register
               </button>
@@ -99,64 +76,8 @@ export default function Login() {
               </Modal>
             </div>
           </div>
-          <hr />
         </div>
       </body>
     </div>
   );
-
-  //     <div>
-  //      <header>
-  //   <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  //     <div className="container-fluid">
-  //       <a className="navbar-brand" href="#">Fixed navbar</a>
-  //       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-  //         <span className="navbar-toggler-icon"></span>
-  //       </button>
-  //       <div className="collapse navbar-collapse" id="navbarCollapse">
-  //         <ul className="navbar-nav me-auto mb-2 mb-md-0">
-  //           <li className="nav-item">
-  //             <a className="nav-link active" aria-current="page" href="#">Home</a>
-  //           </li>
-  //           <li className="nav-item">
-  //             <a className="nav-link" href="#">Link</a>
-  //           </li>
-  //           <li className="nav-item">
-  //             <a className="nav-link disabled">Disabled</a>
-  //           </li>
-  //         </ul>
-  //         <form className="d-flex" role="search">
-  //           <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-  //           <button className="btn btn-outline-success" type="submit">Search</button>
-  //         </form>
-  //       </div>
-  //     </div>
-  //   </nav>
-  // </header>
-
-  //     // <div className="bg-slate-200 ">
-  //     //   <form className="">
-  //     //     <div>
-  //     //       <div className="mb-2 ">
-  //     //         <Label htmlFor="email1" value="Your email" />
-  //     //       </div>
-  //     //       <TextInput
-  //     //         id="email1"
-  //     //         type="email"
-  //     //         required={true}
-  //     //       />
-  //     //     </div>
-  //     //     <div>
-  //     //       <div className="mb-2 block">
-  //     //         <Label htmlFor="password1" value="Your password" />
-  //     //       </div>
-  //     //       <TextInput id="password1" type="password" required={true} />
-  //     //     </div>
-  //     //     <div className="flex items-center gap-2">
-  //     //       <Checkbox id="remember" />
-  //     //       <Label htmlFor="remember">Remember me</Label>
-  //     //     </div>
-  //     //     <Button type="submit">Submit</Button>
-  //     //   </form>
-  //     // </div>
 }

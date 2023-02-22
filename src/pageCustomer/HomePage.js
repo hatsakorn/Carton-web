@@ -37,7 +37,7 @@ export default function HomePage() {
             <div className="flex justify-between my-5">
               <div className="flex ml-5">Warehouse Logistics</div>
               <form className="flex items-center mr-5">
-                <label for="simple-search" class="sr-only">
+                <label for="simple-search" className="sr-only">
                   Search
                 </label>
                 <div className="relative w-full">
@@ -193,18 +193,79 @@ export default function HomePage() {
               </div>
               <div className="flex justify-evenly mt-10">
                 <div className="flex">
-                  <span>Section 001</span>
+                  <span>items no:</span>
                 </div>
                 <div className="flex">
-                  <span>Date</span>
+                  <span>customer:</span>
                 </div>
                 <div className=" flex ">
-                  <Progress
-                    progress={20}
-                    label="Flowbite"
-                    labelPosition="outside"
-                    labelProgress={true}
-                  />
+                  employee id:
+                  <button
+                    id="dropdownHoverButton"
+                    data-dropdown-toggle="dropdownHover"
+                    data-dropdown-trigger="hover"
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    type="button"
+                  >
+                    Seleced List
+                    <svg
+                      className="w-4 h-4 ml-2"
+                      aria-hidden="true"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      ></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="dropdownHover"
+                    className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                  >
+                    <ul
+                      className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="dropdownHoverButton"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Emp0001
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Emp0002
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Emp0003
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Emp0004
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -230,21 +291,21 @@ export default function HomePage() {
               <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
                 <i className=" fa-solid fa-box   text-slate-100 text-3xl m-4"></i>
               </div>
-              <span className="flex ml-10">sdfsdfs</span>
+              <span className="flex ml-10">Detail:</span>
             </div>
 
             <div className="flex justify-between">
               <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
                 <i className=" fa-solid fa-box text-slate-100 text-3xl m-4 "></i>
               </div>
-              <span className="flex ml-10 ">sdfsdfs</span>
+              <span className="flex ml-10 ">Detail:</span>
             </div>
 
             <div className="flex justify-between">
               <div className="flex bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
                 <i className=" fa-solid fa-box  text-slate-100 text-3xl m-4 "></i>
               </div>
-              <span className="flex ml-10">sdfsdfs</span>
+              <span className="flex ml-10">Detail:</span>
             </div>
           </div>
         </div>
