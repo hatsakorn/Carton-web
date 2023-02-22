@@ -48,8 +48,13 @@ export default function RegisterFrom() {
   // const reqister
   return (
     <div className="flex justify-between">
+<<<<<<< HEAD
       <body className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl  w-full">
         <div className="w-full h-[] p-6 m-auto bg-white rounded-md lg:max-w-xl">
+=======
+      <div className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
+        <div className="w-full h-[] p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
+>>>>>>> cadaaf8de19c278652b1ee45503b2b01261a5ea8
           <h1 className="text-3xl font-semibold text-center  text-blue-700 ">
             Create an Account
             <p className="mt-8 text-xs font-light text-center text-gray-700">
@@ -206,7 +211,7 @@ export default function RegisterFrom() {
             </form>
           </div>
         </div>
-      </body>
+      </div>
     </div>
   );
 }

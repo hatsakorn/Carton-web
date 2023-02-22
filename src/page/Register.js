@@ -72,7 +72,7 @@
 //           <i className="fa-solid fa-gear  text-zinc-50 text-3xl m-4"></i>
 //         </div>
 //       </div>
-//       <body className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
+//       <div className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
 //         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden h-14 mr-20"></div>
 //         <div className="w-full h-[] p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
 //           <h1 className="text-3xl font-semibold text-center  text-blue-700 ">
@@ -231,7 +231,7 @@
 //             </form>
 //           </div>
 //         </div>
-//       </body>
+//       </div>
 //     </div>
 //   );
 // }

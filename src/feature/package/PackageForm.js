@@ -5,6 +5,10 @@ function PackageForm() {
   return (
     <div>
       <form className="m-3">
+        <h1>Package</h1>
+        <button disabled package={"packageA"}>
+          Package
+        </button>
         <h1>Product Name</h1>
         <Input placeholder={"Product Name"} />
         <h1>Start Date</h1>
@@ -13,8 +17,6 @@ function PackageForm() {
         <Input placeholder={"End Date"} />
         <h1>Detail of Product</h1>
         <Input placeholder={"Detail of Product"} />
-        <h1>Package</h1>
-        <Input placeholder={"Package"} />
       </form>
     </div>
   );
