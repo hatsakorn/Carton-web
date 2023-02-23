@@ -12,10 +12,13 @@ import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
 import Scan from "../pageEmployee/Scan";
 import HomePage1 from "../page/HomePage";
+import PaymentPage from "../pageCustomer/PaymentPage";
 
 const router = createBrowserRouter([
   // for test
   { path: "/example", element: <Example /> },
+  { path:"/payment",element: <PaymentPage />}
+  ,
   //for customer
   {
     path: "/",
