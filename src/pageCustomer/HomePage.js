@@ -1,7 +1,6 @@
 import { Progress } from "flowbite-react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import NavSideBar from "../components/NavSideBar";
 
 export default function HomePage() {
   const percentage = 5;

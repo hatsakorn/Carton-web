@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "react-circular-progressbar/dist/styles.css";
 import Modal from "../components/Modal";
 import PackageForm from "../feature/package/PackageForm";
+import * as packageApi from "../api/package-api";
+import AllPackage from "../feature/package/AllPackage";
+// import { Pagination } from "flowbite-react";
 
 export default function Package() {
   const [open, setOpen] = useState(false);
+  const [showPackage, setShowPackage] = useState([]);
+  // const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    const fetchPackage = async () => {
+      const res = await packageApi.getPackages();
+      setShowPackage(res.data.allPackage);
+    };
+    fetchPackage();
+  }, []);
 
   const showPackageModal = () => {
     setOpen(true);
@@ -14,71 +27,37 @@ export default function Package() {
     e.preventDefault();
   };
 
+  // const onPageChange = () => {};
+
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between ">
         <div className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
           <div className="relative  flex flex-col justify-center min-h-screen overflow-hidden  h-14 mr-20 w-screen">
-            <div className="flex justify-center">
-              <div className=" w-11/12 ">
-                <h1 className="text-2xl font-semibold">Package</h1>
-                <div className=" grid grid-cols-2 mt-10 gap-y-10  ">
-                  {/* p1 */}
-                  <div className="  w-11/12 grid justify-items-stretch space-y-3 bg-white drop-shadow-2xl rounded p-6">
-                    <h1>Package A</h1>
-                    <div className="ml-8 pb-10 pt-4 ">
-                      <h1>Detail:</h1>
-                      <h1>Price:</h1>
-                      <h1>Status:</h1>
-                      <h1>Duration:</h1>
-                    </div>
-                    <div className="justify-self-center  bg-blue-600 rounded-md  ">
-                      <button
-                        className="w-72 h-10 text-white text-xl font-semibold "
-                        onClick={showPackageModal}
-                      >
-                        Select
-                      </button>
-                    </div>
-                  </div>
-                  {/* p2 */}
-                  <div className="  w-11/12 grid justify-items-stretch space-y-3 bg-white drop-shadow-2xl rounded p-6">
-                    <h1>Package A</h1>
-                    <div className="ml-8 pb-10 pt-4 ">
-                      <h1>Detail:</h1>
-                      <h1>Price:</h1>
-                      <h1>Status:</h1>
-                      <h1>Duration:</h1>
-                    </div>
-                    <div className="justify-self-center  bg-blue-600 rounded-md  ">
-                      <button
-                        className="w-72 h-10 text-white text-xl font-semibold "
-                        onClick={showPackageModal}
-                      >
-                        Select
-                      </button>
-                    </div>
-                  </div>
-                  {/* p3 */}
-                  <div className="  w-11/12 grid justify-items-stretch space-y-3 bg-white drop-shadow-2xl rounded p-6">
-                    <h1>Package A</h1>
-                    <div className="ml-8 pb-10 pt-4 ">
-                      <h1>Detail:</h1>
-                      <h1>Price:</h1>
-                      <h1>Status:</h1>
-                      <h1>Duration</h1>
-                    </div>
-                    <div className="justify-self-center  bg-blue-600 rounded-md  ">
-                      <button
-                        className="w-72 h-10 text-white text-xl font-semibold"
-                        onClick={showPackageModal}
-                      >
-                        Select
-                      </button>
-                    </div>
-                  </div>
-                  {/* p4 */}
+            <div className="flex justify-center h-[100%] ">
+              <div className=" w-11/12 overflow-scroll ">
+                <div className="flex mt-3 ">
+                  <h1 className="text-2xl font-semibold">Package</h1>
+                  <button className="text-right bg-blue-600 rounded-md text-white p-3 mx-3 ">
+                    Add Pacakge
+                  </button>
                 </div>
+                <div className=" flex">
+                  <div className="  mt-10 gap-y-10  w-full">
+                    {/* p1 */}
+                    <AllPackage
+                      showPackage={showPackage}
+                      showPackageModal={showPackageModal}
+                    />
+                  </div>
+                </div>
+                {/* <Pagination
+                  currentPage={currentPage}
+                  onPageChange={onPageChange}
+                  showIcons={true}
+                  totalPages={100}
+                  itemsPerPage={4}
+                /> */}
               </div>
             </div>
           </div>
