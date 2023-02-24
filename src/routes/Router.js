@@ -45,10 +45,10 @@ const router = createBrowserRouter([
 
   // for test
   // {
-  //   path: "/example",
-  //   element: <SubmitFormPackage />
+  //   path: "/PackagePage",
+  //   element: <PackagePage />
 
-  //   // <Example />
+  //   //   // <Example />
   // }
 ]);
 

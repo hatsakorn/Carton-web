@@ -1,3 +1,3 @@
 import axios from "../config/axios";
 
-export const s = () => axios.get("auth/");
+export const getAvailShelf = () => axios.get("/warehouse/shelf");

@@ -34,10 +34,10 @@ export default function AuthCustomerProvider({ children }) {
       //   console.log(res.data.mainCustomer[0], "qqqqqqqqqq");
       //   console.log(customerId, "mappppp");
     };
-    if (authenticatedUser.id) {
+    if (authenticatedUser?.id) {
       fetchGetCustomer();
     }
-  }, [authenticatedUser.id, customerId]);
+  }, [authenticatedUser, customerId]);
 
   return (
     <AuthCustomer.Provider value={{ customerId, customerItem }}>

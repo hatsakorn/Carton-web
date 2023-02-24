@@ -6,13 +6,16 @@ import "tw-elements";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import AuthContextProvider from "./contexts/AuthContext";
 import AuthCustomerProvider from "./contexts/AuthCustomer";
+import AuthWarehouseProvider from "./contexts/AuthWarehouse";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
       <AuthCustomerProvider>
-        <App />
+        <AuthWarehouseProvider>
+          <App />
+        </AuthWarehouseProvider>
       </AuthCustomerProvider>
     </AuthContextProvider>
   </React.StrictMode>
