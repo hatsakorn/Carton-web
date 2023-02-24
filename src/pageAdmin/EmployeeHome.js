@@ -3,7 +3,7 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 // import NavSideBar from "../components/NavSideBar";
 
-export default function HomeAdmin() {
+export default function EmployeeHome() {
   const percentage = 5;
 
   return (

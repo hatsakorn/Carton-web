@@ -2,8 +2,8 @@ import { useState } from "react";
 import Modal from "../components/Modal";
 // import RegisterModalT from "./RegisterModalT";
 import AssignModal from "../pageAdmin/AssignModal";
-import SubmitFormPackage from "../pageCustomer/SubmitFormPackage";
-import RegisterEmployeeForm from "../pageCustomer/RegisterEmployeeForm";
+// import SubmitFormPackage from "../pageCustomer/SubmitFormPackage";
+// import RegisterEmployeeForm from "../pageCustomer/RegisterEmployeeForm";
 
 export default function Example() {
   const [open, setOpen] = useState(false);
