@@ -2,9 +2,31 @@ import { Progress } from "flowbite-react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import NavSideBar from "../components/NavSideBar";
+import useWarehouse from "../hooks/useWarehouse";
+import { useEffect } from "react";
+console.log("qweqweqweqwe");
 
 export default function HomePage() {
+  const { shelfSql } = useWarehouse();
+
   const percentage = 5;
+  useEffect(() => {
+    console.log(shelfSql);
+    // shelfSql;
+  }, [shelfSql]);
+
+  {
+    // shelfSql.map((el) => (
+    //   <div
+    //     key={el.id}
+    //     className={
+    //       "flex hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"
+    //     }
+    //   >
+    //     {el.id}
+    //   </div>
+    // ));
+  }
 
   return (
     <>
@@ -63,60 +85,21 @@ export default function HomePage() {
                 </button>
               </form>
             </div>
-            <div className="flex flex-col">
-              <div className="flex  justify-evenly">
-                {/* <div className="grid grid-cols-6"> */}
-
-                <div className="flex flex-col p-5 ">
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                </div>
-                <div className="flex flex-col p-5 ">
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                </div>
-                <div className="flex flex-col p-5 ">
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                </div>
-
-                <div className="flex flex-col p-5 ">
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                </div>
-                <div className="flex flex-col p-5 ">
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                </div>
-                <div className="flex flex-col p-5">
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
-                  <div className="flex bg-amber-500 hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"></div>
+            <div className="flex flex-col w-[100%]">
+              <div className="flex justify-evenly w-[100%]">
+                <div className="grid p-5  grid-cols-8 gap-3  w-[100%]">
+                  {shelfSql.map((el) => (
+                    <div
+                      // style={`${el?.isAvailable ? "true" : "false"}`}
+                      key={el.id}
+                      // className={`flex {${el?.isAvailable === "true" ? " bg-amber-500" : " bg-red-500"}} hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl`}
+                    >
+                      {el?.isAvailable ? "true" : "false"}
+                    </div>
+                  ))}
                 </div>
               </div>
+
               <div className=" mt-10 pl-10">List of sections</div>
               <div className="flex justify-evenly mt-10">
                 <div className="flex">
