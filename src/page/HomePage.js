@@ -47,7 +47,7 @@ export default function HomePage1() {
                           </button>
                         </div>
                       )}
-
+                      {/* ///////////////////////////////////////////////////////////////////// */}
                       {/* <PackageFormPayment /> */}
                     </div>
                   ))}
