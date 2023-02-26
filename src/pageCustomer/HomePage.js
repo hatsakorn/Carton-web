@@ -1,32 +1,22 @@
 import { Progress } from "flowbite-react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import NavSideBar from "../components/NavSideBar";
 import useWarehouse from "../hooks/useWarehouse";
 import { useEffect } from "react";
-console.log("qweqweqweqwe");
+import PopupBox from "../components/popupBox";
 
 export default function HomePage() {
-  const { shelfSql } = useWarehouse();
+  const { shelfSql } = useWarehouse(true);
+
+  function updateBackgroundColor(el) {
+    return el.isAvailable ? "bg-amber-500" : "bg-amber-400";
+  }
 
   const percentage = 5;
   useEffect(() => {
     console.log(shelfSql);
     // shelfSql;
   }, [shelfSql]);
-
-  {
-    // shelfSql.map((el) => (
-    //   <div
-    //     key={el.id}
-    //     className={
-    //       "flex hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl"
-    //     }
-    //   >
-    //     {el.id}
-    //   </div>
-    // ));
-  }
 
   return (
     <>
@@ -35,204 +25,48 @@ export default function HomePage() {
           <div className="flex-row justify-between">
             <div className="flex justify-between my-5">
               <div className="flex ml-5">Warehouse Logistics</div>
-              <form className="flex items-center mr-5">
-                <label htmlFor="simple-search" className="sr-only">
-                  Search
-                </label>
-                <div className="relative w-full">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <svg
-                      aria-hidden="true"
-                      className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                  <input
-                    type="text"
-                    id="simple-search"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Search"
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    ></path>
-                  </svg>
-                  <span className="sr-only">Search</span>
-                </button>
-              </form>
             </div>
             <div className="flex flex-col w-[100%]">
               <div className="flex justify-evenly w-[100%]">
                 <div className="grid p-5  grid-cols-8 gap-3  w-[100%]">
                   {shelfSql.map((el) => (
-                    <div
-                      // style={`${el?.isAvailable ? "true" : "false"}`}
+                    <PopupBox
                       key={el.id}
-                      // className={`flex {${el?.isAvailable === "true" ? " bg-amber-500" : " bg-red-500"}} hover:bg-amber-300 text-amber-500 w-6 h-6 m-2 rounded-sm shadow-xl`}
+                      text={el.id}
+                      available={el.isAvailable ? "true" : "false"}
+                      // warehouse={el.Items.details}
                     >
-                      {el?.isAvailable ? "true" : "false"}
-                    </div>
+                      <div
+                        className={`text-transparent w-6 h-6 m-2 rounded-sm shadow-xl ${updateBackgroundColor(
+                          el
+                        )}`}
+                      >
+                        {el.isAvailable ? "true" : "false"}
+                      </div>
+                    </PopupBox>
                   ))}
                 </div>
               </div>
 
               <div className=" mt-10 pl-10">List of sections</div>
-              <div className="flex justify-evenly mt-10">
+              <div className="flex justify-between mt-10 mx-24 ">
                 <div className="flex">
                   <span>Section 001</span>
                 </div>
-                <div className="flex">
-                  <span>Date</span>
-                </div>
-                <div className=" flex ">
+                <div className="flex  ">
                   <Progress
                     progress={45}
-                    label="Flowbite"
+                    label="use"
                     labelPosition="outside"
                     labelProgress={true}
                   />
-                </div>
-              </div>
-
-              <div className="flex justify-evenly mt-10">
-                <div className="flex">
-                  <span>Section 001</span>
-                </div>
-                <div className="flex">
-                  <span>Date</span>
-                </div>
-                <div className=" flex ">
-                  <Progress
-                    progress={55}
-                    label="Flowbite"
-                    labelPosition="outside"
-                    labelProgress={true}
-                  />
-                </div>
-              </div>
-
-              <div className="flex justify-evenly mt-10">
-                <div className="flex">
-                  <span>Section 001</span>
-                </div>
-                <div className="flex">
-                  <span>Date</span>
-                </div>
-                <div className=" flex ">
-                  <Progress
-                    progress={60}
-                    label="Flowbite"
-                    labelPosition="outside"
-                    labelProgress={true}
-                  />
-                </div>
-              </div>
-              <div className="flex justify-evenly mt-10">
-                <div className="flex">
-                  <span>items no:</span>
-                </div>
-                <div className="flex">
-                  <span>customer:</span>
-                </div>
-                <div className=" flex ">
-                  employee id:
-                  <button
-                    id="dropdownHoverButton"
-                    data-dropdown-toggle="dropdownHover"
-                    data-dropdown-trigger="hover"
-                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    type="button"
-                  >
-                    Seleced List
-                    <svg
-                      className="w-4 h-4 ml-2"
-                      aria-hidden="true"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      ></path>
-                    </svg>
-                  </button>
-                  <div
-                    id="dropdownHover"
-                    className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-                  >
-                    <ul
-                      className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                      aria-labelledby="dropdownHoverButton"
-                    >
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Emp0001
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Emp0002
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Emp0003
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Emp0004
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="relative  flex-col mt-10 flex justify-between min-h-screen overflow-hidden h-14  ">
+        <div className="relative  flex-col mt-10 flex justify-evenly min-h-screen overflow-hidden h-14  ">
           <div className=" w-70 h-70 p-6  bg-blue-700  rounded-xl shadow-md lg:max-w-xl">
             <CircularProgressbar
               className=" p-7"

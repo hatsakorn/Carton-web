@@ -10,8 +10,9 @@ import Employee from "../pageAdmin/Employee";
 import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
 import Scan from "../pageEmployee/Scan";
-import HomePage1 from "../page/HomePage";
+import HomePage1 from "../page/HomePageCustomer";
 import SubmitFormPackage from "../pageCustomer/SubmitFormPackage";
+import HomePageCustomer from "../page/HomePageCustomer";
 
 const router = createBrowserRouter([
   // for test
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
   {
     element: <AuthLayout />,
     children: [
+      { path: "/homeCustomer", element: <HomePageCustomer /> },
       { path: "/home", element: <HomePage /> },
       { path: "/package", element: <Package /> },
       // for Admin
