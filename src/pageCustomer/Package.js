@@ -65,7 +65,7 @@ export default function Package() {
       </div>
       {open && (
         <Modal setOpen={setOpen} open={open} onClose={() => setOpen(false)}>
-          <form onSubmit={handleSubmitForm}>
+          <form className="m-3" onSubmit={handleSubmitForm}>
             <PackageForm />
             <div className="bg-blue-600 rounded flex justify-center h-[50px] my-7">
               <button

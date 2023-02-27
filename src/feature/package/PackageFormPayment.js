@@ -1,7 +1,7 @@
 import React from "react";
 import Input from "../../components/Input";
 
-function PackageForm() {
+function PackageFormPayment() {
   return (
     <div>
       <h1>Package</h1>
@@ -20,4 +20,4 @@ function PackageForm() {
   );
 }
 
-export default PackageForm;
+export default PackageFormPayment;

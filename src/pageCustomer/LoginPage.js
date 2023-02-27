@@ -8,7 +8,7 @@ const initialInput = {
   password: ""
 };
 
-export default function åLogin() {
+export default function Login() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState(initialInput);
 

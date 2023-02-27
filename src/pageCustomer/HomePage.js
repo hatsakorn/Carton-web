@@ -1,9 +1,24 @@
 import { Progress } from "flowbite-react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import useWarehouse from "../hooks/useWarehouse";
+import { useEffect } from "react";
+import PopupBox from "../components/popupBox";
 
 export default function HomePage() {
+  const { shelfSql } = useWarehouse(true);
+
+  function updateBackgroundColor(el) {
+    return el.isAvailable ? "bg-amber-500" : "bg-amber-400";
+  }
+
+  // const progressbarC
+
   const percentage = 5;
+  useEffect(() => {
+    console.log(shelfSql);
+    // shelfSql;
+  }, [shelfSql]);
 
   return (
     <>
@@ -133,7 +148,8 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="flex justify-evenly mt-10">
+              <div className=" mt-10 pl-10">List of sections</div>
+              <div className="flex justify-between mt-10 mx-24 ">
                 <div className="flex">
                   <span>Section 001</span>
                 </div>
@@ -247,7 +263,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="relative  flex-col mt-10 flex justify-between min-h-screen overflow-hidden h-14  ">
+        <div className="relative  flex-col mt-10 flex justify-evenly min-h-screen overflow-hidden h-14  ">
           <div className=" w-70 h-70 p-6  bg-blue-700  rounded-xl shadow-md lg:max-w-xl">
             <CircularProgressbar
               className=" p-7"
