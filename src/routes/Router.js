@@ -1,13 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Assign from "../pageAdmin/Assign";
 import HomeAdmin from "../pageAdmin/HomeAdmi";
-import HomePage from "../pageCustomer/HomePage";
+import HomePage from "../pageAdmin/HomePage";
 import Package from "../pageCustomer/Package";
 import Example from "../template/Example";
 import LoginPage from "../pageCustomer/LoginPage";
-// import SubmitFormPackage from "../pageCustomer/SubmitFormPackage";
 import Employee from "../pageAdmin/Employee";
-// import Scan from "../pageEmployee/Scan";
 import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
 import Scan from "../pageEmployee/Scan";
