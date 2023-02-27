@@ -12,6 +12,8 @@ export default function HomePage() {
     return el.isAvailable ? "bg-amber-500" : "bg-amber-400";
   }
 
+  // const progressbarC
+
   const percentage = 5;
   useEffect(() => {
     console.log(shelfSql);
