@@ -1,7 +1,7 @@
 import { Progress } from "flowbite-react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import NavSideBar from "../components/NavSideBar";
+// import NavSideBar from "../components/NavSideBar";
 
 export default function HomeAdmin() {
   const percentage = 5;
@@ -162,7 +162,7 @@ export default function HomeAdmin() {
                     >
                       <li>
                         <a
-                          href="#"
+                          href="/"
                           className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Emp0001
@@ -170,7 +170,7 @@ export default function HomeAdmin() {
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href="/"
                           className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Emp0002
@@ -178,7 +178,7 @@ export default function HomeAdmin() {
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href="/"
                           className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Emp0003
@@ -186,7 +186,7 @@ export default function HomeAdmin() {
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href="/"
                           className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Emp0004
