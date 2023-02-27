@@ -11,7 +11,6 @@ export default function HomePageCustomer() {
   const handleToggleModal = (index) => {
     setShowModalIndex(index);
   };
-
   useEffect(() => {
     console.log(customerItem);
   }, [customerItem]);
