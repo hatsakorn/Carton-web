@@ -21,6 +21,8 @@ export default function Example() {
         // title={"Create an Account"}
       >
         {/* <RegisterModalT onClose={() => setOpen(false)} /> */}
+        {/* <AssignModal onClose={() => setOpen(false)} /> */}
+        <SubmitFormPackage onClose={() => setOpen(false)} />
         {/* <RegisterEmployeeForm onClose={() => setOpen(false)} /> */}
         <AssignModal onClose={() => setOpen(false)} />
       </Modal>
