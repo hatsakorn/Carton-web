@@ -26,11 +26,10 @@ export default function HomePageCustomer() {
                   {customerItem &&
                     customerItem?.map((el, index) => (
                       <div key={el.id} className="flex-col space-x-10">
-                        <h2 class="text-lg font-medium mb-2">id {el.id}</h2>
+                        <h2 className="text-lg font-medium mb-2">id {el.id}</h2>
                         <div>id {el.id}</div>
-                        <div>details {el.details}</div>
-                        <div>dateIn {el.dateIn}</div>
-                        <div>dateIn {el.Shelf.Warehouse.location}</div>
+                        <div>details {el.Items[0].details}</div>
+                        <div>dateIn {el.Items[0].Shelf?.dateIn}</div>
                         <div>
                           ==== {el.Shelf?.isAvailable ? "true" : "false"}
                         </div>
