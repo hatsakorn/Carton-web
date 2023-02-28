@@ -1,40 +1,80 @@
 import { Pagination } from "flowbite-react";
 import React, { useEffect, useState } from "react";
+import Modal from "../../components/Modal";
+import EditPackage from "./EditPackage";
+import PackageForm from "../package/PackageForm";
 
-function AllPackage({ showPackage, showPackageModal }) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+function AllPackage({ showPackage, showPackageModal, open, setOpen }) {
+  const [currentPage, setCurrentPage] = useState(
+    parseInt(localStorage.getItem("currentPage")) || 1
+  );
+  const [itemsPerPage, setItemsPerPage] = useState(4);
+  const [totalPage, setTotalPage] = useState(1);
+  const [editModal, setEditModal] = useState(false);
+  const [selectedEditPackage, setSelectedEditPackage] = useState(null);
 
   useEffect(() => {
-    const totalPages = () => {
-      showPackage.map((el, idx, array) => {
-        console.log(Math.ceil(array.length / 4));
-        // Math.ceil(el.id.length / 4);
-      });
-    };
-    totalPages();
-  }, []);
+    // const totalPages = () => {
+    //   showPackage.map((el, idx, array) => {
+    //     const item = Math.ceil(array.length / itemsPerPage);
+    //     setTotalPage(item);
+    //   });
+    // };
+    // localStorage.setItem("currentPage", currentPage);
+    // totalPages();
+    setTotalPage(Math.ceil(showPackage.length / itemsPerPage));
+  }, [showPackage, itemsPerPage]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
-  const handleItemsPerPageChange = (items) => {
-    setItemsPerPage(items);
+  const handleItemsPerPageChange = (event) => {
+    const value = +event.target.value;
+    console.log(value);
+    setItemsPerPage(value);
   };
+
+  const openEditModal = (packageId) => {
+    setEditModal(true);
+    setSelectedEditPackage(packageId);
+  };
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const itemsToDisplay = showPackage.slice(startIndex, endIndex);
 
   return (
     <>
       <div className=" w-full ">
         <div className="flex justify-center">
           <div className="grid  grid-cols-2  w-11/12">
-            {showPackage.map((e) => (
+            {itemsToDisplay.map((e) => (
               <div
-                className="  w-9/12  justify-items-stretch space-y-3  drop-shadow-2xl rounded p-6"
+                className="  w-9/12  justify-items-stretch space-y-3  drop-shadow-2xl rounded p-6 border-blue-600 border-2 mb-4"
                 key={e.id}
               >
                 <div>
-                  <h1>Package: {e.title}</h1>
+                  <div className="flex justify-between">
+                    <h1>Package: {e.title}</h1>
+                    <button onClick={() => openEditModal(e.id)}>
+                      <i className="fa-solid fa-wrench"></i>
+                    </button>
+                    {editModal && selectedEditPackage === e.id && (
+                      <div className="overflow-auto">
+                        <Modal
+                          open={editModal}
+                          onClose={() => setEditModal(false)}
+                        >
+                          <EditPackage />
+                        </Modal>
+                      </div>
+                    )}
+                  </div>
                   <div className="ml-8 pb-10 pt-4 ">
                     <h1>Detail: {e.description}</h1>
                     <h1>Price: {e.price}</h1>
@@ -53,17 +93,32 @@ function AllPackage({ showPackage, showPackageModal }) {
             ))}
           </div>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center items-end fixed-bottom pb-3">
           <Pagination
             currentPage={currentPage}
             onPageChange={handlePageChange}
             showIcons={true}
-            totalPages={10}
-            itemsPerPage={itemsPerPage}
-            onItemsPerPageChange={handleItemsPerPageChange}
+            totalPages={totalPage}
+            itemsperpage={itemsPerPage}
+            onChange={handleItemsPerPageChange}
           />
         </div>
       </div>
+      {open && (
+        <Modal setOpen={setOpen} open={open} onClose={() => setOpen(false)}>
+          <form onSubmit={handleSubmitForm}>
+            <PackageForm showPackage={showPackage} />
+            <div className="bg-blue-600 rounded flex justify-center h-[50px] my-7">
+              <button
+                type="submit"
+                className="text-white text-xl font-semibold"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </Modal>
+      )}
     </>
   );
 }

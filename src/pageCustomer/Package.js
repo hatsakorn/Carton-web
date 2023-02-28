@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import "react-circular-progressbar/dist/styles.css";
 import Modal from "../components/Modal";
-import PackageForm from "../feature/package/PackageForm";
 import * as packageApi from "../api/package-api";
 import AllPackage from "../feature/package/AllPackage";
-// import { Pagination } from "flowbite-react";
+import AddPackageModal from "../feature/package/AddPackageModal";
 
 export default function Package() {
   const [open, setOpen] = useState(false);
   const [showPackage, setShowPackage] = useState([]);
-  // const [currentPage, setCurrentPage] = useState(1);
+  const [openAddPackageModal, setOpenAddPackageModal] = useState(false);
 
   useEffect(() => {
     const fetchPackage = async () => {
@@ -22,12 +21,9 @@ export default function Package() {
   const showPackageModal = () => {
     setOpen(true);
   };
-
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
+  const addPackageModal = () => {
+    setOpenAddPackageModal(true);
   };
-
-  // const onPageChange = () => {};
 
   return (
     <>
@@ -38,9 +34,24 @@ export default function Package() {
               <div className=" w-11/12 overflow-scroll ">
                 <div className="flex mt-3 ">
                   <h1 className="text-2xl font-semibold">Package</h1>
-                  <button className="text-right bg-blue-600 rounded-md text-white p-3 mx-3 ">
-                    Add Pacakge
-                  </button>
+
+                  <div>
+                    <button
+                      className="text-right bg-blue-600 rounded-md text-white p-3 mx-3 "
+                      onClick={addPackageModal}
+                    >
+                      Add Package
+                    </button>
+                    {openAddPackageModal && (
+                      <Modal
+                        setOpenAddPackageModal={setOpenAddPackageModal}
+                        open={openAddPackageModal}
+                        onClose={() => setOpenAddPackageModal(false)}
+                      >
+                        <AddPackageModal />
+                      </Modal>
+                    )}
+                  </div>
                 </div>
                 <div className=" flex">
                   <div className="  mt-10 gap-y-10  w-full">
@@ -48,25 +59,20 @@ export default function Package() {
                     <AllPackage
                       showPackage={showPackage}
                       showPackageModal={showPackageModal}
+                      open={open}
+                      setOpen={setOpen}
                     />
                   </div>
                 </div>
-                {/* <Pagination
-                  currentPage={currentPage}
-                  onPageChange={onPageChange}
-                  showIcons={true}
-                  totalPages={100}
-                  itemsPerPage={4}
-                /> */}
               </div>
             </div>
           </div>
         </div>
       </div>
-      {open && (
+      {/* {open && (
         <Modal setOpen={setOpen} open={open} onClose={() => setOpen(false)}>
           <form onSubmit={handleSubmitForm}>
-            <PackageForm />
+            <PackageForm showPackage={showPackage} />
             <div className="bg-blue-600 rounded flex justify-center h-[50px] my-7">
               <button
                 type="submit"
@@ -77,7 +83,7 @@ export default function Package() {
             </div>
           </form>
         </Modal>
-      )}
+      )} */}
     </>
   );
 }
