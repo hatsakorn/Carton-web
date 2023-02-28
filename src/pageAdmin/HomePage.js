@@ -1,18 +1,26 @@
-import { Progress } from "flowbite-react";
+import { ListGroup, Progress } from "flowbite-react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import useWarehouse from "../hooks/useWarehouse";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import PopupBox from "../components/popupBox";
 
 export default function HomePage() {
   const { shelfSql } = useWarehouse(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [section, setSection] = useState(1);
 
   function updateBackgroundColor(el) {
     return el.isAvailable ? "bg-amber-500" : "bg-amber-400";
   }
 
   // const progressbarC
+
+  const startIndex = (currentPage - 1) * 40;
+  const endIndex = startIndex + 40;
+  const itemsToDisplay = shelfSql.slice(startIndex, endIndex);
+
+  // console.log(itemsToDisplay, "yiyiyiyiyyi");
 
   const percentage = 5;
   useEffect(() => {
@@ -31,7 +39,7 @@ export default function HomePage() {
             <div className="flex flex-col w-[100%]">
               <div className="flex justify-evenly w-[100%]">
                 <div className="grid p-5  grid-cols-8 gap-3  w-[100%]">
-                  {shelfSql.map((el) => (
+                  {itemsToDisplay.map((el) => (
                     <PopupBox
                       key={el.id}
                       text={el.id}
@@ -53,7 +61,14 @@ export default function HomePage() {
               <div className=" mt-10 pl-10">List of sections</div>
               <div className="flex justify-between mt-10 mx-24 ">
                 <div className="flex">
-                  <span>Section 001</span>
+                  <div className="w-48">
+                    <ListGroup>
+                      <ListGroup.Item>section 1</ListGroup.Item>
+                      <ListGroup.Item>Settings</ListGroup.Item>
+                      <ListGroup.Item>Messages</ListGroup.Item>
+                      <ListGroup.Item>Download</ListGroup.Item>
+                    </ListGroup>
+                  </div>
                 </div>
                 <div className="flex  ">
                   <Progress
