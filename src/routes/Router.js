@@ -11,6 +11,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Scan from "../pageEmployee/Scan";
 import HomePage1 from "../page/HomePageCustomer";
 import HomePageCustomer from "../page/HomePageCustomer";
+import AdminAssign from "../pageAdmin/AdminAssign";
 
 const router = createBrowserRouter([
   // for test
@@ -32,6 +33,8 @@ const router = createBrowserRouter([
       { path: "/package", element: <Package /> },
       // for Admin
       { path: "/homeAdmin", element: <HomeAdmin /> },
+      { path: "/adminAssign", element: <AdminAssign /> },
+
       { path: "/assign", element: <Assign /> },
       { path: "/employee", element: <Employee /> },
       { path: "/scan", element: <Scan /> },

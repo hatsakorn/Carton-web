@@ -13,7 +13,7 @@ function PopupBox({ warehouse, available, text, children }) {
     setShow(false);
   };
   useEffect(() => {
-    console.log(shelfSql);
+    // console.log(shelfSql);
     // shelfSql;
   }, [shelfSql]);
 

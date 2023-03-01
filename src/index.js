@@ -7,16 +7,19 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import AuthContextProvider from "./contexts/AuthContext";
 import AuthCustomerProvider from "./contexts/AuthCustomer";
 import AuthWarehouseProvider from "./contexts/AuthWarehouse";
+import AdminContextProvider from "./contexts/AuthAdmin";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <AuthCustomerProvider>
-        <AuthWarehouseProvider>
-          <App />
-        </AuthWarehouseProvider>
-      </AuthCustomerProvider>
+      <AdminContextProvider>
+        <AuthCustomerProvider>
+          <AuthWarehouseProvider>
+            <App />
+          </AuthWarehouseProvider>
+        </AuthCustomerProvider>
+      </AdminContextProvider>
     </AuthContextProvider>
   </React.StrictMode>
 );

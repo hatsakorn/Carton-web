@@ -15,8 +15,9 @@ export default function HomePage() {
   // const progressbarC
 
   const percentage = 5;
+
   useEffect(() => {
-    console.log(shelfSql);
+    // console.log(shelfSql);
     // shelfSql;
   }, [shelfSql]);
 
