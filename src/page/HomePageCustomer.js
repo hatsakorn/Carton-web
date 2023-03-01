@@ -39,6 +39,9 @@ export default function HomePageCustomer() {
                       >
                         More details
                       </button>
+                      <button className="bg-gradient-to-r from-pink-500 hover:to-yellow-600  h-10 w-20 rounded-xl shadow-md  text-white">
+                        Payment
+                      </button>
 
                       {showModalIndex === index && (
                         <div className=" bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl shadow-md pb-2 pl-5  text-white py-4 my-3">

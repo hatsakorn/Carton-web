@@ -6,13 +6,13 @@ import { useEffect, useState } from "react";
 import PopupBox from "../components/popupBox";
 import Input from "../components/Input";
 
-export default function HomePage() {
+export default function HomePageEmployee() {
   const { shelfSql } = useWarehouse(true);
   const [section, setSection] = useState(1);
   const [totalSection, setTotalSection] = useState(1);
   const [currentSection, setCurrentSection] = useState(1);
   const [itenPerpage, setItemPerpage] = useState(40);
-  const [showBox, setShowBox] = useState(null);
+  const [showBox, setShowBox] = useState(0);
 
   function updateBackgroundColor(el) {
     return el.isAvailable ? "bg-amber-500" : "bg-amber-400";
@@ -42,8 +42,6 @@ export default function HomePage() {
 
     // shelfSql;
   }, [shelfSql]);
-
-  console.log(shelfSql);
 
   // useEffect(()=> {
   //   setTotalSection(Math.ceil(showPackage.length / itemsPerPage));
@@ -114,7 +112,7 @@ export default function HomePage() {
                 <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
                   <i className=" fa-solid fa-box text-slate-100 text-3xl m-4 "></i>
                 </div>
-                <span className="flex ml-10 ">Detail: </span>
+                <span className="flex ml-10 ">Detail:{showBox} </span>
               </div>
             </div>
           </div>
