@@ -4,6 +4,7 @@ import useWarehouse from "../hooks/useWarehouse";
 function PopupBox({ warehouse, available, text, children }) {
   const [show, setShow] = useState(false);
   const { shelfSql } = useWarehouse(true);
+  // const [detail, setDetail] = useState({});
 
   const handleMouseEnter = () => {
     setShow(true);
@@ -13,13 +14,14 @@ function PopupBox({ warehouse, available, text, children }) {
     setShow(false);
   };
   useEffect(() => {
-    console.log(shelfSql);
     // shelfSql;
   }, [shelfSql]);
 
+  // const handleMouseClick = () => {};
   return (
     <div
       className="relative"
+      // onClick={handleMouseClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

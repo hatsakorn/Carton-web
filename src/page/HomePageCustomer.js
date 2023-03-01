@@ -11,49 +11,53 @@ export default function HomePageCustomer() {
   const handleToggleModal = (index) => {
     setShowModalIndex(index);
   };
-  useEffect(() => {
-    console.log(customerItem);
-  }, [customerItem]);
+  useEffect(() => {}, [customerItem]);
 
   return (
     <>
       <div className="flex justify-between">
-        <div className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
-          <div className="relative  flex flex-col mt-5 min-h-screen overflow-hidden  h-14 mr-20 w-screen">
-            <div className="flex justify-center">
-              <div className=" w-11/12 bg-sky-600 rounded-r-lg  ">
-                <div className="flex justify-between bg-blue-800 text-black rounded-lg p-4 h-20">
-                  {customerItem &&
-                    customerItem?.map((el, index) => (
-                      <div key={el.id} className="flex-col space-x-10">
-                        <h2 className="text-lg font-medium mb-2">id {el.id}</h2>
-                        <div>id {el.id}</div>
-                        <div>details {el.Items[0].details}</div>
-                        <div>dateIn {el.Items[0].Shelf?.dateIn}</div>
-                        <div>
-                          ==== {el.Shelf?.isAvailable ? "true" : "false"}
-                        </div>
-
-                        {/* //////////////////////////////////////////////////////// */}
-                        {/* payment form  */}
-                        <button onClick={() => handleToggleModal(index)}>
-                          Toggle Modal
-                        </button>
-                        {showModalIndex === index && (
-                          <div className=" bg-orange-600">
-                            <h2>Modal Content</h2>
-                            <p>{el.id}.</p>
-                            <p>invoiceId {el.invoiceId}.</p>
-                            <button onClick={() => handleToggleModal(null)}>
-                              Close Modal
-                            </button>
-                          </div>
-                        )}
-                        {/* //////////////////////////////////////////////////////// */}
+        <div className="flex justify-center bg-gradient-to-r bg-white  rounded-xl shadow-md w-full">
+          <div className="relative  flex flex-col mt-5 min-h-screen overflow-hidden  rounded-l-xl h-14 mr-20 w-screen">
+            <div className=" w-11/12 bg-sky-600 rounded-r-lg ml-10  rounded-xl text-white">
+              {customerItem &&
+                customerItem?.map((el, index) => (
+                  <div key={el.id} className="flex-col space-x-10 mt-5">
+                    <div className="bg-sky-600 shadow rounded-lg p-4">
+                      <div className="font-bold mb-2">ID: {el.id}</div>
+                      <div className="mb-2">Details: {el.Items[0].details}</div>
+                      <div>
+                        Available:
+                        {el.Shelf?.isAvailable ? "true" : "false"}
                       </div>
-                    ))}
-                </div>
-              </div>
+                      <div>Date In: {el.Items[0].dateIn}</div>
+                      <div>Date Out: {el.Items[0].dateOut}</div>
+                      <div>Status: {el.status}</div>
+
+                      <button
+                        className="my-5 h-10 w-28 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-md  text-white"
+                        onClick={() => handleToggleModal(index)}
+                      >
+                        More details
+                      </button>
+
+                      {showModalIndex === index && (
+                        <div className=" bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl shadow-md pb-2 pl-5  text-white py-4 my-3">
+                          <h2 className="font-semibold	">Details</h2>
+                          <p>ID :{el.id}.</p>
+                          <p>Invoice Id: {el.invoiceId}</p>
+                          <p>Package Id: {el.packageId}</p>
+                          <p>Shelf Id: {el.shelfId}</p>
+                          <button
+                            className="bg-gradient-to-r from-cyan-500 to-blue-500  h-10 w-20 rounded-xl shadow-md  text-white"
+                            onClick={() => handleToggleModal(null)}
+                          >
+                            Close
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
             </div>
           </div>
         </div>

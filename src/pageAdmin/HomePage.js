@@ -1,33 +1,68 @@
-import { ListGroup, Progress } from "flowbite-react";
+import { ListGroup, Pagination, Progress } from "flowbite-react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import useWarehouse from "../hooks/useWarehouse";
 import { useEffect, useState } from "react";
 import PopupBox from "../components/popupBox";
+import Input from "../components/Input";
 
 export default function HomePage() {
   const { shelfSql } = useWarehouse(true);
-  const [currentPage, setCurrentPage] = useState(1);
   const [section, setSection] = useState(1);
+  const [totalSection, setTotalSection] = useState(1);
+  const [currentSection, setCurrentSection] = useState(1);
+  const [itenPerpage, setItemPerpage] = useState(40);
+  const [showBox, setShowBox] = useState(null);
 
   function updateBackgroundColor(el) {
     return el.isAvailable ? "bg-amber-500" : "bg-amber-400";
   }
 
-  // const progressbarC
-
-  const startIndex = (currentPage - 1) * 40;
+  const startIndex = (section - 1) * 40;
   const endIndex = startIndex + 40;
   const itemsToDisplay = shelfSql.slice(startIndex, endIndex);
 
-  // console.log(itemsToDisplay, "yiyiyiyiyyi");
+  const items = shelfSql;
+  let count = 0;
+  items.forEach((el) => {
+    if (el.isAvailable) {
+      count++;
+    }
+  });
 
-  const percentage = 5;
+  let count2 = 0;
+  if (shelfSql) {
+    count2 = Object.keys(shelfSql).length;
+  }
+
+  const result = (((+count2 - +count) / +count2) * 100).toFixed(1);
+
   useEffect(() => {
-    console.log(shelfSql);
+    setTotalSection(Math.ceil(shelfSql.length / 40));
+
     // shelfSql;
   }, [shelfSql]);
 
+  console.log(shelfSql);
+
+  // useEffect(()=> {
+  //   setTotalSection(Math.ceil(showPackage.length / itemsPerPage));
+  // },[])
+
+  const handleChangeSection = (event) => {
+    const value = +event.target.value;
+    setItemPerpage(value);
+  };
+
+  const handlePageChange = (page) => {
+    setSection(page);
+  };
+
+  const showDetailBox = (index) => {
+    setShowBox(index);
+  };
+
+  const hamdleMouseClick = () => {};
   return (
     <>
       <div className="flex justify-between bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
@@ -39,12 +74,12 @@ export default function HomePage() {
             <div className="flex flex-col w-[100%]">
               <div className="flex justify-evenly w-[100%]">
                 <div className="grid p-5  grid-cols-8 gap-3  w-[100%]">
-                  {itemsToDisplay.map((el) => (
+                  {itemsToDisplay.map((el, index) => (
                     <PopupBox
+                      onClick={() => showDetailBox(index)}
                       key={el.id}
                       text={el.id}
                       available={el.isAvailable ? "true" : "false"}
-                      // warehouse={el.Items.details}
                     >
                       <div
                         className={`text-transparent w-6 h-6 m-2 rounded-sm shadow-xl ${updateBackgroundColor(
@@ -57,66 +92,45 @@ export default function HomePage() {
                   ))}
                 </div>
               </div>
-
-              <div className=" mt-10 pl-10">List of sections</div>
-              <div className="flex justify-between mt-10 mx-24 ">
-                <div className="flex">
-                  <div className="w-48">
-                    <ListGroup>
-                      <ListGroup.Item>section 1</ListGroup.Item>
-                      <ListGroup.Item>Settings</ListGroup.Item>
-                      <ListGroup.Item>Messages</ListGroup.Item>
-                      <ListGroup.Item>Download</ListGroup.Item>
-                    </ListGroup>
-                  </div>
+            </div>
+            {/* <div className="flex justify-between mt-10 mx-24 "> */}
+            <div className="static">
+              <div className=" w-auto justify-center absolute">
+                <Pagination
+                  currentPage={section}
+                  onPageChange={handlePageChange}
+                  showIcons={true}
+                  totalPages={totalSection}
+                  itemsperpage={itenPerpage}
+                  onChange={handleChangeSection}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            {/* {shelfSql.map(el) => ( */}
+            <div className=" w-[100%] h-96 pr-10 bg-white rounded-md lg:max-w-xl flex-row ">
+              <div className="flex justify-between">
+                <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
+                  <i className=" fa-solid fa-box text-slate-100 text-3xl m-4 "></i>
                 </div>
-                <div className="flex  ">
-                  <Progress
-                    progress={45}
-                    label="use"
-                    labelPosition="outside"
-                    labelProgress={true}
-                  />
-                </div>
+                <span className="flex ml-10 ">Detail: </span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="relative  flex-col mt-10 flex justify-evenly min-h-screen overflow-hidden h-14  ">
-          <div className=" w-70 h-70 p-6  bg-blue-700  rounded-xl shadow-md lg:max-w-xl">
+        <div className="relative flex justify-evenly min-h-screen overflow-hidden h-14  ">
+          <div className=" w-70 h-70 p-6  bg-blue-700  rounded-xl shadow-md lg:max-w-xl ">
             <CircularProgressbar
               className=" p-7"
-              value={percentage}
-              text={`${percentage}%`}
+              value={result}
+              text={`${result}%`}
             ></CircularProgressbar>
-          </div>
-          <div className=" w-60 p-3 bg-white rounded-md lg:max-w-xl flex row justify-between mr-10">
-            <div className="flex text-xs">Received</div>
-            <div className="flex text-xs">Sent</div>
-            <div className="flex text-xs">Expeted</div>
-          </div>
 
-          <div className=" w-70 h-96 pr-10 bg-white rounded-md lg:max-w-xl flex-row ">
-            <div className="flex justify-between">
-              <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
-                <i className=" fa-solid fa-box   text-slate-100 text-3xl m-4"></i>
-              </div>
-              <span className="flex ml-10">Detail:</span>
-            </div>
-
-            <div className="flex justify-between">
-              <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
-                <i className=" fa-solid fa-box text-slate-100 text-3xl m-4 "></i>
-              </div>
-              <span className="flex ml-10 ">Detail:</span>
-            </div>
-
-            <div className="flex justify-between">
-              <div className="flex bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
-                <i className=" fa-solid fa-box  text-slate-100 text-3xl m-4 "></i>
-              </div>
-              <span className="flex ml-10">Detail:</span>
+            <div className="flex-col justify-between">
+              <div className="flex">Total Shelf: {count2}</div>
+              <div className="flex">Available Shelf: {count}</div>
             </div>
           </div>
         </div>
