@@ -1,59 +1,64 @@
 import React, { useState } from "react";
 import Input from "../../components/Input";
+import * as itemsApi from "../../api/items-api";
+import { useNavigate } from "react-router-dom";
 
-const initialInput = {
-  package: "",
-  details: "",
-  price: "",
-  dateIn: "",
-  dateOut: ""
-};
-
-function PackageForm({ showPackage }) {
+function PackageForm({ selectedPackageId }) {
+  const initialInput = {
+    packageId: +selectedPackageId.packageId,
+    details: "",
+    contractStartDate: "",
+    contractEndDate: ""
+  };
   const [input, setInput] = useState(initialInput);
 
-  const onChange = (e) => {
+  const navigate = useNavigate();
+
+  const handleOnChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmitForm = async (e) => {
+    e.preventDefault();
+    await itemsApi.createItems([input]);
+    setInput(initialInput);
+    navigate(0);
   };
 
   return (
     <div className="m-3">
-      {showPackage.map((el) => {
-        <div>
-          <h1>Package</h1>
-          <button disabled package={"packageA"}>
-            Package
+      <form onSubmit={handleSubmitForm}>
+        <h1>Your Package</h1>
+        <h1 className="p-3"> {selectedPackageId.title}</h1>
+        <h1>Product Detail</h1>
+        <Input
+          placeholder={"Input your product detail (e.g. Boots Pen Glass)"}
+          name="details"
+          value={input.details}
+          onChange={handleOnChange}
+        />
+        <h1>contractStartDate</h1>
+        <Input
+          type="date"
+          placeholder={"Input your contractStartDate"}
+          name="contractStartDate"
+          value={input.contractStartDate}
+          onChange={handleOnChange}
+        />
+        <h1>contractEndDate</h1>
+        <Input
+          type="date"
+          placeholder={"Input your contractEndDate"}
+          name="contractEndDate"
+          value={input.contractEndDate}
+          onChange={handleOnChange}
+        />
+        <div className="flex justify-center bg-blue-600 rounded text-white my-7">
+          <button className="text-xl" type="submit">
+            Submit
           </button>
-        </div>;
-      })}
-      <h1>Product Name</h1>
-      <Input
-        placeholder={"Input your product Name"}
-        name="details"
-        value={input.details}
-        onChange={onChange}
-      />
-      <h1>Start Date</h1>
-      <Input
-        placeholder={"Input your start date"}
-        name="dateIn"
-        value={input.dateIn}
-        onChange={onChange}
-      />
-      <h1>End Date</h1>
-      <Input
-        placeholder={"Input your end date"}
-        name="dateOut"
-        value={input.dateOut}
-        onChange={onChange}
-      />
-      <h1>Detail of Product</h1>
-      <Input
-        placeholder={"details"}
-        name="details"
-        value={input.details}
-        onChange={onChange}
-      />
+        </div>
+      </form>
     </div>
   );
 }

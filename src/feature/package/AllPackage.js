@@ -4,14 +4,15 @@ import Modal from "../../components/Modal";
 import EditPackage from "./EditPackage";
 import PackageForm from "../package/PackageForm";
 
-function AllPackage({ showPackage, showPackageModal, open, setOpen }) {
+function AllPackage({ showPackage, open, setOpen }) {
   const [currentPage, setCurrentPage] = useState(
     parseInt(localStorage.getItem("currentPage")) || 1
   );
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [totalPage, setTotalPage] = useState(1);
-  const [editModal, setEditModal] = useState(false);
-  const [selectedEditPackage, setSelectedEditPackage] = useState(null);
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [selectedEditPackage, setSelectedEditPackage] = useState(0);
+  const [selectedPackageId, setSelectedPackageId] = useState({});
 
   useEffect(() => {
     // const totalPages = () => {
@@ -28,21 +29,25 @@ function AllPackage({ showPackage, showPackageModal, open, setOpen }) {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+  const showPackageModal = (packageId, title) => {
+    setOpen(true);
+    setSelectedPackageId({ packageId, title });
+  };
 
   const handleItemsPerPageChange = (event) => {
     const value = +event.target.value;
-    console.log(value);
+    // console.log(value);
     setItemsPerPage(value);
   };
 
-  const openEditModal = (packageId) => {
-    setEditModal(true);
+  const handleOpenEditModal = (packageId) => {
+    setOpenEditModal(true);
     setSelectedEditPackage(packageId);
   };
 
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
-  };
+  // const handleSubmitForm = (e) => {
+  //   e.preventDefault();
+  // };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -61,19 +66,9 @@ function AllPackage({ showPackage, showPackageModal, open, setOpen }) {
                 <div>
                   <div className="flex justify-between">
                     <h1>Package: {e.title}</h1>
-                    <button onClick={() => openEditModal(e.id)}>
+                    <button onClick={() => handleOpenEditModal(e.id)}>
                       <i className="fa-solid fa-wrench"></i>
                     </button>
-                    {editModal && selectedEditPackage === e.id && (
-                      <div className="overflow-auto">
-                        <Modal
-                          open={editModal}
-                          onClose={() => setEditModal(false)}
-                        >
-                          <EditPackage />
-                        </Modal>
-                      </div>
-                    )}
                   </div>
                   <div className="ml-8 pb-10 pt-4 ">
                     <h1>Detail: {e.description}</h1>
@@ -83,7 +78,7 @@ function AllPackage({ showPackage, showPackageModal, open, setOpen }) {
                   <div className="flex justify-center  bg-blue-600 rounded-md  ">
                     <button
                       className="w-72 h-10 text-white text-xl font-semibold "
-                      onClick={showPackageModal}
+                      onClick={() => showPackageModal(e.id, e.title)}
                     >
                       Select
                     </button>
@@ -104,19 +99,16 @@ function AllPackage({ showPackage, showPackageModal, open, setOpen }) {
           />
         </div>
       </div>
-      {open && (
+      {openEditModal && selectedEditPackage !== null && (
+        <div className="w-10/12">
+          <Modal open={openEditModal} onClose={() => setOpenEditModal(false)}>
+            <EditPackage />
+          </Modal>
+        </div>
+      )}
+      {open && selectedPackageId !== null && (
         <Modal setOpen={setOpen} open={open} onClose={() => setOpen(false)}>
-          <form onSubmit={handleSubmitForm}>
-            <PackageForm showPackage={showPackage} />
-            <div className="bg-blue-600 rounded flex justify-center h-[50px] my-7">
-              <button
-                type="submit"
-                className="text-white text-xl font-semibold"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
+          <PackageForm selectedPackageId={selectedPackageId} />
         </Modal>
       )}
     </>

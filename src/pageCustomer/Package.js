@@ -18,12 +18,13 @@ export default function Package() {
     fetchPackage();
   }, []);
 
-  const showPackageModal = () => {
-    setOpen(true);
-  };
   const addPackageModal = () => {
     setOpenAddPackageModal(true);
   };
+
+  // const handleSubmitForm = (e) => {
+  //   e.preventDefault();
+  // };
 
   return (
     <>
@@ -58,7 +59,6 @@ export default function Package() {
                     {/* p1 */}
                     <AllPackage
                       showPackage={showPackage}
-                      showPackageModal={showPackageModal}
                       open={open}
                       setOpen={setOpen}
                     />
@@ -70,7 +70,12 @@ export default function Package() {
         </div>
       </div>
       {/* {open && (
-        <Modal setOpen={setOpen} open={open} onClose={() => setOpen(false)}>
+        <Modal
+          setOpen={setOpen}
+          open={open}
+          onClose={() => setOpen(false)}
+          className="z-50 inset-0 overflow-y-auto"
+        >
           <form onSubmit={handleSubmitForm}>
             <PackageForm showPackage={showPackage} />
             <div className="bg-blue-600 rounded flex justify-center h-[50px] my-7">
