@@ -11,10 +11,12 @@ import AuthLayout from "../layouts/AuthLayout";
 import Scan from "../pageEmployee/Scan";
 import HomePage1 from "../page/HomePageCustomer";
 import HomePageCustomer from "../page/HomePageCustomer";
+import MainPage from "../page/MainPage";
 
 const router = createBrowserRouter([
   // for test
   { path: "/example", element: <Example /> },
+  { path: "/hp2", element: <MainPage /> },
   //for customer
   {
     path: "/",
@@ -36,6 +38,7 @@ const router = createBrowserRouter([
       { path: "/employee", element: <Employee /> },
       { path: "/scan", element: <Scan /> },
       { path: "/hp1", element: <HomePage1 /> }
+
       // { path: "/hp1", element: <Employee /> }
     ]
   }
