@@ -40,10 +40,15 @@ export default function HomePageAdmin() {
   useEffect(() => {
     setTotalSection(Math.ceil(shelfSql.length / 40));
     const allItem = () => {
-      const a = shelfSql.map((e) => e);
-      const b = a.map((e) => e);
+      const a = shelfSql.filter((e) => e.Items);
+      const d = a.map((e) => e.Items);
+      const b = d.map((e) => e);
       setItemList(b);
+      console.log(b);
+
+      console.log(itemList);
     };
+
     allItem();
   }, [shelfSql]);
 
@@ -57,7 +62,8 @@ export default function HomePageAdmin() {
   };
 
   const showDetailBox = (index) => {
-    setShowBox(index);
+    setShowBox(itemsToDisplay[index - 1]);
+    console.log(itemsToDisplay[index - 1]);
     // setShowBox(Items[0].dateIn(index));
   };
 
@@ -75,7 +81,7 @@ export default function HomePageAdmin() {
                 <div className="grid p-5  grid-cols-8 gap-3  w-[100%]">
                   {itemsToDisplay.map((el, index) => (
                     <PopupBox
-                      onClick={() => showDetailBox(index)}
+                      onClick={() => showDetailBox(index + 1)}
                       key={el.id}
                       text={el.id}
                       available={el.isAvailable ? "true" : "false"}
@@ -112,7 +118,13 @@ export default function HomePageAdmin() {
                 <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
                   <i className=" fa-solid fa-box text-slate-100 text-3xl m-4 "></i>
                 </div>
-                <span className="flex ml-10 ">Detail:{showBox} </span>
+                <span className="flex ml-10 ">
+                  Date In:{showBox?.Items?.map((el) => el.dateIn)}
+                  <br></br>
+                  Date Out:{showBox?.Items?.map((el) => el.dateOut)}
+                  <br></br>
+                  Details: {showBox?.Items?.map((el) => el.details)}
+                </span>
               </div>
             </div>
           </div>

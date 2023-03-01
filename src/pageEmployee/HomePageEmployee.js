@@ -10,12 +10,12 @@ export default function HomePageEmployee() {
   const { shelfSql } = useWarehouse(true);
   const [section, setSection] = useState(1);
   const [totalSection, setTotalSection] = useState(1);
-  const [currentSection, setCurrentSection] = useState(1);
-  const [itenPerpage, setItemPerpage] = useState(40);
+  const [itemList, setItemList] = useState([]);
+  const [itemPerpage, setItemPerpage] = useState(40);
   const [showBox, setShowBox] = useState(0);
 
   function updateBackgroundColor(el) {
-    return el.isAvailable ? "bg-amber-500" : "bg-amber-400";
+    return el.isAvailable ? " bg-sky-900" : "bg-blue-300	";
   }
 
   const startIndex = (section - 1) * 40;
@@ -39,13 +39,18 @@ export default function HomePageEmployee() {
 
   useEffect(() => {
     setTotalSection(Math.ceil(shelfSql.length / 40));
+    const allItem = () => {
+      const a = shelfSql.filter((e) => e.Items);
+      const d = a.map((e) => e.Items);
+      const b = d.map((e) => e);
+      setItemList(b);
+      console.log(b);
 
-    // shelfSql;
+      console.log(itemList);
+    };
+
+    allItem();
   }, [shelfSql]);
-
-  // useEffect(()=> {
-  //   setTotalSection(Math.ceil(showPackage.length / itemsPerPage));
-  // },[])
 
   const handleChangeSection = (event) => {
     const value = +event.target.value;
@@ -57,7 +62,9 @@ export default function HomePageEmployee() {
   };
 
   const showDetailBox = (index) => {
-    setShowBox(index);
+    setShowBox(itemsToDisplay[index - 1]);
+    console.log(itemsToDisplay[index - 1]);
+    // setShowBox(Items[0].dateIn(index));
   };
 
   const hamdleMouseClick = () => {};
@@ -74,7 +81,7 @@ export default function HomePageEmployee() {
                 <div className="grid p-5  grid-cols-8 gap-3  w-[100%]">
                   {itemsToDisplay.map((el, index) => (
                     <PopupBox
-                      onClick={() => showDetailBox(index)}
+                      onClick={() => showDetailBox(index + 1)}
                       key={el.id}
                       text={el.id}
                       available={el.isAvailable ? "true" : "false"}
@@ -99,20 +106,25 @@ export default function HomePageEmployee() {
                   onPageChange={handlePageChange}
                   showIcons={true}
                   totalPages={totalSection}
-                  itemsperpage={itenPerpage}
+                  itemsperpage={itemPerpage}
                   onChange={handleChangeSection}
                 />
               </div>
             </div>
           </div>
           <div className="flex justify-center">
-            {/* {shelfSql.map(el) => ( */}
             <div className=" w-[100%] h-96 pr-10 bg-white rounded-md lg:max-w-xl flex-row ">
               <div className="flex justify-between">
                 <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
                   <i className=" fa-solid fa-box text-slate-100 text-3xl m-4 "></i>
                 </div>
-                <span className="flex ml-10 ">Detail:{showBox} </span>
+                <span className="flex ml-10 ">
+                  Date In:{showBox?.Items?.map((el) => el.dateIn)}
+                  <br></br>
+                  Date Out:{showBox?.Items?.map((el) => el.dateOut)}
+                  <br></br>
+                  Details: {showBox?.Items?.map((el) => el.details)}
+                </span>
               </div>
             </div>
           </div>
@@ -126,7 +138,7 @@ export default function HomePageEmployee() {
               text={`${result}%`}
             ></CircularProgressbar>
 
-            <div className="flex-col justify-between">
+            <div className="flex-col justify-between text-white text-lg">
               <div className="flex">Total Shelf: {count2}</div>
               <div className="flex">Available Shelf: {count}</div>
             </div>
