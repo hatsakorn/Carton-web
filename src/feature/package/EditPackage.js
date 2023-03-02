@@ -1,24 +1,18 @@
-import React, { useState } from "react";
-import Input from "../../components/Input";
+import { useState } from "react";
+import * as packageApi from "../../api/package-api";
 
-const editInput = {
-  title: "",
-  description: "",
-  price: "",
-  isActive: "",
-  startDate: "",
-  endDate: ""
-};
-
-function EditPackage() {
+function EditPackage({ selectedEditPackage }) {
+  const editInput = {
+    packageId: +selectedEditPackage,
+    isActive: ""
+  };
+  const [active, setActive] = useState(false);
   const [input, setInput] = useState(editInput);
 
-  const handleOnChange = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
-  };
-
-  const handleEditPackage = (e) => {
+  const handleEditPackage = async (e) => {
     e.preventDefault();
+    setInput({ ...input, ["isActive"]: active });
+    await packageApi.editPackage(input);
   };
   return (
     <div className="m-3">
@@ -26,32 +20,16 @@ function EditPackage() {
         <h1>Edit Package</h1>
       </div>
       <form onSubmit={handleEditPackage}>
-        <div className="flex justify-between items-center ">
-          <label>Package Name</label>
-          <Input className="text-end" name="title" />
+        <div className="flex justify-between items-center m-3">
+          <button type="radio" onClick={() => setActive(true)} />
+          <label className="mr-3">Active</label>
+          <button type="radio" onClick={() => setActive(false)} />
+          <label>InActive</label>
         </div>
-        <div className="flex justify-between items-center">
-          <label>Description</label>
-          <Input name="description" />
-        </div>
-        <div className="flex justify-between items-center">
-          <label>Price</label>
-          <Input name="price" />
-        </div>
-        <div className="flex justify-between items-center">
-          <label>isActive</label>
-          <Input name="isActive" />
-        </div>
-        <div className="flex justify-between items-center">
-          <label>startDate</label>
-          <Input name="startDate" />
-        </div>
-        <div className="flex justify-between items-center">
-          <label>endDate</label>
-          <Input name="endDate" />
-        </div>
-        <div className="flex justify-center">
-          <button type="submit">Edit Package</button>
+        <div className="flex justify-center bg-blue-600 rounded-md">
+          <button className="text-white" type="submit">
+            Edit Package
+          </button>
         </div>
       </form>
     </div>

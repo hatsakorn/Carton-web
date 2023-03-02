@@ -13,6 +13,7 @@ export default function AuthCustomerProvider({ children }) {
     try {
       const res = await getMainCustomerById(authenticatedUser.id);
       setCustomerItem(res.data.mainCustomer);
+      console.log(res.data);
     } catch (err) {
       // Handle errors
     }
