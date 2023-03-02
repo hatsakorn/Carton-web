@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "react-circular-progressbar/dist/styles.css";
-import Modal from "../components/Modal";
 import useCustomer from "../hooks/useCustomer";
 
 export default function HomePageCustomer() {

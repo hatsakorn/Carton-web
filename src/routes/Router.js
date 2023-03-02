@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   { path: "/mainpage", element: <MainPage /> },
   //for customer
   {
-    path: "/",
+    path: "/login",
     element: (
       <RedirectAuthenticate>
         <LoginPage />
