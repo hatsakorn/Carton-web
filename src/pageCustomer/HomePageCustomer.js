@@ -65,10 +65,9 @@ export default function HomePageCustomer() {
     omiseCardHandler(id);
   };
 
-
   return (
     <>
-    <Script  url="https://cdn.omise.co/omise.js" onLoad={handleLoadScript}/>
+      <Script url="https://cdn.omise.co/omise.js" onLoad={handleLoadScript} />
       <div className="flex justify-between">
         <div className="flex justify-center bg-gradient-to-r bg-white  rounded-xl shadow-md w-full">
           <div className="relative  flex flex-col mt-5 min-h-screen overflow-hidden  rounded-l-xl h-14 mr-20 w-screen">
@@ -93,17 +92,17 @@ export default function HomePageCustomer() {
                       >
                         More details
                       </button>
-                        <form>
-                          <div id="credit-card"
-                            type="button"
-                            onClick={(e) => handleClick(e, el.id)}
-                          >
-                            <button className="bg-gradient-to-r from-pink-500 hover:to-yellow-600  h-10 w-20 rounded-xl shadow-md  text-white">
-                              Payment
-                            </button>
-                          </div>
-                        </form>
-                      
+                      <form>
+                        <div
+                          id="credit-card"
+                          type="button"
+                          onClick={(e) => handleClick(e, el.id)}
+                        >
+                          <button className="bg-gradient-to-r from-pink-500 hover:to-yellow-600  h-10 w-20 rounded-xl shadow-md  text-white">
+                            Payment
+                          </button>
+                        </div>
+                      </form>
 
                       {showModalIndex === index && (
                         <div className=" bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl shadow-md pb-2 pl-5  text-white py-4 my-3">
