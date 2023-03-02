@@ -63,6 +63,7 @@ export default function HomePageCustomer() {
     e.preventDefault();
     creditCardConfigure();
     omiseCardHandler(id);
+    window.location.reload();
   };
 
   return (
