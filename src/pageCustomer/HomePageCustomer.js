@@ -1,16 +1,25 @@
 import { useEffect, useState } from "react";
 import "react-circular-progressbar/dist/styles.css";
-import Modal from "../components/Modal";
 import useCustomer from "../hooks/useCustomer";
 import Script from "react-load-script";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
+import * as packageApi from "../api/package-api";
 
 export default function HomePageCustomer() {
   const { customerItem } = useCustomer();
   const { authenticatedUser } = useAuth();
   const [showModalIndex, setShowModalIndex] = useState(null);
   const [isOmiseLoaded, setIsOmiseLoaded] = useState(false);
+  const [showPackage, setShowPackage] = useState([]);
+
+  useEffect(() => {
+    const fetchPackage = async () => {
+      const res = await packageApi.getPackages();
+      setShowPackage(res.data.allPackage);
+    };
+    fetchPackage();
+  }, []);
 
   const handleToggleModal = (index) => {
     setShowModalIndex(index);
@@ -36,15 +45,15 @@ export default function HomePageCustomer() {
     window.OmiseCard.attach();
   };
 
-  const omiseCardHandler = (invoiceId) => {
+  const omiseCardHandler = async (invoiceId,amount) => {
     window.OmiseCard.open({
-      amount: "10000",
+      amount: amount*100,
       onCreateTokenSuccess: (token) => {
         axios
           .post(`/invoice/omise/`, {
             email: authenticatedUser.email,
             name: authenticatedUser.firstName,
-            amount: "10000",
+            amount: amount*100,
             token: token,
             invoiceId: invoiceId
           })
@@ -59,11 +68,10 @@ export default function HomePageCustomer() {
     });
   };
 
-  const handleClick = (e, id) => {
+  const handleClick = (e, id,amount) => {
     e.preventDefault();
     creditCardConfigure();
-    omiseCardHandler(id);
-    window.location.reload();
+    omiseCardHandler(id,amount);
   };
 
   return (
@@ -74,7 +82,15 @@ export default function HomePageCustomer() {
           <div className="relative  flex flex-col mt-5 min-h-screen overflow-hidden  rounded-l-xl h-14 mr-20 w-screen">
             <div className=" w-11/12 bg-sky-600 rounded-r-lg ml-10  rounded-xl text-white">
               {customerItem &&
-                customerItem?.map((el, index) => (
+                customerItem?.map((el, index) => {
+                  const startDate = new Date(el.Items[0].contractStartDate);
+                  const endDate = new Date(el.Items[0].contractEndDate);
+                  const diffTime = Math.abs(endDate - startDate);
+                  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                  const packageId = el.Items[0].packageId;
+                  const price = showPackage.find(pkg => pkg.id === packageId)?.price;
+                  const amount = price*diffDays;
+                  return (
                   <div key={el.id} className="flex-col space-x-10 mt-5">
                     <div className="bg-sky-600 shadow rounded-lg p-4">
                       <div className="font-bold mb-2">ID: {el.id}</div>
@@ -86,7 +102,6 @@ export default function HomePageCustomer() {
                       <div>Date In: {el.Items[0].dateIn}</div>
                       <div>Date Out: {el.Items[0].dateOut}</div>
                       <div>Status: {el.status}</div>
-
                       <button
                         className="my-5 h-10 w-28 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-md  text-white"
                         onClick={() => handleToggleModal(index)}
@@ -97,7 +112,7 @@ export default function HomePageCustomer() {
                         <div
                           id="credit-card"
                           type="button"
-                          onClick={(e) => handleClick(e, el.id)}
+                          onClick={(e) => handleClick(e, el.id,amount)}
                         >
                           <button className="bg-gradient-to-r from-pink-500 hover:to-yellow-600  h-10 w-20 rounded-xl shadow-md  text-white">
                             Payment
@@ -121,7 +136,7 @@ export default function HomePageCustomer() {
                       )}
                     </div>
                   </div>
-                ))}
+                )})}
             </div>
           </div>
         </div>
