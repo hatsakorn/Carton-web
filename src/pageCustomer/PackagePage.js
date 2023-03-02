@@ -15,7 +15,7 @@ export default function PackagePage() {
         <div className="flex justify-center">
           <button>
             Add New Carton
-            <i class="fa-solid fa-plus"></i>
+            <i className="fa-solid fa-plus"></i>
           </button>
         </div>
         <Modal setOpen={setOpen} open={open}>
