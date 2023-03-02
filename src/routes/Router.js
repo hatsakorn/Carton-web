@@ -11,10 +11,12 @@ import AuthLayout from "../layouts/AuthLayout";
 import Scan from "../pageEmployee/Scan";
 import HomePage1 from "../page/HomePageCustomer";
 import HomePageCustomer from "../page/HomePageCustomer";
+import Spinner from "../components/Spinner";
 
 const router = createBrowserRouter([
   // for test
   { path: "/example", element: <Example /> },
+  { path: "/test", element: <Spinner /> },
   //for customer
   {
     path: "/",

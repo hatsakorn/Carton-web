@@ -1,4 +1,5 @@
 import { useState } from "react";
+import useLoading from "../hooks/useLoading";
 import Modal from "../components/Modal";
 import RegisterFrom from "../auth/RegisterForm";
 import useAuth from "../hooks/useAuth";
@@ -11,6 +12,7 @@ const initialInput = {
 export default function Login() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState(initialInput);
+  const { startLoading, stopLoading } = useLoading();
 
   const { login } = useAuth();
 
@@ -21,11 +23,15 @@ export default function Login() {
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     try {
+      startLoading();
       await login(input);
       setInput(initialInput);
     } catch (err) {
       console.log(err);
     }
+    //   finally {
+    //     stopLoading();
+    //   }
   };
 
   return (
