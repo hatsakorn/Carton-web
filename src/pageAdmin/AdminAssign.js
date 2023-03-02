@@ -68,6 +68,11 @@ export default function AdminAssign() {
     }
   };
 
+  const openDropdownEachId = (itemShelfIsNull) => {};
+  // const [openDropDownSelectEmployee, setOpenDropDownSelectEmployee] = useState(
+  //   {}
+  // );
+
   //   console.log(nullShelf);
   //   console.log(handleOnClickSelectAssignTask, "qweqweqwe");
 
@@ -117,17 +122,17 @@ export default function AdminAssign() {
                       <div>Item no.{el.id}</div>
                       <div>customer.first.name</div>
                       <div className="flex items-center">
-                        <div className="mr-3 bg-">emp id:</div>
+                        <div className="mr-3 bg-">emp id</div>
                         <div className="bg-black w-20 h-8">
                           <div
-                            className=" w-20  "
+                            className=" w-20 bg-amber-700 "
                             onClick={() =>
                               setOpenDropDownSelectEmployee(
                                 !openDropDownSelectEmployee
                               )
                             }
                           >
-                            {employeeName} 1
+                            : {employeeName}
                             <DropDownEmployee
                               setEmployeeName={setEmployeeName}
                               openDropDownSelectEmployee={

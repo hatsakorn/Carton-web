@@ -7,12 +7,13 @@ export default function AdminContextProvider({ children }) {
   const [nullShelf, setNullShelf] = useState([]);
   const [getEmployee, setEmployee] = useState([]);
   const [selectBox, setSelectBox] = useState([]);
+  const [itSelfWork, setItSelfWork] = useState([]);
   const [selectEmployee, setSelectEmployee] = useState([]);
   useEffect(() => {
     const fetchNullShelf = async () => {
       const res = await adminApi.getItemsNullShelf();
       setNullShelf(res.data.ItemsNullShelf);
-      console.log(res.data.ItemsNullShelf, "admin null shelf");
+      //   console.log(res.data.ItemsNullShelf, "admin null shelf");
     };
     fetchNullShelf();
   }, []);
@@ -21,9 +22,19 @@ export default function AdminContextProvider({ children }) {
     const fetchEmployee = async () => {
       const res = await adminApi.getEmployee();
       setEmployee(res.data.employee);
-      console.log(res.data, "employee");
+      //   console.log(res.data, "employee");
     };
     fetchEmployee();
+  }, []);
+
+  useEffect(() => {
+    const fetchEmployeeWork = async () => {
+      const res = await adminApi.getAssignOfEmployee();
+      //   console.log(res, "workkkk");
+      //   console.log(res.data.taskemployee, "workkkk");
+      setItSelfWork(res.data.taskemployee);
+    };
+    fetchEmployeeWork();
   }, []);
 
   return (
@@ -34,7 +45,8 @@ export default function AdminContextProvider({ children }) {
         selectBox,
         setSelectBox,
         setSelectEmployee,
-        selectEmployee
+        selectEmployee,
+        itSelfWork
       }}
     >
       {children}
