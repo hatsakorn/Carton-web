@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate
+} from "react-router-dom";
 import Assign from "../pageAdmin/Assign";
 import Package from "../pageCustomer/Package";
 import LoginPage from "../pageCustomer/LoginPage";
@@ -15,10 +19,18 @@ import Example from "../template/Example";
 
 const router = createBrowserRouter([
   // for test
-  { path: "/mainpage", element: <MainPage /> },
-  //for customer
   {
     path: "/",
+    element: <Navigate to="/mainpage" />
+  },
+
+  {
+    path: "/mainpage",
+    element: <MainPage />
+  },
+  //for customer
+  {
+    path: "/login",
     element: (
       <RedirectAuthenticate>
         <LoginPage />
@@ -28,8 +40,8 @@ const router = createBrowserRouter([
   {
     element: <AuthLayout />,
     children: [
+      // for customer
       { path: "/homeCustomer", element: <HomePageCustomer /> },
-      // { path: "/home", element: <HomePage /> },
       { path: "/package", element: <Package /> },
       // for Admin
       { path: "/homeAdmin", element: <HomeAdmin /> },
@@ -37,9 +49,6 @@ const router = createBrowserRouter([
       { path: "/assign", element: <Assign /> },
       { path: "/employee", element: <Employee /> },
       { path: "/scan", element: <Scan /> },
-      { path: "/example", element: <Example /> },
-      // { path: "/hp1", element: <HomePage1 /> },
-      // { path: "/hp1", element: <Employee /> }
       // for Employee
       { path: "/homeEmployee", element: <HomePageEmployee /> }
     ]

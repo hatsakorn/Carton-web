@@ -8,19 +8,22 @@ import AuthContextProvider from "./contexts/AuthContext";
 import AuthCustomerProvider from "./contexts/AuthCustomer";
 import AuthWarehouseProvider from "./contexts/AuthWarehouse";
 import AdminContextProvider from "./contexts/AuthAdmin";
+import LoadingContextProvider from "./contexts/LoadingContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <AdminContextProvider>
-        <AuthCustomerProvider>
-          <AuthWarehouseProvider>
-            <App />
-          </AuthWarehouseProvider>
-        </AuthCustomerProvider>
-      </AdminContextProvider>
-    </AuthContextProvider>
+    <LoadingContextProvider>
+      <AuthContextProvider>
+        <AdminContextProvider>
+          <AuthCustomerProvider>
+            <AuthWarehouseProvider>
+              <App />
+            </AuthWarehouseProvider>
+          </AuthCustomerProvider>
+        </AdminContextProvider>
+      </AuthContextProvider>
+    </LoadingContextProvider>
   </React.StrictMode>
 );
 

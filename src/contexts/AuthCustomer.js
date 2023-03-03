@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { getMainCustomerById } from "../api/auth-customer";
 import useAuth from "../hooks/useAuth";
+import { removeAccessToken } from "../utils/local-storage";
 
 export const AuthCustomer = createContext();
 
@@ -13,6 +14,7 @@ export default function AuthCustomerProvider({ children }) {
     try {
       const res = await getMainCustomerById(authenticatedUser.id);
       setCustomerItem(res.data.mainCustomer);
+      console.log(res.data);
     } catch (err) {
       // Handle errors
     }
