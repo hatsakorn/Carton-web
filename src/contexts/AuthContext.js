@@ -14,15 +14,12 @@ export default function AuthContextProvider({ children }) {
   const [authenticatedUser, setAuthenticatedUser] = useState(
     getAccessToken() ? true : null
   );
-  // const [getId, setGetId] = useState([]);
 
   useEffect(() => {
     const fetchAuthUser = async () => {
       try {
         const res = await authApi.getMe();
         setAuthenticatedUser(res.data.user);
-        // setGetId(res);
-        // console.log(res.data.user, "userrrrrrrrrrrrr");
       } catch (err) {
         removeAccessToken();
       }
@@ -31,25 +28,26 @@ export default function AuthContextProvider({ children }) {
       fetchAuthUser();
     }
   }, []);
-  // console.log(getId, "meeeeeeeeeee");
+
   const login = async (input) => {
     const res = await authApi.login(input);
-    // console.log(res.data);
     setAccessToken(res.data.accessToken);
     setAuthenticatedUser(jwtDecode(res.data.accessToken));
   };
 
-  //   const logout = () => {
-  //     removeAccessToken();
-  //     setAuthenticatedUser(null);
-  //   };
+  const logout = () => {
+    removeAccessToken();
+    setAuthenticatedUser(null);
+  };
 
-  //   const updateProfile = data => {
-  //     setAuthenticatedUser({ ...authenticatedUser, ...data });
-  //   };
+  const updateProfile = (data) => {
+    setAuthenticatedUser({ ...authenticatedUser, ...data });
+  };
 
   return (
-    <AuthContext.Provider value={{ authenticatedUser, login }}>
+    <AuthContext.Provider
+      value={{ authenticatedUser, login, logout, updateProfile }}
+    >
       {children}
     </AuthContext.Provider>
   );
