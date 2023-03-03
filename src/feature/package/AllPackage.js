@@ -11,6 +11,7 @@ function AllPackage({ showPackage, open, setOpen }) {
   const [openEditModal, setOpenEditModal] = useState(false);
   const [selectedEditPackage, setSelectedEditPackage] = useState(0);
   const [selectedPackageId, setSelectedPackageId] = useState({});
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     // const totalPages = () => {
@@ -100,7 +101,11 @@ function AllPackage({ showPackage, open, setOpen }) {
       {openEditModal && selectedEditPackage !== null && (
         <div className="w-10/12">
           <Modal open={openEditModal} onClose={() => setOpenEditModal(false)}>
-            <EditPackage selectedEditPackage={selectedEditPackage} />
+            <EditPackage
+              selectedEditPackage={selectedEditPackage}
+              isActive={active}
+              setActive={setActive}
+            />
           </Modal>
         </div>
       )}

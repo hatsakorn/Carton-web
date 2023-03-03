@@ -1,18 +1,13 @@
-import { useState } from "react";
+// import { useState } from "react";
 import * as packageApi from "../../api/package-api";
 
-function EditPackage({ selectedEditPackage }) {
-  const editInput = {
-    packageId: +selectedEditPackage,
-    isActive: ""
-  };
-  const [active, setActive] = useState(false);
-  const [input, setInput] = useState(editInput);
-
+function EditPackage({ selectedEditPackage, isActive, setActive }) {
   const handleEditPackage = async (e) => {
     e.preventDefault();
-    setInput({ ...input, ["isActive"]: active });
-    await packageApi.editPackage(input);
+    console.log(selectedEditPackage);
+    console.log("---------------------------------------------------");
+    console.log(isActive);
+    await packageApi.editPackage(selectedEditPackage, { isActive });
   };
   return (
     <div className="m-3">
@@ -21,9 +16,19 @@ function EditPackage({ selectedEditPackage }) {
       </div>
       <form onSubmit={handleEditPackage}>
         <div className="flex justify-between items-center m-3">
-          <button type="radio" onClick={() => setActive(true)} />
+          <input
+            className="mr-3"
+            name="active"
+            type="radio"
+            onClick={() => setActive(true)}
+          />
           <label className="mr-3">Active</label>
-          <button type="radio" onClick={() => setActive(false)} />
+          <input
+            name="active"
+            className="mr-3"
+            type="radio"
+            onClick={() => setActive(false)}
+          />
           <label>InActive</label>
         </div>
         <div className="flex justify-center bg-blue-600 rounded-md">
