@@ -1,9 +1,6 @@
-import { useState } from "react";
-import validateRegister from "../validatetors/Auth-validatorCustomer";
-import * as authApi from "../api/auth-api";
-
-export default function qrForm({ onClose }) {
-  // const reqister
+import QRCode from 'qrcode.react';
+export default function qrForm({ onClose,link,data }) {
+  const text = JSON.stringify(link)
   return (
     <div className="flex justify-between">
       <div className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl  w-full">
@@ -13,9 +10,10 @@ export default function qrForm({ onClose }) {
           </h1>
           <div className="">
             <p>customerId:</p>
-            <p>itemId:</p>
+            <p>itemId: {data.id}</p>
             <p>shelfId:</p>
             <p>warehouseLocation:</p>
+            <QRCode value={text} renderAs="canvas" />
             <div className="flex row justify-evenly ml-4">
               <button className="flex h-10  w-20 text-center text-xl  text-white rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500">
                 Pending
