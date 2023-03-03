@@ -4,7 +4,6 @@ import "react-circular-progressbar/dist/styles.css";
 import useWarehouse from "../hooks/useWarehouse";
 import { useEffect, useState } from "react";
 import PopupBox from "../components/popupBox";
-import Input from "../components/Input";
 
 export default function HomePageAdmin() {
   const { shelfSql } = useWarehouse(true);

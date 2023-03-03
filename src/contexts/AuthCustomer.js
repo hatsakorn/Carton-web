@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { getMainCustomerById } from "../api/auth-customer";
 import useAuth from "../hooks/useAuth";
+import { removeAccessToken } from "../utils/local-storage";
 
 export const AuthCustomer = createContext();
 
