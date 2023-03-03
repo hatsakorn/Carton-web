@@ -5,14 +5,13 @@ import EditPackage from "./EditPackage";
 import PackageForm from "../package/PackageForm";
 
 function AllPackage({ showPackage, open, setOpen }) {
-  const [currentPage, setCurrentPage] = useState(
-    parseInt(localStorage.getItem("currentPage")) || 1
-  );
+  const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [totalPage, setTotalPage] = useState(1);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [selectedEditPackage, setSelectedEditPackage] = useState(0);
   const [selectedPackageId, setSelectedPackageId] = useState({});
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     // const totalPages = () => {
@@ -102,7 +101,11 @@ function AllPackage({ showPackage, open, setOpen }) {
       {openEditModal && selectedEditPackage !== null && (
         <div className="w-10/12">
           <Modal open={openEditModal} onClose={() => setOpenEditModal(false)}>
-            <EditPackage />
+            <EditPackage
+              selectedEditPackage={selectedEditPackage}
+              isActive={active}
+              setActive={setActive}
+            />
           </Modal>
         </div>
       )}
