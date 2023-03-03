@@ -9,11 +9,12 @@ import LoginPage from "../pageCustomer/LoginPage";
 import Employee from "../pageAdmin/Employee";
 import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
-import Scan from "../pageEmployee/Scan";
 import HomePageCustomer from "../pageCustomer/HomePageCustomer";
 import HomePageEmployee from "../pageEmployee/HomePageEmployee";
 import HomePageAdmin from "../pageAdmin/HomePageAdmin";
 import MainPage from "../page/MainPage";
+import ScanCustomer from "../pageCustomer/ScanCustomer";
+import ScanEmployee from "../pageEmployee/ScanEmployee";
 
 const router = createBrowserRouter([
   // for test
@@ -41,13 +42,14 @@ const router = createBrowserRouter([
       // for customer
       { path: "/homeCustomer", element: <HomePageCustomer /> },
       { path: "/package", element: <Package /> },
+      { path: "/scanCustomer", element: <ScanCustomer /> },
       // for Admin
       { path: "/homeAdmin", element: <HomePageAdmin /> },
       { path: "/assign", element: <Assign /> },
       { path: "/employee", element: <Employee /> },
-      { path: "/scan", element: <Scan /> },
       // for Employee
-      { path: "/homeEmployee", element: <HomePageEmployee /> }
+      { path: "/homeEmployee", element: <HomePageEmployee /> },
+      { path: "/scanEmployee", element: <ScanEmployee /> }
     ]
   }
 ]);

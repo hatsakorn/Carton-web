@@ -2,7 +2,7 @@ import { useState } from "react";
 import QrForm from "../QR/qrForm";
 import Modal from "../components/Modal";
 
-export default function Scan() {
+export default function ScanCustomer() {
   const [open, setOpen] = useState(false);
 
   return (
