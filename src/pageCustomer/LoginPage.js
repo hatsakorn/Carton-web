@@ -28,10 +28,9 @@ export default function Login() {
       setInput(initialInput);
     } catch (err) {
       console.log(err);
+    } finally {
+      stopLoading();
     }
-    //   finally {
-    //     stopLoading();
-    //   }
   };
 
   return (
