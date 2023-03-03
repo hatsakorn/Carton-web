@@ -11,9 +11,11 @@ import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
 import Scan from "../pageEmployee/Scan";
 import HomePageCustomer from "../pageCustomer/HomePageCustomer";
-import HomePageEmployee from "../pageEmployee/HomePageEmployee";
-import HomePageAdmin from "../pageAdmin/HomePageAdmin";
 import MainPage from "../page/MainPage";
+import HomeAdmin from "../pageAdmin/HomePageAdmin";
+import HomePageEmployee from "../pageEmployee/HomePageEmployee";
+import AdminAssign from "../pageAdmin/AdminAssign";
+import Example from "../template/Example";
 
 const router = createBrowserRouter([
   // for test
@@ -42,7 +44,8 @@ const router = createBrowserRouter([
       { path: "/homeCustomer", element: <HomePageCustomer /> },
       { path: "/package", element: <Package /> },
       // for Admin
-      { path: "/homeAdmin", element: <HomePageAdmin /> },
+      { path: "/homeAdmin", element: <HomeAdmin /> },
+      { path: "/adminAssign", element: <AdminAssign /> },
       { path: "/assign", element: <Assign /> },
       { path: "/employee", element: <Employee /> },
       { path: "/scan", element: <Scan /> },
