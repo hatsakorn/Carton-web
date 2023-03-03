@@ -26,9 +26,7 @@ export default function DropDown() {
       <button
         className="text-black hover:text-purple border border-purple-200 hover:bg-purple-600 focus:ring-4 focus:outline-none focus:ring-transparent font-medium rounded-full text-sm px-4 py-2.5 text-center inline-flex items-center"
         onClick={handleDropDown}
-      >
-        <i class="fa-solid fa-grip-lines text-white"></i>
-      </button>
+      ></button>
 
       <div
         id="dropdown"

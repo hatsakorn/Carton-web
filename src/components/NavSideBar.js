@@ -32,9 +32,9 @@ function NavSideBar() {
         </Link>
       </div>
       <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-        <div className="home flex m-3">
+        <Link className="home flex m-3" to="/mainpage">
           <i className="fa-solid fa-gear  text-zinc-50 text-3xl m-4" />
-        </div>
+        </Link>
         <DropDown />
       </div>
     </div>

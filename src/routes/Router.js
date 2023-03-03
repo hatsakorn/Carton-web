@@ -50,18 +50,6 @@ const router = createBrowserRouter([
       { path: "/homeEmployee", element: <HomePageEmployee /> }
     ]
   }
-  // { path: "/invoice" }
-
-  // for employee
-
-  // for test
-  // {
-  //   path: "/PackagePage",
-  //   element: <PackagePage />
-
-  //   //   // <Example />
-  // }
-  //for employee
 ]);
 
 export default function Router() {
