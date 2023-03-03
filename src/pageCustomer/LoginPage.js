@@ -89,12 +89,7 @@ export default function Login() {
               >
                 Register
               </button>
-              <Modal
-                open={open}
-                onClose={() => setOpen(false)}
-                // title={"Create an Account"}
-              >
-                {/* <RegisterModalT onClose={() => setOpen(false)} /> */}
+              <Modal open={open} onClose={() => setOpen(false)}>
                 <RegisterFrom onClose={() => setOpen(false)} />
               </Modal>
             </div>
