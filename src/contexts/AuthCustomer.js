@@ -5,39 +5,6 @@ import useAuth from "../hooks/useAuth";
 export const AuthCustomer = createContext();
 
 export default function AuthCustomerProvider({ children }) {
-  // const [customerId, setCustomerId] = useState([]);
-  // const { authenticatedUser } = useAuth();
-  // const [customerItem, setCustomerItem] = useState([]);
-  // //   console.log(authenticatedUsexr.id, "meeeeeee");
-  // useEffect(() => {
-  //   const fetchGetCustomer = async () => {
-  //     // try {
-
-  //     // }catch(err){}if()
-
-  //     const res = await getMainCustomerById(authenticatedUser.id);
-
-  //     //   const customerInfo = res.data.mainCustomer.map((i) => {
-  //     //     return {
-  //     //       id: i.customerId,
-  //     //       status: i.status,
-  //     //       dateIn: i.items.dateIn,
-  //     //       dateOut: i.items.dateOut
-  //     //     };
-  //     //   });
-
-  //     //   console.log(res.data, "usssssss");
-  //     //   setCustomerId(customerInfo);
-  //     setCustomerItem(res.data.mainCustomer[0].Items); ////////
-  //     //   console.log(res.data.mainCustomer[0].Items, "asdasdasd");
-  //     //   console.log(customerItem, "meeee");
-  //     //   console.log(res.data.mainCustomer[0], "qqqqqqqqqq");
-  //     //   console.log(customerId, "mappppp");
-  //   };
-  //   if (authenticatedUser?.id) {
-  //     fetchGetCustomer();
-  //   }
-  // }, [authenticatedUser, customerId]);
   const [customerId, setCustomerId] = useState([]);
   const { authenticatedUser } = useAuth();
   const [customerItem, setCustomerItem] = useState([]);
@@ -45,14 +12,7 @@ export default function AuthCustomerProvider({ children }) {
   const fetchGetCustomer = async () => {
     try {
       const res = await getMainCustomerById(authenticatedUser.id);
-      if (
-        res.data &&
-        res.data.mainCustomer &&
-        res.data.mainCustomer.length > 0
-      ) {
-        const mainCustomer = res.data.mainCustomer[0];
-        setCustomerItem(mainCustomer.Items);
-      }
+      setCustomerItem(res.data.mainCustomer);
     } catch (err) {
       // Handle errors
     }

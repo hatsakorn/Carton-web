@@ -8,15 +8,23 @@ import useAdmin from "../hooks/useAdmin";
 import { useState } from "react";
 import DropDownEmployee from "./DropDownEmployee";
 import * as adminApi from "../api/auth-admin";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminAssign() {
-  const [openDropDownSelectEmployee, setOpenDropDownSelectEmployee] =
-    useState(false);
+  const navigate = useNavigate();
+  // const [openDropDownSelectEmployee, setOpenDropDownSelectEmployee] =
+  //   useState(false);
+  const [dropdownStates, setDropdownStates] = useState({});
   const [employeeName, setEmployeeName] = useState("");
   //   const [itemIdI, setItemIdI] = useState([]);
   const { shelfSql } = useWarehouse();
   const { nullShelf, setSelectBox, selectBox, selectEmployee } = useAdmin();
-
+  const { getEmployee, setSelectEmployee } = useAdmin();
+  const handleOnClickEmployee = (eN, eId) => {
+    setSelectEmployee(eId);
+    setEmployeeName(eN);
+    // setOpenDropDownSelectEmployee(false);
+  };
   function updateBackgroundColor(el) {
     return el.isAvailable ? "bg-amber-500" : "bg-amber-400";
   }
@@ -63,12 +71,21 @@ export default function AdminAssign() {
         shelf: selectBox,
         itemId: itemId
       });
+      navigate(0);
     } catch (error) {
       console.log("It's Error", error);
     }
   };
 
-  const openDropdownEachId = (itemShelfIsNull) => {};
+  // const openDropdownEachId = (itemShelfIsNull) => {};
+
+  const toggleDropdown = (id) => {
+    setDropdownStates((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id]
+    }));
+  };
+
   // const [openDropDownSelectEmployee, setOpenDropDownSelectEmployee] = useState(
   //   {}
   // );
@@ -126,19 +143,49 @@ export default function AdminAssign() {
                         <div className="bg-black w-20 h-8">
                           <div
                             className=" w-20 bg-amber-700 "
-                            onClick={() =>
-                              setOpenDropDownSelectEmployee(
-                                !openDropDownSelectEmployee
-                              )
+                            onClick={
+                              () => toggleDropdown(el.id)
+                              // setOpenDropDownSelectEmployee(
+                              //   !openDropDownSelectEmployee
+                              // )
                             }
                           >
                             : {employeeName}
-                            <DropDownEmployee
+                            {/* <DropDownEmployee
                               setEmployeeName={setEmployeeName}
                               openDropDownSelectEmployee={
                                 openDropDownSelectEmployee
                               }
-                            />
+                            /> */}
+                            <div>
+                              <div
+                                className={`relative bg-stone-600 top-[10px] ${
+                                  dropdownStates[el.id] ? "" : "hidden"
+                                }`}
+                              >
+                                <div>
+                                  <div className="absolute flex flex-col bg-zinc-600 w-20">
+                                    {getEmployee.map((el) => (
+                                      <div
+                                        className=""
+                                        key={el.id}
+                                        value={el.id}
+                                        onClick={() =>
+                                          handleOnClickEmployee(
+                                            el.firstName,
+                                            el.id
+                                          )
+                                        }
+                                      >
+                                        {el.firstName}
+                                        {/* {el.lastName} */}
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            {/* ????? */}
                           </div>
                         </div>
                       </div>

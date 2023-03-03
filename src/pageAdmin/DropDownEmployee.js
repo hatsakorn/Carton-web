@@ -49,16 +49,17 @@ export default function DropDownEmployee({
   const handleOnClickEmployee = (eN, eId) => {
     setSelectEmployee(eId);
     setEmployeeName(eN);
-    setOpenDropDownSelectEmployee(false);
+    // setOpenDropDownSelectEmployee(false);
   };
 
   return (
     <>
       <div>
         <div
-          className={`relative bg-stone-600 top-[10px] ${
-            openDropDownSelectEmployee ? "" : "hidden"
-          }`}
+        // className={`relative bg-stone-600 top-[10px] ${
+        //   dropdownStates[el.id] ? "" : "hidden"
+        // dropdownStates[el.id] ? "" : "hidden"
+        // }`}
         >
           <div>
             <div className="absolute flex flex-col bg-zinc-600 w-20">
