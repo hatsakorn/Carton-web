@@ -1,6 +1,6 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { Progress } from "flowbite-react";
+// import { Progress } from "flowbite-react";
 
 export default function HomePage() {
   const percentage = 5;
@@ -12,7 +12,7 @@ export default function HomePage() {
           <div className="flex justify-between my-5">
             <div className="flex ml-5">Warehouse Logistics</div>
             {/* <form className="flex items-center mr-5">
-              <label for="simple-search" class="sr-only">
+              <label for="simple-search" className="sr-only">
                 Search
               </label>
               <div className="relative w-full">
@@ -51,9 +51,9 @@ export default function HomePage() {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   ></path>
                 </svg>
