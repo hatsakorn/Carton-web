@@ -1,28 +1,55 @@
-// import { createContext, useEffect } from "react";
-// import { getMainCustomerById } from "../api/auth-customer";
+import { createContext, useEffect, useState } from "react";
+import * as adminApi from "../api/auth-admin";
 
-// export const AuthWarehouse = createContext();
+export const AdminContext = createContext();
 
-// export default function AuthWarehouseProvider({ children }) {
-//   const [wareHouseId, setwareHouseId] = useState([]);
-//   useEffect(() => {
-//     const get = async () => {
-//       const res = await getMainCustomerById();
-//       const customerInfo = res.data.map((i) => {
-//         return {
-//           id: i.customerId,
-//           status: i.status,
-//           dateIn: i.items.dateIn,
-//           dateOut: i.items.dateOut
-//         };
-//       });
-//     };
-//     setCustomerId(customerInfo);
-//   }, []);
+export default function AdminContextProvider({ children }) {
+  const [nullShelf, setNullShelf] = useState([]);
+  const [getEmployee, setEmployee] = useState([]);
+  const [selectBox, setSelectBox] = useState([]);
+  const [itSelfWork, setItSelfWork] = useState([]);
+  const [selectEmployee, setSelectEmployee] = useState([]);
+  useEffect(() => {
+    const fetchNullShelf = async () => {
+      const res = await adminApi.getItemsNullShelf();
+      setNullShelf(res.data.ItemsNullShelf);
+      //   console.log(res.data.ItemsNullShelf, "admin null shelf");
+    };
+    fetchNullShelf();
+  }, []);
 
-//   return (
-//     <AuthCustomer.Provider value={{ customerId }}>
-//       {children}
-//     </AuthCustomer.Provider>
-//   );
-// }
+  useEffect(() => {
+    const fetchEmployee = async () => {
+      const res = await adminApi.getEmployee();
+      setEmployee(res.data.employee);
+      //   console.log(res.data, "employee");
+    };
+    fetchEmployee();
+  }, []);
+
+  useEffect(() => {
+    const fetchEmployeeWork = async () => {
+      const res = await adminApi.getAssignOfEmployee();
+      //   console.log(res, "workkkk");
+      //   console.log(res.data.taskemployee, "workkkk");
+      setItSelfWork(res.data.taskemployee);
+    };
+    fetchEmployeeWork();
+  }, []);
+
+  return (
+    <AdminContext.Provider
+      value={{
+        nullShelf,
+        getEmployee,
+        selectBox,
+        setSelectBox,
+        setSelectEmployee,
+        selectEmployee,
+        itSelfWork
+      }}
+    >
+      {children}
+    </AdminContext.Provider>
+  );
+}

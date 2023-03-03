@@ -45,15 +45,15 @@ export default function HomePageCustomer() {
     window.OmiseCard.attach();
   };
 
-  const omiseCardHandler = async (invoiceId,amount) => {
+  const omiseCardHandler = async (invoiceId, amount) => {
     window.OmiseCard.open({
-      amount: amount*100,
+      amount: amount * 100,
       onCreateTokenSuccess: (token) => {
         axios
           .post(`/invoice/omise/`, {
             email: authenticatedUser.email,
             name: authenticatedUser.firstName,
-            amount: amount*100,
+            amount: amount * 100,
             token: token,
             invoiceId: invoiceId
           })
@@ -68,10 +68,10 @@ export default function HomePageCustomer() {
     });
   };
 
-  const handleClick = (e, id,amount) => {
+  const handleClick = (e, id, amount) => {
     e.preventDefault();
     creditCardConfigure();
-    omiseCardHandler(id,amount);
+    omiseCardHandler(id, amount);
   };
 
   return (
@@ -88,55 +88,60 @@ export default function HomePageCustomer() {
                   const diffTime = Math.abs(endDate - startDate);
                   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                   const packageId = el.Items[0].packageId;
-                  const price = showPackage.find(pkg => pkg.id === packageId)?.price;
-                  const amount = price*diffDays;
+                  const price = showPackage.find(
+                    (pkg) => pkg.id === packageId
+                  )?.price;
+                  const amount = price * diffDays;
                   return (
-                  <div key={el.id} className="flex-col space-x-10 mt-5">
-                    <div className="bg-sky-600 shadow rounded-lg p-4">
-                      <div className="font-bold mb-2">ID: {el.id}</div>
-                      <div className="mb-2">Details: {el.Items[0].details}</div>
-                      <div>
-                        Available:
-                        {el.Shelf?.isAvailable ? "true" : "false"}
-                      </div>
-                      <div>Date In: {el.Items[0].dateIn}</div>
-                      <div>Date Out: {el.Items[0].dateOut}</div>
-                      <div>Status: {el.status}</div>
-                      <button
-                        className="my-5 h-10 w-28 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-md  text-white"
-                        onClick={() => handleToggleModal(index)}
-                      >
-                        More details
-                      </button>
-                      <form>
-                        <div
-                          id="credit-card"
-                          type="button"
-                          onClick={(e) => handleClick(e, el.id,amount)}
+                    <div key={el.id} className="flex-col space-x-10 mt-5">
+                      <div className="bg-sky-600 shadow rounded-lg p-4">
+                        <div className="font-bold mb-2">ID: {el.id}</div>
+                        <div className="mb-2">
+                          Details: {el.Items[0].details}
+                        </div>
+                        <div>
+                          Available:
+                          {el.Shelf?.isAvailable ? "true" : "false"}
+                        </div>
+                        <div>Date In: {el.Items[0].dateIn}</div>
+                        <div>Date Out: {el.Items[0].dateOut}</div>
+                        <div>Status: {el.status}</div>
+                        <button
+                          className="my-5 h-10 w-28 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-md  text-white"
+                          onClick={() => handleToggleModal(index)}
                         >
-                          <button className="bg-gradient-to-r from-pink-500 hover:to-yellow-600  h-10 w-20 rounded-xl shadow-md  text-white">
-                            Payment
-                          </button>
-                        </div>
-                      </form>
-
-                      {showModalIndex === index && (
-                        <div className=" bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl shadow-md pb-2 pl-5  text-white py-4 my-3">
-                          <h2 className="font-semibold	">Details</h2>
-                          <p>Invoice Id: {el.id}</p>
-                          <p>Package Id: {el.Items[0].packageId}</p>
-                          <p>Shelf Id: {el.Items[0].shelfId}</p>
-                          <button
-                            className="bg-gradient-to-r from-cyan-500 to-blue-500  h-10 w-20 rounded-xl shadow-md  text-white"
-                            onClick={() => handleToggleModal(null)}
+                          More details
+                        </button>
+                        <form>
+                          <div
+                            id="credit-card"
+                            type="button"
+                            onClick={(e) => handleClick(e, el.id, amount)}
                           >
-                            Close
-                          </button>
-                        </div>
-                      )}
+                            <button className="bg-gradient-to-r from-pink-500 hover:to-yellow-600  h-10 w-20 rounded-xl shadow-md  text-white">
+                              Payment
+                            </button>
+                          </div>
+                        </form>
+
+                        {showModalIndex === index && (
+                          <div className=" bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl shadow-md pb-2 pl-5  text-white py-4 my-3">
+                            <h2 className="font-semibold	">Details</h2>
+                            <p>Invoice Id: {el.id}</p>
+                            <p>Package Id: {el.Items[0].packageId}</p>
+                            <p>Shelf Id: {el.Items[0].shelfId}</p>
+                            <button
+                              className="bg-gradient-to-r from-cyan-500 to-blue-500  h-10 w-20 rounded-xl shadow-md  text-white"
+                              onClick={() => handleToggleModal(null)}
+                            >
+                              Close
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                )})}
+                  );
+                })}
             </div>
           </div>
         </div>

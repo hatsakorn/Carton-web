@@ -1,9 +1,22 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 // import { Progress } from "flowbite-react";
+import useAdmin from "../hooks/useAdmin";
+// import { Progress } from "flowbite-react";
+import * as employeeApi from "../api/auth-admin";
+import { useNavigate } from "react-router-dom";
 
-export default function HomePage() {
+export default function Assign() {
   const percentage = 5;
+  const { itSelfWork } = useAdmin();
+
+  const navigate = useNavigate();
+  const updateStatusStockIn = async (taskId) => {
+    await employeeApi.taskStatusFromEmployee(taskId, {
+      status: "COMPLETE"
+    });
+    navigate(0);
+  };
 
   return (
     <div className="flex justify-between bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
@@ -62,24 +75,35 @@ export default function HomePage() {
             </form> */}
           </div>
 
-          <div className="">
-            <div className="flex justify-between ml-20 w-[650px] h-30 bg-sky-500 rounded-lg ">
-              <div className="flex justify-between ">
-                <div className=" w-96 flex justify-between items-center">
-                  <div className=" text-gray-50 ml-3">Order no:</div>
-                  <div className="text-gray-50 ">User id:</div>
+          <div className="flex flex-col ">
+            {itSelfWork.map((el) => (
+              <div
+                key={el.id}
+                className="flex justify-between ml-20 w-11/12 my-3 h-30 bg-sky-500 rounded-lg "
+              >
+                <div className="flex justify-between ">
+                  <div className=" w-96 flex justify-between items-center">
+                    <div className=" text-gray-50 ml-3">
+                      Order no: {el.itemId}
+                    </div>
+                    <div>{el.task}</div>
+                    <div className="text-gray-50 ">status: {el.status}</div>
+                  </div>
+                </div>
+
+                <div className="flex">
+                  <button
+                    onClick={() => updateStatusStockIn(el.id)}
+                    className=" m-3  bg-sky-600 rounded-lg p-1 text-white"
+                  >
+                    approve
+                  </button>
+                  <button className=" m-3  bg-sky-600 rounded-lg p-1 text-white">
+                    cancel
+                  </button>
                 </div>
               </div>
-
-              <div className="flex">
-                <button className=" m-3  bg-sky-600 rounded-lg p-1 text-white">
-                  approve
-                </button>
-                <button className=" m-3  bg-sky-600 rounded-lg p-1 text-white">
-                  cancle
-                </button>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
