@@ -8,7 +8,8 @@ function NavSideBar() {
   return (
     <div className="flex-col flex justify-evenly text-center w-20">
       <div className="m-1 rounded-xl">
-        <i className="fa-solid fa-circle-user text-zinc-50 text-3xl m-4"></i>
+        <i className="fa-solid fa-circle-user text-zinc-50 text-3xl m-4" />
+        <div className="text-white">{authenticatedUser.firstName}</div>
       </div>
 
       <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
@@ -29,7 +30,7 @@ function NavSideBar() {
         <Link
           to={
             authenticatedUser.role === "EMPLOYEE"
-              ? "/homeEmployee"
+              ? "/home"
               : authenticatedUser.role === "ADMIN"
               ? "/package"
               : "/package"
@@ -46,7 +47,7 @@ function NavSideBar() {
               ? "/assign"
               : authenticatedUser.role === "ADMIN"
               ? "/adminAssign"
-              : "/homeCustomer"
+              : "/home"
           }
         >
           <i className="fa-solid fa-paper-plane  text-zinc-50 text-3xl m-4"></i>
@@ -58,8 +59,8 @@ function NavSideBar() {
             authenticatedUser.role === "EMPLOYEE"
               ? "/scan"
               : authenticatedUser.role === "ADMIN"
-              ? "/homeAdmin"
-              : "/homeCustomer"
+              ? "/home"
+              : "/home"
           }
         >
           <i className="fa-solid fa-qrcode  text-zinc-50 text-3xl m-4"></i>

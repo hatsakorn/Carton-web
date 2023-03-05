@@ -15,9 +15,11 @@ import MainPage from "../page/MainPage";
 import HomeAdmin from "../pageAdmin/HomePageAdmin";
 import HomePageEmployee from "../pageEmployee/HomePageEmployee";
 import AdminAssign from "../pageAdmin/AdminAssign";
-import Example from "../template/Example";
+// import Example from "../template/Example";
 import ProtectedAdminRoute from "../feature/auth/ProtectedAdminRoute";
 import ProtectedCustomerRoute from "../feature/auth/ProtectedCustomerRoute";
+import HomePage from "../page/HomePage";
+import ProtectedEmployeeRoute from "../feature/auth/ProtectEmployeeRoute";
 
 const router = createBrowserRouter([
   // for test
@@ -40,13 +42,18 @@ const router = createBrowserRouter([
     )
   },
   {
+    path: "/home",
+    element: <HomePage />
+  },
+
+  // for customer
+  {
     element: (
-      // <ProtectedCustomerRoute>
-      <AuthLayout />
-      // </ProtectedCustomerRoute>
+      <ProtectedCustomerRoute>
+        <AuthLayout />
+      </ProtectedCustomerRoute>
     ),
     children: [
-      // for customer
       {
         path: "/homeCustomer",
         element: <HomePageCustomer />
@@ -56,9 +63,9 @@ const router = createBrowserRouter([
   },
   {
     element: (
-      // <ProtectedAdminRoute>
-      <AuthLayout />
-      // </ProtectedAdminRoute>
+      <ProtectedAdminRoute>
+        <AuthLayout />
+      </ProtectedAdminRoute>
     ),
     children: [
       // for Admin
@@ -67,16 +74,21 @@ const router = createBrowserRouter([
         element: <HomeAdmin />
       },
       { path: "/adminAssign", element: <AdminAssign /> },
-      { path: "/assign", element: <Assign /> },
-      { path: "/employee", element: <Employee /> },
-      { path: "/scan", element: <Scan /> }
+      { path: "/employee", element: <Employee /> }
     ]
   },
+
+  // for employee
   {
-    element: <AuthLayout />,
+    element: (
+      <ProtectedEmployeeRoute>
+        <AuthLayout />
+      </ProtectedEmployeeRoute>
+    ),
     children: [
-      // for employee
-      { path: "/homeEmployee", element: <HomePageEmployee /> }
+      { path: "/homeEmployee", element: <HomePageEmployee /> },
+      { path: "/assign", element: <Assign /> },
+      { path: "/scan", element: <Scan /> }
     ]
   }
   // { path: "/invoice" }
