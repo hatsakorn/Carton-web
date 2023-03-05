@@ -120,7 +120,6 @@ export default function HomePageCustomer() {
                             type="button"
                             onClick={(e) => handleClick(e, el.id, amount)}
                           >
-                            {/* <button className="bg-gradient-to-r from-violet-500 to-fuchsia-500  h-10 w-20 rounded-xl shadow-md  text-white"> */}
                             <button className="bg-gradient-to-r from-pink-500 hover:to-yellow-600  h-10 w-20 rounded-xl shadow-md  text-white">
                               Payment
                             </button>
