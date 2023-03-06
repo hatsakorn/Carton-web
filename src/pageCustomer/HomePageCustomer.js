@@ -8,7 +8,7 @@ import * as packageApi from "../api/package-api";
 
 export default function HomePageCustomer() {
   const { customerItem } = useCustomer();
-  const { authenticatedUser } = useAuth();
+  const { authenticatedUser, fetchAuthUser } = useAuth();
   const [showModalIndex, setShowModalIndex] = useState(null);
   const [isOmiseLoaded, setIsOmiseLoaded] = useState(false);
   const [showPackage, setShowPackage] = useState([]);
@@ -19,6 +19,7 @@ export default function HomePageCustomer() {
       setShowPackage(res.data.allPackage);
     };
     fetchPackage();
+    fetchAuthUser();
   }, []);
 
   const handleToggleModal = (index) => {
@@ -106,7 +107,6 @@ export default function HomePageCustomer() {
                         <div>Date In: {el.Items[0].dateIn}</div>
                         <div>Date Out: {el.Items[0].dateOut}</div>
                         <div>Status: {el.status}</div>
-
                         <button
                           className="my-5 h-10 w-28 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-md  text-white"
                           onClick={() => handleToggleModal(index)}
@@ -120,48 +120,11 @@ export default function HomePageCustomer() {
                             type="button"
                             onClick={(e) => handleClick(e, el.id, amount)}
                           >
-                            <button className="bg-gradient-to-r from-violet-500 to-fuchsia-500  h-10 w-20 rounded-xl shadow-md  text-white">
+                            <button className="bg-gradient-to-r from-pink-500 hover:to-yellow-600  h-10 w-20 rounded-xl shadow-md  text-white">
                               Payment
                             </button>
                           </div>
                         </form>
-
-                        {/* <React.Fragment>
-                          <Button onClick={onClick}>Toggle modal</Button>
-                          <Modal
-                            dismissible={true}
-                            show={false}
-                            // onClose={onClose}
-                          >
-                            <Modal.Header>Terms of Service</Modal.Header>
-                            <Modal.Body>
-                              <div className="space-y-6">
-                                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                  With less than a month to go before the
-                                  European Union enacts new consumer privacy
-                                  laws for its citizens, companies around the
-                                  world are updating their terms of service
-                                  agreements to comply.
-                                </p>
-                                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                  The European Union’s General Data Protection
-                                  Regulation (G.D.P.R.) goes into effect on May
-                                  25 and is meant to ensure a common set of data
-                                  rights in the European Union. It requires
-                                  organizations to notify users as soon as
-                                  possible of high-risk data breaches that could
-                                  personally affect them.
-                                </p>
-                              </div>
-                            </Modal.Body>
-                            <Modal.Footer>
-                              <Button onClick={onClick}>I accept</Button>
-                              <Button color="gray" onClick={onClick}>
-                                Decline
-                              </Button>
-                            </Modal.Footer>
-                          </Modal>
-                        </React.Fragment> */}
 
                         {showModalIndex === index && (
                           <div className=" bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl shadow-md pb-2 pl-5  text-white py-4 my-3">

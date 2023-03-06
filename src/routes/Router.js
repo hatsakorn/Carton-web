@@ -10,11 +10,15 @@ import Employee from "../pageAdmin/Employee";
 import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
 import HomePageCustomer from "../pageCustomer/HomePageCustomer";
-import HomePageEmployee from "../pageEmployee/HomePageEmployee";
-import HomePageAdmin from "../pageAdmin/HomePageAdmin";
 import MainPage from "../page/MainPage";
 import ScanCustomer from "../pageCustomer/ScanCustomer";
 import ScanEmployee from "../pageEmployee/ScanEmployee";
+import HomeAdmin from "../pageAdmin/HomePageAdmin";
+import HomePageEmployee from "../pageEmployee/HomePageEmployee";
+import AdminAssign from "../pageAdmin/AdminAssign";
+import ProtectedAdminRoute from "../feature/auth/ProtectedAdminRoute";
+import HomePage from "../page/HomePage";
+import ProtectedEmployeeRoute from "../feature/auth/ProtectEmployeeRoute";
 
 const router = createBrowserRouter([
   // for test
@@ -37,14 +41,47 @@ const router = createBrowserRouter([
     )
   },
   {
+    path: "/home",
+    element: <HomePage />
+  },
+
+  // for customer
+  {
     element: <AuthLayout />,
     children: [
-      // for customer
-      { path: "/homeCustomer", element: <HomePageCustomer /> },
-      { path: "/package", element: <Package /> },
-      { path: "/scanCustomer", element: <ScanCustomer /> },
+      {
+        path: "/homeCustomer",
+        element: <HomePageCustomer />
+      },
+      { path: "/package", element: <Package /> }
+    ]
+  },
+  {
+    element: (
+      <ProtectedAdminRoute>
+        <AuthLayout />
+      </ProtectedAdminRoute>
+    ),
+    children: [
       // for Admin
-      { path: "/homeAdmin", element: <HomePageAdmin /> },
+      {
+        path: "/homeAdmin",
+        element: <HomeAdmin />
+      },
+      { path: "/adminAssign", element: <AdminAssign /> },
+      { path: "/employee", element: <Employee /> }
+    ]
+  },
+
+  // for employee
+  {
+    element: (
+      <ProtectedEmployeeRoute>
+        <AuthLayout />
+      </ProtectedEmployeeRoute>
+    ),
+    children: [
+      { path: "/homeEmployee", element: <HomePageEmployee /> },
       { path: "/assign", element: <Assign /> },
       { path: "/employee", element: <Employee /> },
       // for Employee
@@ -52,6 +89,16 @@ const router = createBrowserRouter([
       { path: "/scanEmployee", element: <ScanEmployee /> }
     ]
   }
+  // { path: "/invoice" }
+
+  // for test
+  // {
+  //   path: "/PackagePage",
+  //   element: <PackagePage />
+
+  //   //   // <Example />
+  // }
+  //for employee
 ]);
 
 export default function Router() {
