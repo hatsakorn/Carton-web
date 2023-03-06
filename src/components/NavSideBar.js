@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import DropDown from "../components/DropDown";
 import useAuth from "../hooks/useAuth";
 
 function NavSideBar() {
-  const { authenticatedUser } = useAuth();
+  const { authenticatedUser, fetchAuthUser } = useAuth();
+  console.log(authenticatedUser.role);
+  useEffect(() => {
+    fetchAuthUser();
+  }, []);
   return (
     <div className="flex-col flex justify-evenly text-center w-20">
       <div className="m-1 rounded-xl">
@@ -15,9 +19,9 @@ function NavSideBar() {
       <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
         <Link
           to={
-            authenticatedUser.role === "EMPLOYEE"
+            authenticatedUser?.role === "EMPLOYEE"
               ? "/homeEmployee"
-              : authenticatedUser.role === "ADMIN"
+              : authenticatedUser?.role === "ADMIN"
               ? "/homeAdmin"
               : "/homeCustomer"
           }
@@ -26,15 +30,12 @@ function NavSideBar() {
         </Link>
       </div>
 
-      <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
+      <div
+        className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl"
+        // style={{ visibility: "hidden" }}
+      >
         <Link
-          to={
-            authenticatedUser.role === "EMPLOYEE"
-              ? "/home"
-              : authenticatedUser.role === "ADMIN"
-              ? "/package"
-              : "/package"
-          }
+          to={authenticatedUser?.role === "EMPLOYEE" ? "/home" : "/package"}
         >
           <i className="fa-solid fa-dolly  text-zinc-50 text-3xl m-4"></i>
         </Link>
@@ -43,9 +44,9 @@ function NavSideBar() {
       <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
         <Link
           to={
-            authenticatedUser.role === "EMPLOYEE"
+            authenticatedUser?.role === "EMPLOYEE"
               ? "/assign"
-              : authenticatedUser.role === "ADMIN"
+              : authenticatedUser?.role === "ADMIN"
               ? "/adminAssign"
               : "/home"
           }
@@ -54,15 +55,7 @@ function NavSideBar() {
         </Link>
       </div>
       <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-        <Link
-          to={
-            authenticatedUser.role === "EMPLOYEE"
-              ? "/scan"
-              : authenticatedUser.role === "ADMIN"
-              ? "/home"
-              : "/home"
-          }
-        >
+        <Link to={authenticatedUser?.role === "EMPLOYEE" ? "/scan" : "/home"}>
           <i className="fa-solid fa-qrcode  text-zinc-50 text-3xl m-4"></i>
         </Link>
       </div>

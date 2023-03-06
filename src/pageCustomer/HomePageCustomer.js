@@ -8,7 +8,7 @@ import * as packageApi from "../api/package-api";
 
 export default function HomePageCustomer() {
   const { customerItem } = useCustomer();
-  const { authenticatedUser } = useAuth();
+  const { authenticatedUser, fetchAuthUser } = useAuth();
   const [showModalIndex, setShowModalIndex] = useState(null);
   const [isOmiseLoaded, setIsOmiseLoaded] = useState(false);
   const [showPackage, setShowPackage] = useState([]);
@@ -19,6 +19,7 @@ export default function HomePageCustomer() {
       setShowPackage(res.data.allPackage);
     };
     fetchPackage();
+    fetchAuthUser();
   }, []);
 
   const handleToggleModal = (index) => {

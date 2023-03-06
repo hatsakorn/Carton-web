@@ -48,11 +48,7 @@ const router = createBrowserRouter([
 
   // for customer
   {
-    element: (
-      <ProtectedCustomerRoute>
-        <AuthLayout />
-      </ProtectedCustomerRoute>
-    ),
+    element: <AuthLayout />,
     children: [
       {
         path: "/homeCustomer",
