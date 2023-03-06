@@ -79,9 +79,9 @@ export default function HomePageCustomer() {
     <>
       <Script url="https://cdn.omise.co/omise.js" onLoad={handleLoadScript} />
       <div className="flex justify-between">
-        <div className="flex justify-center bg-gradient-to-r bg-white  rounded-xl shadow-md w-full">
-          <div className="relative  flex flex-col mt-5 min-h-screen overflow-hidden  rounded-l-xl h-14 mr-20 w-screen">
-            <div className=" w-11/12 bg-sky-600 rounded-r-lg ml-10  rounded-xl text-white">
+        <div className="flex justify-center bg-gradient-to-r bg-blue-100  rounded-xl shadow-md w-full">
+          <div className="relative  flex flex-col mt-5 min-h-screen overflow-hidden  rounded-l-xl h-14 w-screen ">
+            <div className=" w-11/12   rounded-r-lg ml-10  rounded-xl text-black mb-3 overflow-y-auto ">
               {customerItem &&
                 customerItem?.map((el, index) => {
                   const startDate = new Date(el.Items[0].contractStartDate);
@@ -94,8 +94,11 @@ export default function HomePageCustomer() {
                   )?.price;
                   const amount = price * diffDays;
                   return (
-                    <div key={el.id} className="flex-col space-x-10 mt-5">
-                      <div className="bg-sky-600 shadow rounded-lg p-4">
+                    <div
+                      key={el.id}
+                      className="flex-col space-x-10 mt-5 mb-3 drop-shadow-xl"
+                    >
+                      <div className="bg-white shadow rounded-lg p-4 ">
                         <div className="font-bold mb-2">ID: {el.id}</div>
                         <div className="mb-2">
                           Details: {el.Items[0].details}
@@ -108,7 +111,7 @@ export default function HomePageCustomer() {
                         <div>Date Out: {el.Items[0].dateOut}</div>
                         <div>Status: {el.status}</div>
                         <button
-                          className="my-5 h-10 w-28 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-md  text-white"
+                          className="my-5 h-10 w-28 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-md  text-black"
                           onClick={() => handleToggleModal(index)}
                         >
                           More details

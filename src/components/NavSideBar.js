@@ -12,11 +12,12 @@ function NavSideBar() {
   return (
     <div className="flex-col flex justify-evenly text-center w-20">
       <div className="m-1 rounded-xl">
-        <i className="fa-solid fa-circle-user text-zinc-50 text-3xl m-4" />
+        <i className="fa-solid fa-circle-user text-zinc-50 text-3xl m-4 bg-blue-300" />
         <div className="text-white">{authenticatedUser.firstName}</div>
+        <div className="text-white">{authenticatedUser.role}</div>
       </div>
 
-      <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
+      <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-blue-300">
         <Link
           to={
             authenticatedUser?.role === "EMPLOYEE"
@@ -26,12 +27,12 @@ function NavSideBar() {
               : "/homeCustomer"
           }
         >
-          <i className="fa-solid fa-house  text-zinc-50 text-3xl m-4"></i>
+          <i className="fa-solid fa-house  text-zinc-50 text-3xl m-4 bg-blue-300"></i>
         </Link>
       </div>
 
       <div
-        className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl"
+        className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-blue-300"
         // style={{ visibility: "hidden" }}
       >
         <Link
@@ -41,7 +42,7 @@ function NavSideBar() {
         </Link>
       </div>
 
-      <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
+      <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-blue-300">
         <Link
           to={
             authenticatedUser?.role === "EMPLOYEE"
@@ -51,15 +52,15 @@ function NavSideBar() {
               : "/home"
           }
         >
-          <i className="fa-solid fa-paper-plane  text-zinc-50 text-3xl m-4"></i>
+          <i className="fa-solid fa-paper-plane  text-zinc-50 text-3xl m-4 "></i>
         </Link>
       </div>
-      <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
+      <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-blue-300">
         <Link to={authenticatedUser?.role === "EMPLOYEE" ? "/scan" : "/home"}>
           <i className="fa-solid fa-qrcode  text-zinc-50 text-3xl m-4"></i>
         </Link>
       </div>
-      <div className="flex hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
+      <div className="flex hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-blue-300">
         <DropDown />
       </div>
     </div>

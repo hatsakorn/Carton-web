@@ -58,9 +58,9 @@ const router = createBrowserRouter([
   },
   {
     element: (
-      <ProtectedAdminRoute>
-        <AuthLayout />
-      </ProtectedAdminRoute>
+      // <ProtectedAdminRoute>
+      <AuthLayout />
+      // </ProtectedAdminRoute>
     ),
     children: [
       // for Admin
@@ -76,9 +76,9 @@ const router = createBrowserRouter([
   // for employee
   {
     element: (
-      <ProtectedEmployeeRoute>
-        <AuthLayout />
-      </ProtectedEmployeeRoute>
+      // <ProtectedEmployeeRoute>
+      <AuthLayout />
+      // </ProtectedEmployeeRoute>
     ),
     children: [
       { path: "/homeEmployee", element: <HomePageEmployee /> },

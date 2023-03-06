@@ -38,7 +38,7 @@ export default function DropDown() {
       >
         <ul className=" z-10 w-52 bg-white rounded divide-y divide-gray-100 shadow ">
           <li>
-            <Link to="/mainpage">
+            <Link to="/employee">
               <button
                 // onClick={logout}
                 className=" text-red-600 block py-2 px-4 hover:bg-gray-100 pr-[90px]"
