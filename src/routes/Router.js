@@ -11,7 +11,7 @@ import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
 import HomePageCustomer from "../pageCustomer/HomePageCustomer";
 import MainPage from "../page/MainPage";
-import ScanCustomer from "../pageCustomer/ScanCustomer";
+// import ScanCustomer from "../pageCustomer/ScantCustomer";
 import ScanEmployee from "../pageEmployee/ScanEmployee";
 import HomeAdmin from "../pageAdmin/HomePageAdmin";
 import HomePageEmployee from "../pageEmployee/HomePageEmployee";
