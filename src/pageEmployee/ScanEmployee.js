@@ -10,15 +10,16 @@ export default function ScanEmployee() {
       <div className="relative flex flex-col justify-center min-h-screen overflow-hidden h-14 mr-20">
         <div>
           <button
-            onClick={() => setOpen(true)}
+            // onClick={() => setOpen(true)}
             className="bg-sky-600 rounded m-3 p-1 hover:opacity-70 text-white "
           >
-            QR button
+            camera
           </button>
-          <Modal open={open} onClose={() => setOpen(false)}>
-            <QrEmployee onClose={() => setOpen(false)} />
-          </Modal>
         </div>
+        {/* /////////Model//////// */}
+        <Modal open={open} onClose={() => setOpen(false)}>
+          <QrEmployee onClose={() => setOpen(false)} />
+        </Modal>
       </div>
     </div>
   );
