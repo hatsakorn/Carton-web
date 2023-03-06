@@ -5,11 +5,10 @@ import Script from "react-load-script";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import * as packageApi from "../api/package-api";
-import { Button, Modal } from "flowbite-react";
 
 export default function HomePageCustomer() {
   const { customerItem } = useCustomer();
-  const { authenticatedUser } = useAuth();
+  const { authenticatedUser, fetchAuthUser } = useAuth();
   const [showModalIndex, setShowModalIndex] = useState(null);
   const [isOmiseLoaded, setIsOmiseLoaded] = useState(false);
   const [showPackage, setShowPackage] = useState([]);
@@ -20,6 +19,7 @@ export default function HomePageCustomer() {
       setShowPackage(res.data.allPackage);
     };
     fetchPackage();
+    fetchAuthUser();
   }, []);
 
   const handleToggleModal = (index) => {
@@ -120,7 +120,6 @@ export default function HomePageCustomer() {
                             type="button"
                             onClick={(e) => handleClick(e, el.id, amount)}
                           >
-                            {/* <button className="bg-gradient-to-r from-violet-500 to-fuchsia-500  h-10 w-20 rounded-xl shadow-md  text-white"> */}
                             <button className="bg-gradient-to-r from-pink-500 hover:to-yellow-600  h-10 w-20 rounded-xl shadow-md  text-white">
                               Payment
                             </button>

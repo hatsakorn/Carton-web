@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "../../components/Modal";
 import EditPackage from "./EditPackage";
 import PackageForm from "../package/PackageForm";
+import useAuth from "../../hooks/useAuth";
 
 function AllPackage({ showPackage, open, setOpen }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,6 +13,8 @@ function AllPackage({ showPackage, open, setOpen }) {
   const [selectedEditPackage, setSelectedEditPackage] = useState(0);
   const [selectedPackageId, setSelectedPackageId] = useState({});
   const [active, setActive] = useState(false);
+
+  const { authenticatedUser } = useAuth();
 
   useEffect(() => {
     // const totalPages = () => {
@@ -65,9 +68,11 @@ function AllPackage({ showPackage, open, setOpen }) {
                 <div>
                   <div className="flex justify-between">
                     <h1>Package: {e.title}</h1>
-                    <button onClick={() => handleOpenEditModal(e.id)}>
-                      <i className="fa-solid fa-wrench"></i>
-                    </button>
+                    {authenticatedUser?.role === "ADMIN" && (
+                      <button onClick={() => handleOpenEditModal(e.id)}>
+                        <i className="fa-solid fa-wrench"></i>
+                      </button>
+                    )}
                   </div>
                   <div className="ml-8 pb-10 pt-4 ">
                     <h1>Detail: {e.description}</h1>

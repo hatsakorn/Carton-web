@@ -43,7 +43,7 @@ export default function HomePageAdmin() {
       const d = a.map((e) => e.Items);
       const b = d.map((e) => e);
       setItemList(b);
-      console.log(b);
+      // console.log(b);
 
       // console.log(itemList);
     };
