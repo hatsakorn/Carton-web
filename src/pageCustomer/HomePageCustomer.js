@@ -5,7 +5,6 @@ import Script from "react-load-script";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import * as packageApi from "../api/package-api";
-import { Button, Modal } from "flowbite-react";
 
 export default function HomePageCustomer() {
   const { customerItem } = useCustomer();
