@@ -4,7 +4,7 @@ import "react-circular-progressbar/dist/styles.css";
 import useWarehouse from "../hooks/useWarehouse";
 import { useEffect, useState } from "react";
 import PopupBox from "../components/popupBox";
-import Input from "../components/Input";
+// import Input from "../components/Input";
 
 export default function HomePageEmployee() {
   const { shelfSql } = useWarehouse(true);
@@ -44,9 +44,9 @@ export default function HomePageEmployee() {
       const d = a.map((e) => e.Items);
       const b = d.map((e) => e);
       setItemList(b);
-      console.log(b);
+      // console.log(b);
 
-      console.log(itemList);
+      // console.log(itemList);
     };
 
     allItem();
