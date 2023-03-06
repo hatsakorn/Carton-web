@@ -12,17 +12,10 @@ export default function Assign() {
 
   const navigate = useNavigate();
   const updateStatusStockIn = async (taskId) => {
-    try {
-      await employeeApi.taskStatusFromEmployee(taskId, {
-        status: "COMPLETE"
-      });
-      navigate(0);
-      window.location.reload();
-    } catch (error) {
-      alert(error.response?.data.message);
-    } finally {
-      window.location.reload();
-    }
+    await employeeApi.taskStatusFromEmployee(taskId, {
+      status: "COMPLETE"
+    });
+    navigate(0);
   };
 
   return (
