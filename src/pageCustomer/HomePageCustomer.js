@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "react-circular-progressbar/dist/styles.css";
 import useCustomer from "../hooks/useCustomer";
 import Script from "react-load-script";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import * as packageApi from "../api/package-api";
+import { Button, Modal } from "flowbite-react";
 
 export default function HomePageCustomer() {
   const { customerItem } = useCustomer();
@@ -113,12 +114,14 @@ export default function HomePageCustomer() {
                         >
                           More details
                         </button>
+
                         <form>
                           <div
                             id="credit-card"
                             type="button"
                             onClick={(e) => handleClick(e, el.id, amount)}
                           >
+                            {/* <button className="bg-gradient-to-r from-violet-500 to-fuchsia-500  h-10 w-20 rounded-xl shadow-md  text-white"> */}
                             <button className="bg-gradient-to-r from-pink-500 hover:to-yellow-600  h-10 w-20 rounded-xl shadow-md  text-white">
                               Payment
                             </button>

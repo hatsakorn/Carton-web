@@ -17,7 +17,7 @@ import HomePageEmployee from "../pageEmployee/HomePageEmployee";
 import AdminAssign from "../pageAdmin/AdminAssign";
 // import Example from "../template/Example";
 import ProtectedAdminRoute from "../feature/auth/ProtectedAdminRoute";
-import ProtectedCustomerRoute from "../feature/auth/ProtectedCustomerRoute";
+// import ProtectedCustomerRoute from "../feature/auth/ProtectedCustomerRoute";
 import HomePage from "../page/HomePage";
 import ProtectedEmployeeRoute from "../feature/auth/ProtectEmployeeRoute";
 
