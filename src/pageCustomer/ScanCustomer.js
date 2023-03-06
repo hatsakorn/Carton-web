@@ -37,7 +37,7 @@ export default function ScanCustomer() {
                   >
                     <QrForm
                       onClose={() => handleToggleModal(el.id)}
-                      link={{ itemId: el.id, customerId: authenticatedUser.id }}
+                      link={{ invoiceId: el.id, customerId: authenticatedUser.id }}
                       data={el}
                     />
                   </Modal>
