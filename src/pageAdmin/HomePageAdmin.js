@@ -45,7 +45,7 @@ export default function HomePageAdmin() {
       setItemList(b);
       console.log(b);
 
-      console.log(itemList);
+      // console.log(itemList);
     };
 
     allItem();
