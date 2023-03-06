@@ -19,6 +19,7 @@ import AdminAssign from "../pageAdmin/AdminAssign";
 import ProtectedAdminRoute from "../feature/auth/ProtectedAdminRoute";
 import HomePage from "../page/HomePage";
 import ProtectedEmployeeRoute from "../feature/auth/ProtectEmployeeRoute";
+import PreventEmployeeRoute from "../feature/auth/PreventEmployeeRoute";
 
 const router = createBrowserRouter([
   // for test
@@ -53,7 +54,14 @@ const router = createBrowserRouter([
         path: "/homeCustomer",
         element: <HomePageCustomer />
       },
-      { path: "/package", element: <Package /> }
+      {
+        path: "/package",
+        element: (
+          <PreventEmployeeRoute>
+            <Package />
+          </PreventEmployeeRoute>
+        )
+      }
     ]
   },
   {
@@ -68,10 +76,10 @@ const router = createBrowserRouter([
         path: "/homeAdmin",
         element: <HomeAdmin />
       },
-      { path: "/adminAssign", element: <AdminAssign /> },
-      { path: "/employee", element: <Employee /> }
+      { path: "/adminAssign", element: <AdminAssign /> }
     ]
   },
+  { path: "/employee", element: <Employee /> },
 
   // for employee
   {

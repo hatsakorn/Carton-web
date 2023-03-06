@@ -1,4 +1,4 @@
-import useAuth from "../../hooks/useAdmin";
+import useAuth from "../../hooks/useAuth";
 import { Navigate } from "react-router-dom";
 
 export default function ProtectedEmployeeRoute({ children }) {
