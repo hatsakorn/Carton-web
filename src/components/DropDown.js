@@ -40,10 +40,10 @@ export default function DropDown() {
           <li>
             <Link to="/mainpage">
               <button
-                onClick={logout}
+                // onClick={logout}
                 className=" text-red-600 block py-2 px-4 hover:bg-gray-100 pr-[90px]"
               >
-                Log out
+                Register Employee
               </button>
             </Link>
           </li>
@@ -52,10 +52,10 @@ export default function DropDown() {
           <li>
             <Link to="/mainpage">
               <button
-                // onClick={logout}
+                onClick={logout}
                 className=" text-red-600 block py-2 px-4 hover:bg-gray-100 pr-[90px]"
               >
-                Register Employee
+                Log out
               </button>
             </Link>
           </li>
