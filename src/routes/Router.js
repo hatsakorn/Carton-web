@@ -9,15 +9,14 @@ import LoginPage from "../pageCustomer/LoginPage";
 import Employee from "../pageAdmin/Employee";
 import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
-import Scan from "../pageEmployee/Scan";
 import HomePageCustomer from "../pageCustomer/HomePageCustomer";
 import MainPage from "../page/MainPage";
+import ScanCustomer from "../pageCustomer/ScanCustomer";
+import ScanEmployee from "../pageEmployee/ScanEmployee";
 import HomeAdmin from "../pageAdmin/HomePageAdmin";
 import HomePageEmployee from "../pageEmployee/HomePageEmployee";
 import AdminAssign from "../pageAdmin/AdminAssign";
-// import Example from "../template/Example";
 import ProtectedAdminRoute from "../feature/auth/ProtectedAdminRoute";
-// import ProtectedCustomerRoute from "../feature/auth/ProtectedCustomerRoute";
 import HomePage from "../page/HomePage";
 import ProtectedEmployeeRoute from "../feature/auth/ProtectEmployeeRoute";
 
@@ -84,7 +83,10 @@ const router = createBrowserRouter([
     children: [
       { path: "/homeEmployee", element: <HomePageEmployee /> },
       { path: "/assign", element: <Assign /> },
-      { path: "/scan", element: <Scan /> }
+      { path: "/employee", element: <Employee /> },
+      // for Employee
+      { path: "/homeEmployee", element: <HomePageEmployee /> },
+      { path: "/scanEmployee", element: <ScanEmployee /> }
     ]
   }
   // { path: "/invoice" }
