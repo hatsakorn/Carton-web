@@ -159,8 +159,8 @@ export default function AdminAssign() {
                 </div>
               </div>
               <div className=" my-10 pl-10 ">List of sections</div>
-              <div className=" flex justify-center items-center ">
-                <div className=" flex flex-col w-9/12">
+              <div className=" flex justify-center items-center  ">
+                <div className=" flex flex-col w-9/12 overflow-y-auto h-80">
                   {nullShelf.map((el) => (
                     <div
                       key={el.id}
