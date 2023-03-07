@@ -1,10 +1,15 @@
 import { useState } from "react";
 import validateRegister from "../validatetors/Auth-validatorCustomer";
-import * as authApi from "../api/auth-api";
+import * as itemApi from '../api/items-api'
 
 export default function qrEmployee({ onClose,data }) {
-  // const reqister
-  {console.log(data)}
+  const HandleToggleButton = (itemId,status) => {
+    input = {
+      itemId: itemId,
+      status: status
+    }
+    const res = itemApi.updateStatusByQrCode(input);
+  }
   return (
     <div className="flex justify-between">
       <div className="flex bg-gradient-to-r bg-white  rounded-l-xl  w-full  h-96">
@@ -16,17 +21,11 @@ export default function qrEmployee({ onClose,data }) {
           <p>warehouseLocation: {data[0]?.location}</p>
         </div>
         <div className="flex row justify-evenly ml-4">
-              <button className="flex h-10  w-20 text-center text-xl  text-white rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500">
-                Pending
+              <button className="flex h-10  w-20 text-center text-xl  text-white rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500" onClick={()=>HandleToggleButton(data[0]?.item_id,'check-in-status')}>
+                check in
               </button>
-              <button className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500">
-                Reject
-              </button>
-              <button className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500">
-                Compete
-              </button>
-              <button className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500">
-                Watiing
+              <button className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500" onClick={()=>HandleToggleButton(data[0]?.item_id,'check-out-status')}>
+                check out
               </button>
             </div>
       </div>
