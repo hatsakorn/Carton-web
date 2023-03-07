@@ -4,6 +4,7 @@ import "react-circular-progressbar/dist/styles.css";
 import useWarehouse from "../hooks/useWarehouse";
 import { useEffect, useState } from "react";
 import PopupBox from "../components/popupBox";
+import useAuth from "../hooks/useAuth";
 
 export default function HomePageAdmin() {
   const { shelfSql } = useWarehouse(true);
@@ -12,6 +13,12 @@ export default function HomePageAdmin() {
   const [itemList, setItemList] = useState([]);
   const [itemPerpage, setItemPerpage] = useState(40);
   const [showBox, setShowBox] = useState(0);
+
+  const { fetchAuthUser } = useAuth();
+
+  useEffect(() => {
+    fetchAuthUser();
+  }, []);
 
   function updateBackgroundColor(el) {
     return el.isAvailable ? " bg-sky-900" : "bg-blue-300	";
@@ -66,7 +73,6 @@ export default function HomePageAdmin() {
     // setShowBox(Items[0].dateIn(index));
   };
 
-  const hamdleMouseClick = () => {};
   return (
     <>
       <div className="flex justify-between bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
