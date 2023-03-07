@@ -82,30 +82,32 @@ export default function HomePageAdmin() {
               <div className="flex ml-5">Warehouse Logistics</div>
             </div>
             <div className="flex flex-col w-[100%]">
-              <div className="flex justify-evenly w-[100%]">
-                <div className="grid p-5  grid-cols-8 gap-3  w-[100%]">
-                  {itemsToDisplay.map((el, index) => (
-                    <PopupBox
-                      onClick={() => showDetailBox(index + 1)}
-                      key={el.id}
-                      text={el.id}
-                      available={el.isAvailable ? "true" : "false"}
-                    >
-                      <div
-                        className={`text-transparent w-6 h-6 m-2 rounded-sm shadow-xl ${updateBackgroundColor(
-                          el
-                        )}`}
+              <div className="flex justify-center">
+                <div className=" w-11/12 ml-36">
+                  <div className="grid p-5  grid-cols-8 gap-3  w-[100%] h-[350px]">
+                    {itemsToDisplay.map((el, index) => (
+                      <PopupBox
+                        onClick={() => showDetailBox(index + 1)}
+                        key={el.id}
+                        text={el.id}
+                        available={el.isAvailable ? "true" : "false"}
                       >
-                        {el.isAvailable ? "true" : "false"}
-                      </div>
-                    </PopupBox>
-                  ))}
+                        <div
+                          className={`text-transparent w-6 h-6 m-2 rounded-sm shadow-xl ${updateBackgroundColor(
+                            el
+                          )}`}
+                        >
+                          {el.isAvailable ? "true" : "false"}
+                        </div>
+                      </PopupBox>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
             {/* <div className="flex justify-between mt-10 mx-24 "> */}
-            <div className="static">
-              <div className=" w-auto justify-center absolute">
+            <div className="flex justify-center my-16">
+              <div className=" w-auto   ">
                 <Pagination
                   currentPage={section}
                   onPageChange={handlePageChange}
@@ -117,8 +119,8 @@ export default function HomePageAdmin() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center">
-            <div className=" w-[100%] h-96 pr-10 bg-white rounded-md lg:max-w-xl flex-row ">
+          <div className="flex justify-center ">
+            <div className=" w-8/12 h-96 pr-10  flex-row ">
               <div className="flex justify-between">
                 <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
                   <i className=" fa-solid fa-box text-slate-100 text-3xl m-4 "></i>
@@ -135,8 +137,8 @@ export default function HomePageAdmin() {
           </div>
         </div>
 
-        <div className="relative flex justify-evenly min-h-screen overflow-hidden h-14  ">
-          <div className=" w-70 h-70 p-6  bg-blue-700  rounded-xl shadow-md lg:max-w-xl ">
+        <div className="relative flex justify-evenly min-h-screen overflow-hidden    ">
+          <div className=" w-70  p-6  bg-blue-700  rounded-xl shadow-md lg:max-w-xl ">
             <CircularProgressbar
               className=" p-7"
               value={result}
