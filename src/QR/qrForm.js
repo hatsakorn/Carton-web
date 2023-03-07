@@ -9,25 +9,7 @@ export default function qrForm({ onClose,link,data }) {
             QR Code
           </h1>
           <div className="">
-            <p>customerId:</p>
-            <p>itemId: {data.id}</p>
-            <p>shelfId:</p>
-            <p>warehouseLocation:</p>
             <QRCode value={text} renderAs="canvas" />
-            <div className="flex row justify-evenly ml-4">
-              <button className="flex h-10  w-20 text-center text-xl  text-white rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500">
-                Pending
-              </button>
-              <button className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500">
-                Reject
-              </button>
-              <button className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500">
-                Compete
-              </button>
-              <button className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500">
-                Watiing
-              </button>
-            </div>
           </div>
         </div>
       </div>

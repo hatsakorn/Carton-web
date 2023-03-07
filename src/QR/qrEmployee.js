@@ -15,6 +15,20 @@ export default function qrEmployee({ onClose,data }) {
           <p>shelfId: {data[0]?.shelf}</p>
           <p>warehouseLocation: {data[0]?.location}</p>
         </div>
+        <div className="flex row justify-evenly ml-4">
+              <button className="flex h-10  w-20 text-center text-xl  text-white rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                Pending
+              </button>
+              <button className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                Reject
+              </button>
+              <button className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                Compete
+              </button>
+              <button className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                Watiing
+              </button>
+            </div>
       </div>
     </div>
   );
