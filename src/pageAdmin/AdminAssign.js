@@ -9,12 +9,14 @@ import { useState } from "react";
 import * as adminApi from "../api/auth-admin";
 import { useNavigate } from "react-router-dom";
 import AdminGetEmployee from "./AdminGetEmployee";
+import useAuth from "../hooks/useAuth";
 
 export default function AdminAssign() {
   const navigate = useNavigate();
   // const [dropdownStates, setDropdownStates] = useState({});
   // const [employeeName, setEmployeeName] = useState("");
   const { shelfSql } = useWarehouse();
+  const { fetchAuthUser } = useAuth();
   const { nullShelf, setSelectBox, selectBox, selectEmployee } = useAdmin();
   // const { getEmployee, setSelectEmployee } = useAdmin();
   // const handleOnClickEmployee = (eN, eId) => {
@@ -46,6 +48,10 @@ export default function AdminAssign() {
     allItem();
   }, [shelfSql]);
 
+  useEffect(() => {
+    fetchAuthUser();
+  }, []);
+
   const handleChangeSection = (event) => {
     const value = +event.target.value;
     setItemPerPage(value);
@@ -63,7 +69,7 @@ export default function AdminAssign() {
   };
 
   // console.log(shelfSql);
-  console.log(nullShelf);
+  // console.log(nullShelf);
   //   const handleOnClickEmployee = (e) => setSelectEmployee(e);
   //   const handleOnClickSelectAssignTask = async (e) => {
   //     await adminApi.createAssignTask({

@@ -46,7 +46,14 @@ export default function AuthContextProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ authenticatedUser, login, logout, updateProfile, fetchAuthUser }}
+      value={{
+        authenticatedUser,
+        login,
+        logout,
+        updateProfile,
+        fetchAuthUser,
+        getAccessToken
+      }}
     >
       {children}
     </AuthContext.Provider>
