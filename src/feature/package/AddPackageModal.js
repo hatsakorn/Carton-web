@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Input from "../../components/Input";
 import * as packageApi from "../../api/package-api";
+import { toast } from "react-toastify";
 
 const initialInput = {
   title: "",
@@ -22,16 +23,22 @@ function AddPackageModal() {
 
   const handleSubmitPackage = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("posterUrl", file);
-    formData.append("title", input.title);
-    formData.append("description", input.description);
-    formData.append("startDate", input.startDate);
-    formData.append("endDate", input.endDate);
-    formData.append("price", input.price);
-    formData.append("isActive", input.isActive);
-    const res = await packageApi.createPackage(formData);
-    setInput(initialInput);
+
+    try {
+      const formData = new FormData();
+      formData.append("posterUrl", file);
+      formData.append("title", input.title);
+      formData.append("description", input.description);
+      formData.append("startDate", input.startDate);
+      formData.append("endDate", input.endDate);
+      formData.append("price", input.price);
+      formData.append("isActive", input.isActive);
+      const res = await packageApi.createPackage(formData);
+      setInput(initialInput);
+      toast.success("success.");
+    } catch (error) {
+      toast.error(error.response?.data.message);
+    }
   };
 
   return (

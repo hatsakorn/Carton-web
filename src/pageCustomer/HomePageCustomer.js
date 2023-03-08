@@ -83,7 +83,7 @@ export default function HomePageCustomer() {
       <div className="flex justify-between">
         <div className="flex justify-center bg-white  rounded-xl shadow-md w-full overflow-scroll">
           <div className="relative  flex flex-col mt-5 min-h-screen  rounded-l-xl h-14 w-screen ">
-            <div className=" w-11/12 bg-sky-600 rounded-r-lg  rounded-xl text-white ">
+            <div className=" w-11/12 bg-white rounded-r-lg  rounded-xl text-white ">
               {customerItem &&
                 customerItem?.map((el, index) => {
                   const startDate = new Date(el.Items[0].contractStartDate);
@@ -96,21 +96,20 @@ export default function HomePageCustomer() {
                   )?.price;
                   const amount = price * diffDays;
                   return (
-                    <div key={el.id} className="flex-col space-x-10 mt-5">
-                      <div className="bg-sky-600 shadow rounded-lg p-4">
+                    <div
+                      key={el.id}
+                      className="flex-col space-x-10 mt-5 mb-3 drop-shadow-xl"
+                    >
+                      <div className="bg-sky-600 shadow rounded-lg p-4 ml-5">
                         <div className="font-bold mb-2">ID: {el.id}</div>
                         <div className="mb-2">
                           Details: {el.Items[0].details}
                         </div>
-                        <div>
-                          Available:
-                          {el.Shelf?.isAvailable ? "true" : "false"}
-                        </div>
+                        <div>Status: {el.status}</div>
                         <div>Date In: {el.Items[0].dateIn}</div>
                         <div>Date Out: {el.Items[0].dateOut}</div>
-                        <div>Status: {el.status}</div>
                         <button
-                          className="my-5 h-10 w-28 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-md  text-white"
+                          className="my-5 h-10 w-28 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-md  text-black"
                           onClick={() => handleToggleModal(index)}
                         >
                           More details

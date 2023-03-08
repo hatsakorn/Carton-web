@@ -5,6 +5,7 @@ import * as packageApi from "../api/package-api";
 import AllPackage from "../feature/package/AllPackage";
 import AddPackageModal from "../feature/package/AddPackageModal";
 import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
 
 export default function Package() {
   const [open, setOpen] = useState(false);
@@ -15,8 +16,12 @@ export default function Package() {
 
   useEffect(() => {
     const fetchPackage = async () => {
-      const res = await packageApi.getPackages();
-      setShowPackage(res.data.allPackage);
+      try {
+        const res = await packageApi.getPackages();
+        setShowPackage(res.data.allPackage);
+      } catch (error) {
+        toast.error(error.response?.data.message);
+      }
     };
     fetchPackage();
     fetchAuthUser();
