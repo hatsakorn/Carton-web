@@ -21,6 +21,11 @@ export default function ScanEmployee() {
     setItem(res.data);
   };
 
+  const handleModalClose = () => {
+    setOpen(false);
+    setResult("");
+  };
+
   useEffect(() => {
     if (result) {
       try {
@@ -64,7 +69,7 @@ export default function ScanEmployee() {
             </button>
           </div>
 
-          <Modal open={open} onClose={() => setOpen(false)}>
+          <Modal open={open} onClose={() => handleModalClose()}>
             <QrEmployee onClose={() => setOpen(false)} data={item} />
           </Modal>
         </div>

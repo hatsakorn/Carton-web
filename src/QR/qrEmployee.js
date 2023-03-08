@@ -1,14 +1,18 @@
-import { useState } from "react";
-import validateRegister from "../validatetors/Auth-validatorCustomer";
 import * as itemApi from '../api/items-api'
 
 export default function qrEmployee({ onClose,data }) {
-  const HandleToggleButton = (itemId,status) => {
+  const HandleToggleButtonDateIn = (itemId) => {
     const input = {
-      itemId: itemId,
-      status: status
+      itemId: itemId
     }
-    const res = itemApi.updateStatusByQrCode(input);
+    const res = itemApi.updateDateIn(input);
+  }
+
+  const HandleToggleButtonDateOut = (itemId) => {
+    const input = {
+      itemId: itemId
+    }
+    const res = itemApi.updateDateIn(input);
   }
   return (
     <div className="flex justify-between">
@@ -21,10 +25,10 @@ export default function qrEmployee({ onClose,data }) {
           <p>warehouseLocation: {data[0]?.location}</p>
         </div>
         <div className="flex row justify-evenly ml-4">
-              <button className="flex h-10  w-20 text-center text-xl  text-white rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500" onClick={()=>HandleToggleButton(data[0]?.item_id,'check-in-status')}>
+              <button className="flex h-10  w-20 text-center text-xl  text-white rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500" onClick={()=>HandleToggleButtonDateIn(data[0]?.item_id)}>
                 check in
               </button>
-              <button className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500" onClick={()=>HandleToggleButton(data[0]?.item_id,'check-out-status')}>
+              <button className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500" onClick={()=>HandleToggleButtonDateOut(data[0]?.item_id)}>
                 check out
               </button>
             </div>
