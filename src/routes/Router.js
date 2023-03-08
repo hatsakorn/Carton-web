@@ -11,7 +11,7 @@ import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
 import HomePageCustomer from "../pageCustomer/HomePageCustomer";
 import MainPage from "../page/MainPage";
-// import ScanCustomer from "../pageCustomer/ScantCustomer";
+import ScanCustomer from "../pageCustomer/ScanCustomer";
 import ScanEmployee from "../pageEmployee/ScanEmployee";
 import HomeAdmin from "../pageAdmin/HomePageAdmin";
 import HomePageEmployee from "../pageEmployee/HomePageEmployee";
@@ -53,7 +53,8 @@ const router = createBrowserRouter([
         path: "/homeCustomer",
         element: <HomePageCustomer />
       },
-      { path: "/package", element: <Package /> }
+      { path: "/package", element: <Package /> },
+      { path: "/ScanCustomer", element: <ScanCustomer /> }
     ]
   },
   {
@@ -80,25 +81,8 @@ const router = createBrowserRouter([
         <AuthLayout />
       </ProtectedEmployeeRoute>
     ),
-    children: [
-      { path: "/homeEmployee", element: <HomePageEmployee /> },
-      { path: "/assign", element: <Assign /> },
-      { path: "/employee", element: <Employee /> },
-      // for Employee
-      { path: "/homeEmployee", element: <HomePageEmployee /> },
-      { path: "/scanEmployee", element: <ScanEmployee /> }
-    ]
+    children: []
   }
-  // { path: "/invoice" }
-
-  // for test
-  // {
-  //   path: "/PackagePage",
-  //   element: <PackagePage />
-
-  //   //   // <Example />
-  // }
-  //for employee
 ]);
 
 export default function Router() {

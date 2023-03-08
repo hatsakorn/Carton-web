@@ -75,26 +75,6 @@ export default function Package() {
           </div>
         </div>
       </div>
-      {/* {open && (
-        <Modal
-          setOpen={setOpen}
-          open={open}
-          onClose={() => setOpen(false)}
-          className="z-50 inset-0 overflow-y-auto"
-        >
-          <form onSubmit={handleSubmitForm}>
-            <PackageForm showPackage={showPackage} />
-            <div className="bg-blue-600 rounded flex justify-center h-[50px] my-7">
-              <button
-                type="submit"
-                className="text-white text-xl font-semibold"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </Modal>
-      )} */}
     </>
   );
 }
