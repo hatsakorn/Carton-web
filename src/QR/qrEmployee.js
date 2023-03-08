@@ -4,7 +4,7 @@ import * as itemApi from '../api/items-api'
 
 export default function qrEmployee({ onClose,data }) {
   const HandleToggleButton = (itemId,status) => {
-    input = {
+    const input = {
       itemId: itemId,
       status: status
     }
