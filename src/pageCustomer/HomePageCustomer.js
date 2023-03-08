@@ -13,6 +13,8 @@ export default function HomePageCustomer() {
   const [isOmiseLoaded, setIsOmiseLoaded] = useState(false);
   const [showPackage, setShowPackage] = useState([]);
 
+  console.log(authenticatedUser);
+
   useEffect(() => {
     const fetchPackage = async () => {
       const res = await packageApi.getPackages();
