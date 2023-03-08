@@ -9,6 +9,7 @@ import AuthCustomerProvider from "./contexts/AuthCustomer";
 import AuthWarehouseProvider from "./contexts/AuthWarehouse";
 import AdminContextProvider from "./contexts/AuthAdmin";
 import LoadingContextProvider from "./contexts/LoadingContext";
+import "react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

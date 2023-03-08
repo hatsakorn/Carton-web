@@ -11,7 +11,7 @@ import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
 import HomePageCustomer from "../pageCustomer/HomePageCustomer";
 import MainPage from "../page/MainPage";
-// import ScanCustomer from "../pageCustomer/ScantCustomer";
+import ScanCustomer from "../pageCustomer/ScanCustomer";
 import ScanEmployee from "../pageEmployee/ScanEmployee";
 import HomeAdmin from "../pageAdmin/HomePageAdmin";
 import HomePageEmployee from "../pageEmployee/HomePageEmployee";
@@ -19,6 +19,7 @@ import AdminAssign from "../pageAdmin/AdminAssign";
 import ProtectedAdminRoute from "../feature/auth/ProtectedAdminRoute";
 import HomePage from "../page/HomePage";
 import ProtectedEmployeeRoute from "../feature/auth/ProtectEmployeeRoute";
+import PreventEmployeeRoute from "../feature/auth/PreventEmployeeRoute";
 
 const router = createBrowserRouter([
   // for test
@@ -53,7 +54,18 @@ const router = createBrowserRouter([
         path: "/homeCustomer",
         element: <HomePageCustomer />
       },
-      { path: "/package", element: <Package /> }
+      {
+        path: "/package",
+        element: (
+          <PreventEmployeeRoute>
+            <Package />
+          </PreventEmployeeRoute>
+        )
+      },
+      {
+        path: "/ScanCustomer",
+        element: <ScanCustomer />
+      }
     ]
   },
   {
@@ -68,10 +80,10 @@ const router = createBrowserRouter([
         path: "/homeAdmin",
         element: <HomeAdmin />
       },
-      { path: "/adminAssign", element: <AdminAssign /> },
-      { path: "/employee", element: <Employee /> }
+      { path: "/adminAssign", element: <AdminAssign /> }
     ]
   },
+  { path: "/employee", element: <Employee /> },
 
   // for employee
   {
@@ -85,20 +97,9 @@ const router = createBrowserRouter([
       { path: "/assign", element: <Assign /> },
       { path: "/employee", element: <Employee /> },
       // for Employee
-      { path: "/homeEmployee", element: <HomePageEmployee /> },
       { path: "/scanEmployee", element: <ScanEmployee /> }
     ]
   }
-  // { path: "/invoice" }
-
-  // for test
-  // {
-  //   path: "/PackagePage",
-  //   element: <PackagePage />
-
-  //   //   // <Example />
-  // }
-  //for employee
 ]);
 
 export default function Router() {
