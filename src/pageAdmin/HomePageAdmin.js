@@ -7,7 +7,7 @@ import PopupBox from "../components/popupBox";
 import useAuth from "../hooks/useAuth";
 
 export default function HomePageAdmin() {
-  const { shelfSql } = useWarehouse(true);
+  const { shelfSql, fetchWarehouseData } = useWarehouse(true);
   const [section, setSection] = useState(1);
   const [totalSection, setTotalSection] = useState(1);
   const [itemList, setItemList] = useState([]);
@@ -17,6 +17,7 @@ export default function HomePageAdmin() {
   const { fetchAuthUser } = useAuth();
 
   useEffect(() => {
+    fetchWarehouseData();
     fetchAuthUser();
   }, []);
 

@@ -5,10 +5,15 @@ import useAdmin from "../hooks/useAdmin";
 // import { Progress } from "flowbite-react";
 import * as employeeApi from "../api/auth-admin";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Assign() {
-  // const percentage = 5;
-  const { itSelfWork } = useAdmin();
+  const percentage = 5;
+  const { itSelfWork, fetchEmployeeWork } = useAdmin();
+
+  useEffect(() => {
+    fetchEmployeeWork();
+  }, []);
 
   const navigate = useNavigate();
   const updateStatusStockIn = async (taskId) => {
