@@ -1,9 +1,9 @@
 import useAuth from "../../hooks/useAuth";
 import { Navigate } from "react-router-dom";
 
-export default function ProtectedCustomerRoute({ children }) {
+export default function PreventEmployeeRoute({ children }) {
   const { authenticatedUser } = useAuth();
-  if (authenticatedUser.role) {
+  if (authenticatedUser.role === "EMPLOYEE") {
     return <Navigate to={"/home"} />;
   }
   return children;
