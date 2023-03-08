@@ -7,7 +7,7 @@ import PopupBox from "../components/popupBox";
 // import Input from "../components/Input";
 
 export default function HomePageEmployee() {
-  const { shelfSql } = useWarehouse(true);
+  const { shelfSql, fetchWarehouseData } = useWarehouse(true);
   const [section, setSection] = useState(1);
   const [totalSection, setTotalSection] = useState(1);
   const [itemList, setItemList] = useState([]);
@@ -51,6 +51,10 @@ export default function HomePageEmployee() {
 
     allItem();
   }, [shelfSql]);
+
+  useEffect(() => {
+    fetchWarehouseData();
+  }, []);
 
   const handleChangeSection = (event) => {
     const value = +event.target.value;

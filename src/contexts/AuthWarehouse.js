@@ -6,17 +6,17 @@ export const AuthWarehouse = createContext();
 export default function AuthWarehouseProvider({ children }) {
   const [shelfSql, setShelfSql] = useState([]);
 
+  const fetchWarehouseData = async () => {
+    const res = await getAvailShelf();
+    //   setShelfSql(res.data);
+    setShelfSql(res.data[0].Shelves);
+  };
   useEffect(() => {
-    const fetchWarehouseData = async () => {
-      const res = await getAvailShelf();
-      //   setShelfSql(res.data);
-      setShelfSql(res.data[0].Shelves);
-    };
     fetchWarehouseData();
   }, []);
 
   return (
-    <AuthWarehouse.Provider value={{ shelfSql }}>
+    <AuthWarehouse.Provider value={{ shelfSql, fetchWarehouseData }}>
       {children}
     </AuthWarehouse.Provider>
   );

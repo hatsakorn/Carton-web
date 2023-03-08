@@ -27,13 +27,11 @@ export default function AdminContextProvider({ children }) {
     fetchEmployee();
   }, []);
 
+  const fetchEmployeeWork = async () => {
+    const res = await adminApi.getAssignOfEmployee();
+    setItSelfWork(res.data.taskemployee);
+  };
   useEffect(() => {
-    const fetchEmployeeWork = async () => {
-      const res = await adminApi.getAssignOfEmployee();
-      //   console.log(res, "workkkk");
-      //   console.log(res.data.taskemployee, "workkkk");
-      setItSelfWork(res.data.taskemployee);
-    };
     fetchEmployeeWork();
   }, []);
 
@@ -46,7 +44,8 @@ export default function AdminContextProvider({ children }) {
         setSelectBox,
         setSelectEmployee,
         selectEmployee,
-        itSelfWork
+        itSelfWork,
+        fetchEmployeeWork
       }}
     >
       {children}
