@@ -174,7 +174,7 @@ export default function AdminAssign() {
                   {nullShelf.map((el) => (
                     <div
                       key={el.id}
-                      className=" bg-blue-700 my-2 flex justify-between items-center p-4 rounded-md text-white font-semibold hover:scale-110 duration-300 m-20 hover:bg-blue-500"
+                      className=" bg-blue-700 my-2 flex justify-between items-center p-4 rounded-md text-white font-semibold m-20 hover:bg-blue-500"
                     >
                       <div>Item no.{el.id}</div>
                       {/* <div>customer.first.name</div> */}

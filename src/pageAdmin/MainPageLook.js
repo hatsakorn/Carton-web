@@ -62,7 +62,7 @@ export default function MainPageLook() {
             </div>
           </div>
           <div className="absolute  top-[850px] left-[820px]  z-50  h-32">
-            <Link to={"/home"}>
+            <Link to={"/login"}>
               <button className="w-80  h-16 text-2xl font-semibold border-4 border-neutral-50 text-white rounded-full hover:bg-slate-800 hover:text-white hover:border-none  ">
                 Welcome to our website
               </button>
@@ -153,7 +153,7 @@ export default function MainPageLook() {
             <br />
             <br />
             <br />
-            <Link to={"/home"}>
+            <Link to={"/login"}>
               <div className="flex justify-center items-center h-16  text-sky-700  text-3xl font-semibold   border-4 border-sky-700   rounded-full hover:bg-sky-700 hover:text-yellow-300">
                 Join our side
               </div>
