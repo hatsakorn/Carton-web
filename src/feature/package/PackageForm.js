@@ -32,12 +32,13 @@ function PackageForm({ selectedPackageId }) {
         <h1 className="p-3"> {selectedPackageId.title}</h1>
         <h1>Product Detail</h1>
         <Input
+          className="rounded-2xl"
           placeholder={"Input your product detail (e.g. Boots Pen Glass)"}
           name="details"
           value={input.details}
           onChange={handleOnChange}
         />
-        <h1>contractStartDate</h1>
+        <h1>Contract Start Date</h1>
         <Input
           type="date"
           placeholder={"Input your contractStartDate"}
@@ -45,7 +46,7 @@ function PackageForm({ selectedPackageId }) {
           value={input.contractStartDate}
           onChange={handleOnChange}
         />
-        <h1>contractEndDate</h1>
+        <h1>Contract End Date</h1>
         <Input
           type="date"
           placeholder={"Input your contractEndDate"}
@@ -53,8 +54,8 @@ function PackageForm({ selectedPackageId }) {
           value={input.contractEndDate}
           onChange={handleOnChange}
         />
-        <div className="flex justify-center bg-blue-600 rounded text-white my-7">
-          <button className="text-xl" type="submit">
+        <div className="flex justify-center bg-blue-600 rounded-md text-white my-7 h-10 hover:bg-blue-200 shadow-xl">
+          <button className="text-xl w-full" type="submit">
             Submit
           </button>
         </div>

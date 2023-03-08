@@ -86,7 +86,11 @@ export default function Assign() {
             {itSelfWork.map((el) => (
               <div
                 key={el.id}
-                className="flex justify-between ml-20 w-11/12 my-3 h-30 bg-sky-500 rounded-lg items-center "
+                className={`${
+                  el.status === "COMPLETE"
+                    ? "hidden"
+                    : "flex justify-between ml-20 w-11/12 my-3 h-30 bg-sky-500 rounded-lg items-center "
+                }`}
               >
                 {/* <div className="flex justify-between "> */}
                 {/* <div className=" w-96 flex justify-between items-center"> */}

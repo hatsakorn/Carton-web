@@ -13,38 +13,55 @@ export default function ScanCustomer() {
   const handleToggleModal = (itemId) => {
     setModalStates((prevStates) => ({
       ...prevStates,
-      [itemId]: !prevStates[itemId],
+      [itemId]: !prevStates[itemId]
     }));
   };
 
+  // console.log(customerItem.Items[0], "123123");
+
   return (
     <div className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
-      <div className="relative flex flex-col justify-center min-h-screen overflow-hidden h-14 mr-20">
-        {customerItem &&
-          customerItem?.map((el) => {
-            return (
-              <div key={el.id}>
-                <button
-                  onClick={() => handleToggleModal(el.id)}
-                  className="bg-sky-600 rounded m-3 p-1 hover:opacity-70 text-white "
+      <div className="  min-h-screen w-full overflow-hidden flex flex-col items-center ">
+        <div className="w-8/12 bg-white mt-10">
+          {customerItem &&
+            customerItem?.map((el) => {
+              return (
+                <div
+                  className="bg-white  rounded-l-xl shadow-xl  my-6   "
+                  key={el.id}
                 >
-                  QR button
-                </button>
-                {modalStates[el.id] && (
-                  <Modal
-                    open={modalStates[el.id]}
-                    onClose={() => handleToggleModal(el.id)}
-                  >
-                    <QrForm
+                  <div className="flex items-center justify-between align-middle">
+                    <div className="ml-8">
+                      <i className="fa-solid fa-qrcode mr-5 h-10 w-10 text-center justify-center text-5xl mt-4 text-blue-500 hover:scale-105 duration-300 rounded-l-xl shadow-md" />
+                      Item Id : {el.Items[0]?.id}
+                    </div>
+
+                    <button
+                      onClick={() => handleToggleModal(el.id)}
+                      className="bg-sky-600 rounded m-3 p-1 hover:opacity-70 text-white "
+                    >
+                      Customer QRCode
+                    </button>
+                  </div>
+                  {modalStates[el.id] && (
+                    <Modal
+                      open={modalStates[el.id]}
                       onClose={() => handleToggleModal(el.id)}
-                      link={{ invoiceId: el.id, customerId: authenticatedUser.id }}
-                      data={el}
-                    />
-                  </Modal>
-                )}
-              </div>
-            );
-          })}
+                    >
+                      <QrForm
+                        onClose={() => handleToggleModal(el.id)}
+                        link={{
+                          invoiceId: el.id,
+                          customerId: authenticatedUser.id
+                        }}
+                        data={el}
+                      />
+                    </Modal>
+                  )}
+                </div>
+              );
+            })}
+        </div>
       </div>
     </div>
   );

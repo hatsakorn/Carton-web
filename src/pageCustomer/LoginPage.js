@@ -3,6 +3,7 @@ import useLoading from "../hooks/useLoading";
 import Modal from "../components/Modal";
 import RegisterFrom from "../auth/RegisterForm";
 import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const initialInput = {
   username: "",
@@ -26,8 +27,9 @@ export default function Login() {
       startLoading();
       await login(input);
       setInput(initialInput);
+      toast.success("successssssssssssssssss.");
     } catch (err) {
-      console.log(err);
+      toast.error(err.response?.data.message);
     } finally {
       stopLoading();
     }

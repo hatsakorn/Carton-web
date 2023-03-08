@@ -13,6 +13,8 @@ export default function HomePageCustomer() {
   const [isOmiseLoaded, setIsOmiseLoaded] = useState(false);
   const [showPackage, setShowPackage] = useState([]);
 
+  console.log(authenticatedUser);
+
   useEffect(() => {
     const fetchPackage = async () => {
       const res = await packageApi.getPackages();
@@ -79,9 +81,9 @@ export default function HomePageCustomer() {
     <>
       <Script url="https://cdn.omise.co/omise.js" onLoad={handleLoadScript} />
       <div className="flex justify-between">
-        <div className="flex justify-center bg-gradient-to-r bg-white  rounded-xl shadow-md w-full">
-          <div className="relative  flex flex-col mt-5 min-h-screen overflow-hidden  rounded-l-xl h-14 mr-20 w-screen">
-            <div className=" w-11/12 bg-sky-600 rounded-r-lg ml-10  rounded-xl text-white">
+        <div className="flex justify-center bg-white  rounded-xl shadow-md w-full overflow-scroll">
+          <div className="relative  flex flex-col mt-5 min-h-screen  rounded-l-xl h-14 w-screen ">
+            <div className=" w-11/12 bg-sky-600 rounded-r-lg  rounded-xl text-white ">
               {customerItem &&
                 customerItem?.map((el, index) => {
                   const startDate = new Date(el.Items[0].contractStartDate);

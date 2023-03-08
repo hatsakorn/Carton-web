@@ -55,7 +55,15 @@ function NavSideBar() {
         </Link>
       </div>
       <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
-        <Link to={authenticatedUser?.role === "EMPLOYEE" ? "/scan" : "/home"}>
+        <Link
+          to={
+            authenticatedUser?.role === "EMPLOYEE"
+              ? "/scanEmployee"
+              : authenticatedUser?.role === "ADMIN"
+              ? "/home"
+              : "/ScanCustomer"
+          }
+        >
           <i className="fa-solid fa-qrcode  text-zinc-50 text-3xl m-4"></i>
         </Link>
       </div>
