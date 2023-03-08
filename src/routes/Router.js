@@ -11,7 +11,7 @@ import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
 import HomePageCustomer from "../pageCustomer/HomePageCustomer";
 import MainPage from "../page/MainPage";
-// import ScanCustomer from "../pageCustomer/ScantCustomer";
+import ScanCustomer from "../pageCustomer/ScanCustomer";
 import ScanEmployee from "../pageEmployee/ScanEmployee";
 import HomeAdmin from "../pageAdmin/HomePageAdmin";
 import HomePageEmployee from "../pageEmployee/HomePageEmployee";
@@ -61,6 +61,10 @@ const router = createBrowserRouter([
             <Package />
           </PreventEmployeeRoute>
         )
+      },
+      {
+        path: "/ScanCustomer",
+        element: <ScanCustomer />
       }
     ]
   },
@@ -97,16 +101,6 @@ const router = createBrowserRouter([
       { path: "/scanEmployee", element: <ScanEmployee /> }
     ]
   }
-  // { path: "/invoice" }
-
-  // for test
-  // {
-  //   path: "/PackagePage",
-  //   element: <PackagePage />
-
-  //   //   // <Example />
-  // }
-  //for employee
 ]);
 
 export default function Router() {

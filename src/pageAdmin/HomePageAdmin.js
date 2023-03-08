@@ -21,7 +21,7 @@ export default function HomePageAdmin() {
   }, []);
 
   function updateBackgroundColor(el) {
-    return el.isAvailable ? " bg-sky-900" : "bg-blue-300	";
+    return el.isAvailable ? " bg-sky-900" : "bg-blue-300";
   }
 
   const startIndex = (section - 1) * 40;
@@ -79,12 +79,14 @@ export default function HomePageAdmin() {
         <div className="w-full justify-between">
           <div className="flex-row justify-between">
             <div className="flex justify-between my-5">
-              <div className="flex ml-5">Warehouse Logistics</div>
+              <div className="flex ml-5 text-2xl font-bold  text-blue-800">
+                Warehouse Logistics
+              </div>
             </div>
             <div className="flex flex-col w-[100%]">
               <div className="flex justify-center">
-                <div className=" w-11/12 ml-36">
-                  <div className="grid p-5  grid-cols-8 gap-3  w-[100%] h-[350px]">
+                <div className=" w-11/12 ml-10">
+                  <div className="grid p-5  grid-cols-8 gap-3  w-[100%] h-[350px] bg-slate-50 rounded-xl shadow-2xl">
                     {itemsToDisplay.map((el, index) => (
                       <PopupBox
                         onClick={() => showDetailBox(index + 1)}
@@ -93,7 +95,7 @@ export default function HomePageAdmin() {
                         available={el.isAvailable ? "true" : "false"}
                       >
                         <div
-                          className={`text-transparent w-6 h-6 m-2 rounded-sm shadow-xl ${updateBackgroundColor(
+                          className={`text-transparent w-6 h-6 m-2 rounded-sm shadow-2xl hover:scale-150 duration-300 ${updateBackgroundColor(
                             el
                           )}`}
                         >
@@ -107,7 +109,7 @@ export default function HomePageAdmin() {
             </div>
             {/* <div className="flex justify-between mt-10 mx-24 "> */}
             <div className="flex justify-center my-16">
-              <div className=" w-auto   ">
+              <div className=" w-auto">
                 <Pagination
                   currentPage={section}
                   onPageChange={handlePageChange}
@@ -120,34 +122,52 @@ export default function HomePageAdmin() {
             </div>
           </div>
           <div className="flex justify-center ">
-            <div className=" w-8/12 h-96 pr-10  flex-row ">
-              <div className="flex justify-between">
-                <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
-                  <i className=" fa-solid fa-box text-slate-100 text-3xl m-4 "></i>
+            <div className=" w-8/12 h-96 pr-10 flex-row ">
+              <div className="flex justify-evenly bg-white h-20 w-auto rounded-2xl shadow-2xl hover:scale-105 duration-300  mt-1">
+                <div className="flex ">
+                  <i className="fa-solid fa-box-archive h-10 w-10 text-center justify-center text-5xl mt-4 text-blue-500 hover:scale-105 duration-300  " />
                 </div>
-                <span className="flex ml-10 ">
-                  Date In:{showBox?.Items?.map((el) => el.dateIn)}
-                  <br></br>
-                  Date Out:{showBox?.Items?.map((el) => el.dateOut)}
-                  <br></br>
-                  Details: {showBox?.Items?.map((el) => el.details)}
-                </span>
+                <div className="flex justify-between w-80 mt-5 text-blue-900">
+                  <div className="flex bg-blue-100 w-44 h-8 rounded-xl pl-3 shadow-2xl hover:bg-blue-200">
+                    Date In:{showBox?.Items?.map((el) => el.dateIn)}
+                  </div>
+                  <div className="flex  bg-blue-100 w-44 h-8 rounded-xl pl-3 shadow-2xl hover:bg-blue-200 ml-5">
+                    Date Out:{showBox?.Items?.map((el) => el.dateOut)}
+                  </div>
+                  <div className="flex  bg-blue-100 w-44 h-8 rounded-xl pl-3 shadow-2xl hover:bg-blue-200 ml-5">
+                    Details: {showBox?.Items?.map((el) => el.details)}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="relative flex justify-evenly min-h-screen overflow-hidden    ">
-          <div className=" w-70  p-6  bg-blue-700  rounded-xl shadow-md lg:max-w-xl ">
+        <div className="relative flex justify-evenly h-3/6 overflow-hidden mt-5 mr-3 rounded-xl shadow-md">
+          <div className=" w-70  p-6  bg-white  rounded-xl shadow-md lg:max-w-xl ">
             <CircularProgressbar
-              className=" p-7"
+              className=" text-center"
               value={result}
               text={`${result}%`}
             ></CircularProgressbar>
 
-            <div className="flex-col justify-between text-white text-lg">
-              <div className="flex">Total Shelf: {count2}</div>
-              <div className="flex">Available Shelf: {count}</div>
+            <div className="flex-col justify-between text-center text-xl mt-10 text-blue-800">
+              <div className="flex bg-white  m-1 rounded-xl justify-center shadow-xl hover:scale-105 duration-300 h-9 mt-1">
+                Total Shelf: {count2}
+              </div>
+              <div className="flex bg-white  m-1 rounded-xl  justify-center shadow-xl hover:scale-105 duration-300 h-9 mt-1">
+                Available Shelf: {count}
+              </div>
+              <div className="flex-col bg-white  m-1 rounded-xl  justify-center shadow-xl hover:scale-105 duration-300 h-24 mt-1 pt-3">
+                <div className="flex">
+                  <div className="text-transparent w-6 h-6 m-2 rounded-sm shadow-2xl hover:scale-150 duration-300 bg-sky-900" />
+                  <p>Available</p>
+                </div>
+                <div className="flex">
+                  <div className="text-transparent w-6 h-6 m-2 rounded-sm shadow-2xl hover:scale-150 duration-300 bg-blue-300" />
+                  <p>Unavailable</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

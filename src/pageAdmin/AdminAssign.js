@@ -123,12 +123,14 @@ export default function AdminAssign() {
         <div className="w-full justify-between">
           <div className="flex-row justify-between">
             <div className="flex justify-between my-5">
-              <div className="flex ml-5">Warehouse Logistics</div>
+              <div className="flex ml-5 text-xl font-bold">
+                Warehouse Logistics
+              </div>
             </div>
             <div className="flex flex-col w-[100%] ">
               <div className="flex justify-center ">
                 <div className="flex  w-11/12 ml-36">
-                  <div className="grid p-5  grid-cols-8 gap-3  w-[100%] h-[350px]  ">
+                  <div className="grid p-5  grid-cols-8 gap-3  w-[100%] h-[350px] bg-slate-50 rounded-xl shadow-2xl mr-16 ">
                     {itemsToDisplay.map((el) => (
                       <PopupBox
                         key={el.id}
@@ -140,7 +142,7 @@ export default function AdminAssign() {
                           onClick={() =>
                             handleOnClickSelectBox(el.id, el.isAvailable)
                           }
-                          className={`text-transparent w-6 h-6 m-2 rounded-sm shadow-xl ${updateBackgroundColor(
+                          className={`text-transparent w-6 h-6 m-2 rounded-sm shadow-xl hover:scale-150 duration-300 ${updateBackgroundColor(
                             el
                           )}`}
                         >
@@ -164,61 +166,27 @@ export default function AdminAssign() {
                   />
                 </div>
               </div>
-              <div className=" my-10 pl-10 ">List of sections</div>
+              <div className=" my-10 pl-10 text-xl font-bold">
+                List of sections
+              </div>
               <div className=" flex justify-center items-center  ">
-                <div className=" flex flex-col w-9/12 overflow-y-auto h-80">
+                <div className=" flex flex-col w-11/12 overflow-y-auto h-80 ">
                   {nullShelf.map((el) => (
                     <div
                       key={el.id}
-                      className="bg-cyan-600 my-2 flex justify-between items-center p-4 rounded-md text-white font-semibold"
+                      className=" bg-blue-700 my-2 flex justify-between items-center p-4 rounded-md text-white font-semibold hover:scale-110 duration-300 m-20 hover:bg-blue-500"
                     >
                       <div>Item no.{el.id}</div>
                       {/* <div>customer.first.name</div> */}
                       <div>Shelf : {selectBox}</div>
                       <div className="flex items-center">
-                        <div className="mr-3 bg-">emp id</div>
+                        <div className="mr-3 ">emp id</div>
                         <AdminGetEmployee />
-                        {/* <div className=" w-20 h-6">
-                          <div
-                            className=" w-20  "
-                            onClick={() => toggleDropdown(el.id)}
-                          >
-                            : {employeeName}
-                            <div>
-                              <div
-                                className={`relative bg-stone-600 top-[4px]  ${
-                                  dropdownStates[el.id] ? "" : "hidden"
-                                }`}
-                              >
-                                <div>
-                                  <div className="absolute flex flex-col bg-cyan-600 w-20 rounded-b-sm px-2 drop-shadow-2xl">
-                                    {getEmployee.map((el) => (
-                                      <div
-                                        className=""
-                                        key={el.id}
-                                        value={el.id}
-                                        onClick={() =>
-                                          handleOnClickEmployee(
-                                            el.firstName,
-                                            el.id
-                                          )
-                                        }
-                                      >
-                                        {el.firstName}
-                                        <hr />
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div> */}
                       </div>
                       {/* <div>status:</div> */}
                       <button
                         key={el.id}
-                        className="bg-red-700 p-1 rounded hover:opacity-80"
+                        className="bg-red-700 p-1 rounded-xl hover:opacity-80"
                         onClick={() => handleOnClickSelectAssignTask(el.id)}
                       >
                         Confirm

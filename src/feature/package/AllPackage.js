@@ -62,7 +62,7 @@ function AllPackage({ showPackage, open, setOpen }) {
           <div className="grid  grid-cols-2  w-11/12">
             {itemsToDisplay.map((e) => (
               <div
-                className="  w-9/12  justify-items-stretch space-y-3  drop-shadow-2xl rounded p-6 border-blue-600 border-2 mb-4"
+                className=" bg-white rounded-xl w-9/12 h-64 justify-items-stretch space-y-3  drop-shadow-2xl p-6  hover:scale-105 duration-300 mb-4"
                 key={e.id}
               >
                 <div>
@@ -79,9 +79,9 @@ function AllPackage({ showPackage, open, setOpen }) {
                     <h1>Price: {e.price}</h1>
                     <h1>Duration:</h1>
                   </div>
-                  <div className="flex justify-center  bg-blue-600 rounded-md  ">
+                  <div className="flex justify-center bg-blue-600 rounded-md hover:bg-blue-200 shadow-xl  ">
                     <button
-                      className="w-72 h-10 text-white text-xl font-semibold "
+                      className="w-full h-10 text-white text-xl font-semibold "
                       onClick={() => showPackageModal(e.id, e.title)}
                     >
                       Select
