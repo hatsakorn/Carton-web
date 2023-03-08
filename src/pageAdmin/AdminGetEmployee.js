@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import useAdmin from "../hooks/useAdmin";
+
 export default function AdminGetEmployee() {
   const [open, setOpen] = useState(false);
   const { getEmployee, setSelectEmployee } = useAdmin();
@@ -22,17 +23,13 @@ export default function AdminGetEmployee() {
   }, []);
 
   return (
-    <div className=" w-20 h-6">
+    <div className=" w-20 h-6 bg-cyan-500 flex items-center">
       <div ref={dropdownEl} className=" w-20  " onClick={() => setOpen(!open)}>
         : {employeeName}
         <div>
-          <div
-            className={`relative bg-stone-600 top-[4px]  ${
-              open ? "" : "hidden"
-            }`}
-          >
+          <div className={`relative  top-[4px]  ${open ? "" : "hidden"}`}>
             <div>
-              <div className="absolute flex flex-col bg-cyan-600 w-20 rounded-b-sm px-2 drop-shadow-2xl">
+              <div className="absolute flex flex-col bg-cyan-500 w-20 rounded-b-sm px-2 drop-shadow-2xl">
                 {getEmployee.map((el) => (
                   <div
                     className=""
