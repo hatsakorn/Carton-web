@@ -97,7 +97,6 @@ const router = createBrowserRouter([
       { path: "/assign", element: <Assign /> },
       { path: "/employee", element: <Employee /> },
       // for Employee
-      { path: "/homeEmployee", element: <HomePageEmployee /> },
       { path: "/scanEmployee", element: <ScanEmployee /> }
     ]
   }
