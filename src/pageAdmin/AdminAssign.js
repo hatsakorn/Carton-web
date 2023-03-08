@@ -170,44 +170,8 @@ export default function AdminAssign() {
                       {/* <div>customer.first.name</div> */}
                       <div>Shelf : {selectBox}</div>
                       <div className="flex items-center">
-                        <div className="mr-3 bg-">emp id</div>
+                        <div className="mr-2">emp id </div>
                         <AdminGetEmployee />
-                        {/* <div className=" w-20 h-6">
-                          <div
-                            className=" w-20  "
-                            onClick={() => toggleDropdown(el.id)}
-                          >
-                            : {employeeName}
-                            <div>
-                              <div
-                                className={`relative bg-stone-600 top-[4px]  ${
-                                  dropdownStates[el.id] ? "" : "hidden"
-                                }`}
-                              >
-                                <div>
-                                  <div className="absolute flex flex-col bg-cyan-600 w-20 rounded-b-sm px-2 drop-shadow-2xl">
-                                    {getEmployee.map((el) => (
-                                      <div
-                                        className=""
-                                        key={el.id}
-                                        value={el.id}
-                                        onClick={() =>
-                                          handleOnClickEmployee(
-                                            el.firstName,
-                                            el.id
-                                          )
-                                        }
-                                      >
-                                        {el.firstName}
-                                        <hr />
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div> */}
                       </div>
                       {/* <div>status:</div> */}
                       <button
@@ -221,60 +185,9 @@ export default function AdminAssign() {
                   ))}
                 </div>
               </div>
-              {/* <div className="flex justify-between mt-10 mx-24 "> */}
-              {/* <div className="flex">
-                  <span>Section 001</span>
-                </div> */}
-              {/* <div className="flex  ">
-                  <Progress
-                    progress={45}
-                    label="use"
-                    labelPosition="outside"
-                    labelProgress={true}
-                  />
-                </div> */}
-              {/* </div> */}
             </div>
           </div>
         </div>
-
-        {/* <div className="relative  flex-col mt-10 flex justify-evenly min-h-screen overflow-hidden h-14 bg-red-800 ">
-          <div className=" w-70 h-70 p-6  bg-blue-700  rounded-xl shadow-md lg:max-w-xl">
-            <CircularProgressbar
-              className=" p-7"
-              value={percentage}
-              text={`${percentage}%`}
-            ></CircularProgressbar>
-          </div>
-          <div className=" w-60 p-3 bg-lime-700 rounded-md lg:max-w-xl flex row justify-between mr-10">
-            <div className="flex text-xs">Received</div>
-            <div className="flex text-xs">Sent</div>
-            <div className="flex text-xs">Expeted</div>
-          </div>
-
-          <div className=" w-70 h-96 pr-10 bg-zinc-700 rounded-md lg:max-w-xl flex-row ">
-            <div className="flex justify-between">
-              <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
-                <i className=" fa-solid fa-box   text-slate-100 text-3xl m-4"></i>
-              </div>
-              <span className="flex ml-10">Detail:</span>
-            </div>
-
-            <div className="flex justify-between">
-              <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
-                <i className=" fa-solid fa-box text-slate-100 text-3xl m-4 "></i>
-              </div>
-              <span className="flex ml-10 ">Detail:</span>
-            </div>
-
-            <div className="flex justify-between">
-              <div className="flex bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
-                <i className=" fa-solid fa-box  text-slate-100 text-3xl m-4 "></i>
-              </div>
-              <span className="flex ml-10">Detail:</span>
-            </div>
-          </div>
-        </div> */}
       </div>
     </>
   );

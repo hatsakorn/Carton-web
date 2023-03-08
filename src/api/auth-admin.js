@@ -8,3 +8,6 @@ export const getAssignOfEmployee = () => axios.get("/admin/employee/task");
 
 export const taskStatusFromEmployee = (taskId, input) =>
   axios.patch(`/admin/${taskId}`, input);
+
+export const deleteEmployee = (employeeId) =>
+  axios.delete(`/admin/${employeeId}`);

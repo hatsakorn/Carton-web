@@ -7,7 +7,7 @@ import * as employeeApi from "../api/auth-admin";
 import { useNavigate } from "react-router-dom";
 
 export default function Assign() {
-  const percentage = 5;
+  // const percentage = 5;
   const { itSelfWork } = useAdmin();
 
   const navigate = useNavigate();
@@ -18,12 +18,19 @@ export default function Assign() {
     navigate(0);
   };
 
+  const updateStatusCancel = async (taskId) => {
+    await employeeApi.taskStatusFromEmployee(taskId, {
+      status: "REJECT"
+    });
+    navigate(0);
+  };
+
   return (
-    <div className="flex justify-between bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
+    <div className="flex justify-between bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full min-h-screen">
       <div className="w-full justify-between">
         <div className="flex-row justify-between">
           <div className="flex justify-between my-5">
-            <div className="flex ml-5">Warehouse Logistics</div>
+            <div className="flex ml-5 font-semibold text-2xl">Assign</div>
             {/* <form className="flex items-center mr-5">
               <label for="simple-search" className="sr-only">
                 Search
@@ -79,36 +86,49 @@ export default function Assign() {
             {itSelfWork.map((el) => (
               <div
                 key={el.id}
-                className="flex justify-between ml-20 w-11/12 my-3 h-30 bg-sky-500 rounded-lg "
+                className="flex justify-between ml-20 w-11/12 my-3 h-30 bg-sky-500 rounded-lg items-center "
               >
-                <div className="flex justify-between ">
-                  <div className=" w-96 flex justify-between items-center">
-                    <div className=" text-gray-50 ml-3">
-                      Order no: {el.itemId}
-                    </div>
-                    <div>{el.task}</div>
-                    <div className="text-gray-50 ">status: {el.status}</div>
-                  </div>
+                {/* <div className="flex justify-between "> */}
+                {/* <div className=" w-96 flex justify-between items-center"> */}
+                <div className=" text-gray-50 ml-3 font-semibold">
+                  Order no: {el.itemId}
                 </div>
+                <div className="font-semibold">Task : {el.task}</div>
+                <div className="text-gray-50 font-semibold ">
+                  status: {el.status}
+                </div>
+                {/* </div> */}
+                {/* </div> */}
 
-                <div className="flex">
-                  <button
-                    onClick={() => updateStatusStockIn(el.id)}
-                    className=" m-3  bg-sky-600 rounded-lg p-1 text-white"
-                  >
-                    approve
-                  </button>
-                  <button className=" m-3  bg-sky-600 rounded-lg p-1 text-white">
-                    cancel
-                  </button>
-                </div>
+                {el.status === "REJECT" ? (
+                  <div className="flex mr-10">
+                    <div className=" my-3 px-4  bg-rose-900 rounded-lg p-1 text-white font-semibold">
+                      Task has been cancel
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex">
+                    <button
+                      onClick={() => updateStatusStockIn(el.id)}
+                      className=" m-3  bg-sky-600 rounded-lg p-1 text-white font-semibold"
+                    >
+                      approve
+                    </button>
+                    <button
+                      className=" m-3  bg-sky-600 rounded-lg p-1 text-white font-semibold"
+                      onClick={() => updateStatusCancel(el.id)}
+                    >
+                      cancel
+                    </button>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="relative  flex-col mt-10 flex justify-between min-h-screen overflow-hidden h-14 mr-10 ">
+      {/* <div className="relative  flex-col mt-10 flex justify-between min-h-screen overflow-hidden h-14 mr-10 ">
         <div className=" w-70 h-70 p-6  bg-blue-700  rounded-xl shadow-md lg:max-w-xl">
           <CircularProgressbar
             className=" p-7"
@@ -144,7 +164,7 @@ export default function Assign() {
             <span className="flex ml-10">sdfsdfs</span>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

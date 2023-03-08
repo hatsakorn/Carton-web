@@ -25,6 +25,7 @@ const router = createBrowserRouter([
   // for test
   { path: "/main", element: <MainPageLook /> },
   { path: "/employeehaha", element: <Employee /> },
+  { path: "/assignHaha", element: <Assign /> },
 
   {
     path: "/",

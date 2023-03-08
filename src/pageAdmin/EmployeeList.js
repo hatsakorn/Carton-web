@@ -2,6 +2,7 @@ import useAdmin from "../hooks/useAdmin";
 
 export default function EmployeeList() {
   const { getEmployee } = useAdmin();
+
   return (
     <>
       {getEmployee.map((el) => (
