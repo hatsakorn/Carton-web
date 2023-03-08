@@ -10,7 +10,7 @@ import Employee from "../pageAdmin/Employee";
 import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
 import HomePageCustomer from "../pageCustomer/HomePageCustomer";
-import MainPage from "../page/MainPage";
+// import MainPage from "../page/MainPage";
 import ScanCustomer from "../pageCustomer/ScanCustomer";
 import ScanEmployee from "../pageEmployee/ScanEmployee";
 import HomeAdmin from "../pageAdmin/HomePageAdmin";
@@ -19,6 +19,7 @@ import AdminAssign from "../pageAdmin/AdminAssign";
 import ProtectedAdminRoute from "../feature/auth/ProtectedAdminRoute";
 import HomePage from "../page/HomePage";
 import ProtectedEmployeeRoute from "../feature/auth/ProtectEmployeeRoute";
+import MainPageLook from "../pageAdmin/MainPageLook";
 import PreventEmployeeRoute from "../feature/auth/PreventEmployeeRoute";
 
 const router = createBrowserRouter([
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
 
   {
     path: "/mainpage",
-    element: <MainPage />
+    element: <MainPageLook />
   },
   //for customer
   {

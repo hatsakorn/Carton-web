@@ -174,13 +174,13 @@ export default function AdminAssign() {
                   {nullShelf.map((el) => (
                     <div
                       key={el.id}
-                      className=" bg-blue-700 my-2 flex justify-between items-center p-4 rounded-md text-white font-semibold hover:scale-110 duration-300 m-20 hover:bg-blue-500"
+                      className=" bg-blue-700 my-2 flex justify-between items-center p-4 rounded-md text-white font-semibold m-20 hover:bg-blue-500"
                     >
                       <div>Item no.{el.id}</div>
                       {/* <div>customer.first.name</div> */}
                       <div>Shelf : {selectBox}</div>
                       <div className="flex items-center">
-                        <div className="mr-3 ">emp id</div>
+                        <div className="mr-2">emp id </div>
                         <AdminGetEmployee />
                       </div>
                       {/* <div>status:</div> */}
@@ -195,60 +195,9 @@ export default function AdminAssign() {
                   ))}
                 </div>
               </div>
-              {/* <div className="flex justify-between mt-10 mx-24 "> */}
-              {/* <div className="flex">
-                  <span>Section 001</span>
-                </div> */}
-              {/* <div className="flex  ">
-                  <Progress
-                    progress={45}
-                    label="use"
-                    labelPosition="outside"
-                    labelProgress={true}
-                  />
-                </div> */}
-              {/* </div> */}
             </div>
           </div>
         </div>
-
-        {/* <div className="relative  flex-col mt-10 flex justify-evenly min-h-screen overflow-hidden h-14 bg-red-800 ">
-          <div className=" w-70 h-70 p-6  bg-blue-700  rounded-xl shadow-md lg:max-w-xl">
-            <CircularProgressbar
-              className=" p-7"
-              value={percentage}
-              text={`${percentage}%`}
-            ></CircularProgressbar>
-          </div>
-          <div className=" w-60 p-3 bg-lime-700 rounded-md lg:max-w-xl flex row justify-between mr-10">
-            <div className="flex text-xs">Received</div>
-            <div className="flex text-xs">Sent</div>
-            <div className="flex text-xs">Expeted</div>
-          </div>
-
-          <div className=" w-70 h-96 pr-10 bg-zinc-700 rounded-md lg:max-w-xl flex-row ">
-            <div className="flex justify-between">
-              <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
-                <i className=" fa-solid fa-box   text-slate-100 text-3xl m-4"></i>
-              </div>
-              <span className="flex ml-10">Detail:</span>
-            </div>
-
-            <div className="flex justify-between">
-              <div className="flex  bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
-                <i className=" fa-solid fa-box text-slate-100 text-3xl m-4 "></i>
-              </div>
-              <span className="flex ml-10 ">Detail:</span>
-            </div>
-
-            <div className="flex justify-between">
-              <div className="flex bg-blue-700 hover:bg-blue-400 m-1 rounded-xl shadow-xl ">
-                <i className=" fa-solid fa-box  text-slate-100 text-3xl m-4 "></i>
-              </div>
-              <span className="flex ml-10">Detail:</span>
-            </div>
-          </div>
-        </div> */}
       </div>
     </>
   );
