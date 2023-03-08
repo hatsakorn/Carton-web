@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "../components/Modal";
 import RegisterEmployeeForm from "../pageCustomer/RegisterEmployeeForm";
+import EmployeeList from "./EmployeeList";
 
 export default function Employee() {
   const [open, setOpen] = useState(false);
@@ -25,45 +26,8 @@ export default function Employee() {
             {/* body */}
             <div className="mt-20 space-y-6 flex flex-col justify-center items-center">
               {/* employee list */}
-              <div className="flex justify-between  w-[650px] h-30 bg-sky-500 rounded-lg ">
-                <div className="flex justify-between ">
-                  <div className=" w-96 flex justify-between items-center">
-                    <div className=" text-gray-50 ml-3 font-semibold text-[16px]">
-                      Employee Name:
-                    </div>
-                    <div className="text-gray-50 font-semibold text-[16px]">
-                      User id:
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center">
-                  {/* <div className=" m-3  "></div> */}
-                  <button className=" m-3  bg-rose-600 w-20 flex justify-center rounded-lg p-1 text-white hover:opacity-90">
-                    Delete
-                  </button>
-                </div>
-              </div>
+              <EmployeeList />
               {/* em2 */}
-              <div className="flex justify-between  w-[650px] h-30 bg-sky-500 rounded-lg ">
-                <div className="flex justify-between ">
-                  <div className=" w-96 flex justify-between items-center">
-                    <div className=" text-gray-50 ml-3 font-semibold text-[16px]">
-                      Employee Name:
-                    </div>
-                    <div className="text-gray-50 font-semibold text-[16px]">
-                      User id:
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center">
-                  {/* <div className=" m-3  "></div> */}
-                  <div className=" m-3  bg-rose-600 w-20 flex justify-center rounded-lg p-1 text-white">
-                    Delete
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

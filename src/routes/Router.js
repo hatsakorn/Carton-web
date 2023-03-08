@@ -19,9 +19,13 @@ import AdminAssign from "../pageAdmin/AdminAssign";
 import ProtectedAdminRoute from "../feature/auth/ProtectedAdminRoute";
 import HomePage from "../page/HomePage";
 import ProtectedEmployeeRoute from "../feature/auth/ProtectEmployeeRoute";
+import MainPageLook from "../pageAdmin/MainPageLook";
 
 const router = createBrowserRouter([
   // for test
+  { path: "/main", element: <MainPageLook /> },
+  { path: "/employeehaha", element: <Employee /> },
+
   {
     path: "/",
     element: <Navigate to="/mainpage" />
@@ -85,10 +89,10 @@ const router = createBrowserRouter([
       { path: "/assign", element: <Assign /> },
       { path: "/employee", element: <Employee /> },
       // for Employee
-      { path: "/homeEmployee", element: <HomePageEmployee /> },
-      { path: "/scanEmployee", element: <ScanEmployee /> }
+      { path: "/homeEmployee", element: <HomePageEmployee /> }
     ]
   }
+
   // { path: "/invoice" }
 
   // for test
