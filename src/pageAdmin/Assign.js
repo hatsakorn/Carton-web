@@ -32,7 +32,11 @@ export default function Assign() {
             {itSelfWork.map((el) => (
               <div
                 key={el.id}
-                className="flex justify-between ml-20 w-11/12 my-3 h-30 bg-sky-500 rounded-lg hover:scale-105 duration-300 hover:bg-blue-400 mt-1 pt-3 shadow-xl "
+                className={`${
+                  el.status === "COMPLETE"
+                    ? "hidden"
+                    : "flex justify-between ml-20 w-11/12 my-3 h-30 bg-sky-500 rounded-lg hover:scale-105 duration-300 hover:bg-blue-400 mt-1 pt-3 shadow-xl"
+                }`}
               >
                 <div className="flex justify-between ml-10">
                   <div className=" w-96 flex justify-between items-center ml-5 font-bold text-xl">
