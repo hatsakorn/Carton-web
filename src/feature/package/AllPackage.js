@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "../../components/Modal";
 import EditPackage from "./EditPackage";
 import PackageForm from "../package/PackageForm";
+import useAuth from "../../hooks/useAuth";
 
 function AllPackage({ showPackage, open, setOpen }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,6 +13,8 @@ function AllPackage({ showPackage, open, setOpen }) {
   const [selectedEditPackage, setSelectedEditPackage] = useState(0);
   const [selectedPackageId, setSelectedPackageId] = useState({});
   const [active, setActive] = useState(false);
+
+  const { authenticatedUser } = useAuth();
 
   useEffect(() => {
     // const totalPages = () => {
@@ -59,24 +62,26 @@ function AllPackage({ showPackage, open, setOpen }) {
           <div className="grid  grid-cols-2  w-11/12">
             {itemsToDisplay.map((e) => (
               <div
-                className="  w-9/12  justify-items-stretch space-y-3  drop-shadow-2xl rounded p-6 border-blue-600 border-2 mb-4"
+                className=" bg-white rounded-xl w-9/12 h-64 justify-items-stretch space-y-3  drop-shadow-2xl p-6  hover:scale-105 duration-300 mb-4"
                 key={e.id}
               >
                 <div>
                   <div className="flex justify-between">
                     <h1>Package: {e.title}</h1>
-                    <button onClick={() => handleOpenEditModal(e.id)}>
-                      <i className="fa-solid fa-wrench"></i>
-                    </button>
+                    {authenticatedUser?.role === "ADMIN" && (
+                      <button onClick={() => handleOpenEditModal(e.id)}>
+                        <i className="fa-solid fa-wrench"></i>
+                      </button>
+                    )}
                   </div>
                   <div className="ml-8 pb-10 pt-4 ">
                     <h1>Detail: {e.description}</h1>
                     <h1>Price: {e.price}</h1>
                     <h1>Duration:</h1>
                   </div>
-                  <div className="flex justify-center  bg-blue-600 rounded-md  ">
+                  <div className="flex justify-center bg-blue-600 rounded-md hover:bg-blue-200 shadow-xl  ">
                     <button
-                      className="w-72 h-10 text-white text-xl font-semibold "
+                      className="w-full h-10 text-white text-xl font-semibold "
                       onClick={() => showPackageModal(e.id, e.title)}
                     >
                       Select

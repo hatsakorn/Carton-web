@@ -5,7 +5,7 @@ import { Link, Navigate } from "react-router-dom";
 export default function DropDown() {
   const [isOpen, setOpen] = useState(false);
   const dropdownEl = useRef();
-  const { logout } = useAuth();
+  const { logout, authenticatedUser } = useAuth();
 
   const handleDropDown = () => {
     setOpen(!isOpen);
@@ -23,18 +23,34 @@ export default function DropDown() {
 
   return (
     <div className=" dropdown flex m-3" ref={dropdownEl}>
-      <button
-        className="text-black hover:text-purple border border-purple-200 hover:bg-purple-600 focus:ring-4 focus:outline-none focus:ring-transparent font-medium rounded-full text-sm px-4 py-2.5 text-center inline-flex items-center"
-        onClick={handleDropDown}
-      ></button>
+      <button>
+        <i
+          className="fa-solid fa-arrow-right-from-bracket text-zinc-50 text-3xl m-4"
+          onClick={handleDropDown}
+        ></i>
+      </button>
 
       <div
         id="dropdown"
-        className={`absolute right-1 top-[65px] z-10 w-40 bg-white divide-gray-100 rounded divide-y  shadow ${
+        className={`z-10 bottom-10 top-96 left-21 bg-white divide-gray-100  divide-y   ${
           isOpen ? "block" : "hidden"
         }`}
       >
-        <ul className=" z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow ">
+        {authenticatedUser.role === "ADMIN" && (
+          <ul className=" z-10 w-52 bg-white rounded divide-y divide-gray-100 shadow ">
+            <li>
+              <Link to="/employee">
+                <button
+                  // onClick={logout}
+                  className=" text-red-600 block py-2 px-4 hover:bg-gray-100 pr-[90px]"
+                >
+                  Register Employee
+                </button>
+              </Link>
+            </li>
+          </ul>
+        )}
+        <ul className=" z-10 w-52 bg-white rounded divide-y divide-gray-100 shadow ">
           <li>
             <Link to="/mainpage">
               <button

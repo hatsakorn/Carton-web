@@ -4,11 +4,14 @@ import Modal from "../components/Modal";
 import * as packageApi from "../api/package-api";
 import AllPackage from "../feature/package/AllPackage";
 import AddPackageModal from "../feature/package/AddPackageModal";
+import useAuth from "../hooks/useAuth";
 
 export default function Package() {
   const [open, setOpen] = useState(false);
   const [showPackage, setShowPackage] = useState([]);
   const [openAddPackageModal, setOpenAddPackageModal] = useState(false);
+
+  const { authenticatedUser, fetchAuthUser } = useAuth();
 
   useEffect(() => {
     const fetchPackage = async () => {
@@ -16,6 +19,7 @@ export default function Package() {
       setShowPackage(res.data.allPackage);
     };
     fetchPackage();
+    fetchAuthUser();
   }, []);
 
   const addPackageModal = () => {
@@ -37,12 +41,14 @@ export default function Package() {
                   <h1 className="text-2xl font-semibold">Package</h1>
 
                   <div>
-                    <button
-                      className="text-right bg-blue-600 rounded-md text-white p-3 mx-3 "
-                      onClick={addPackageModal}
-                    >
-                      Add Package
-                    </button>
+                    {authenticatedUser.role === "ADMIN" && (
+                      <button
+                        className="text-right bg-blue-600 rounded-md text-white p-3 mx-3 "
+                        onClick={addPackageModal}
+                      >
+                        Add Package
+                      </button>
+                    )}
                     {openAddPackageModal && (
                       <Modal
                         setOpenAddPackageModal={setOpenAddPackageModal}
@@ -69,26 +75,6 @@ export default function Package() {
           </div>
         </div>
       </div>
-      {/* {open && (
-        <Modal
-          setOpen={setOpen}
-          open={open}
-          onClose={() => setOpen(false)}
-          className="z-50 inset-0 overflow-y-auto"
-        >
-          <form onSubmit={handleSubmitForm}>
-            <PackageForm showPackage={showPackage} />
-            <div className="bg-blue-600 rounded flex justify-center h-[50px] my-7">
-              <button
-                type="submit"
-                className="text-white text-xl font-semibold"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </Modal>
-      )} */}
     </>
   );
 }

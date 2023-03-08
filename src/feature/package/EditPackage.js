@@ -4,9 +4,6 @@ import * as packageApi from "../../api/package-api";
 function EditPackage({ selectedEditPackage, isActive, setActive }) {
   const handleEditPackage = async (e) => {
     e.preventDefault();
-    console.log(selectedEditPackage);
-    console.log("---------------------------------------------------");
-    console.log(isActive);
     await packageApi.editPackage(selectedEditPackage, { isActive });
   };
   return (
