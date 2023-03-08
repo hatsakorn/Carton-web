@@ -1,19 +1,32 @@
-import * as itemApi from '../api/items-api'
+import * as itemApi from "../api/items-api";
+import { toast } from "react-toastify";
 
-export default function qrEmployee({ onClose,data }) {
+export default function qrEmployee({ onClose, data }) {
   const HandleToggleButtonDateIn = (itemId) => {
     const input = {
       itemId: itemId
+    };
+
+    try {
+      const res = itemApi.updateDateIn(input);
+      toast.success("success.");
+    } catch (error) {
+      toast.error(error.response?.data.message);
     }
-    const res = itemApi.updateDateIn(input);
-  }
+  };
 
   const HandleToggleButtonDateOut = (itemId) => {
     const input = {
       itemId: itemId
+    };
+
+    try {
+      const res = itemApi.updateDateOut(input);
+      toast.success("success.");
+    } catch (error) {
+      toast.error(error.response?.data.message);
     }
-    const res = itemApi.updateDateIn(input);
-  }
+  };
   return (
     <div className="flex justify-between">
       <div className="flex bg-gradient-to-r bg-white  rounded-l-xl  w-full  h-96">
@@ -25,13 +38,19 @@ export default function qrEmployee({ onClose,data }) {
           <p>warehouseLocation: {data[0]?.location}</p>
         </div>
         <div className="flex row justify-evenly ml-4">
-              <button className="flex h-10  w-20 text-center text-xl  text-white rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500" onClick={()=>HandleToggleButtonDateIn(data[0]?.item_id)}>
-                check in
-              </button>
-              <button className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500" onClick={()=>HandleToggleButtonDateOut(data[0]?.item_id)}>
-                check out
-              </button>
-            </div>
+          <button
+            className="flex h-10  w-20 text-center text-xl  text-white rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500"
+            onClick={() => HandleToggleButtonDateIn(data[0]?.item_id)}
+          >
+            check in
+          </button>
+          <button
+            className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500"
+            onClick={() => HandleToggleButtonDateOut(data[0]?.item_id)}
+          >
+            check out
+          </button>
+        </div>
       </div>
     </div>
   );
