@@ -2,6 +2,7 @@ import Input from "../components/Input";
 import * as authApi from "../api/auth-api";
 import { useState } from "react";
 import validateRegisterEmployee from "../validatetors/Auth-validatorEmployee";
+import { useNavigate } from "react-router-dom";
 
 const initialInput = {
   username: "",
@@ -16,6 +17,8 @@ const initialInput = {
 export default function RegisterEmployeeForm({ onClose }) {
   const [input, setInput] = useState(initialInput);
   const [error, setError] = useState({});
+
+  const navigate = useNavigate();
 
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -34,6 +37,7 @@ export default function RegisterEmployeeForm({ onClose }) {
         setInput(initialInput);
         onClose();
       }
+      navigate(0);
     } catch (err) {
       console.log(err.response?.data.Message);
       console.log(err.response.data.message);
@@ -110,6 +114,7 @@ export default function RegisterEmployeeForm({ onClose }) {
         )}
         <h1>Password</h1>
         <Input
+          type="password"
           name="password"
           value={input.password}
           onChange={handleChangeInput}
@@ -123,6 +128,7 @@ export default function RegisterEmployeeForm({ onClose }) {
         )}
         <h1>Confirm Password </h1>
         <Input
+          type="password"
           name="confirmPassword"
           value={input.confirmPassword}
           onChange={handleChangeInput}
