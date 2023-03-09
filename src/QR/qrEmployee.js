@@ -30,26 +30,30 @@ export default function qrEmployee({ onClose, data }) {
   return (
     <div className="flex justify-between">
       <div className="flex bg-gradient-to-r bg-white  rounded-l-xl  w-full  h-96">
-        <div className="w-full  p-6 m-auto bg-white rounded-md lg:max-w-xl">
-          <h1 className=" text-center text-2xl text-black">Verify</h1>
-          <p>customerId: {data[0]?.first_name}</p>
-          <p>itemId: {data[0]?.item_id}</p>
-          <p>shelfId: {data[0]?.shelf}</p>
-          <p>warehouseLocation: {data[0]?.location}</p>
-        </div>
-        <div className="flex row justify-evenly ml-4">
-          <button
-            className="flex h-10  w-20 text-center text-xl  text-white rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500"
-            onClick={() => HandleToggleButtonDateIn(data[0]?.item_id)}
-          >
-            check in
-          </button>
-          <button
-            className="flex h-10  w-20 text-center text-xl  text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500"
-            onClick={() => HandleToggleButtonDateOut(data[0]?.item_id)}
-          >
-            check out
-          </button>
+        <div className="flex-col w-full p-6 m-auto bg-white rounded-md lg:max-w-xl">
+          <h1 className=" text-center text-2xl text-black font-bold">Verify</h1>
+          <p className="  text-xl text-black">
+            Customer Id: {data[0]?.first_name} {data[0]?.last_name}
+          </p>
+          <p className=" text-xl text-black">Item Id: {data[0]?.item_id}</p>
+          <p className=" text-xl text-black">Shelf Id: {data[0]?.shelf}</p>
+          <p className=" text-xl text-black">
+            Warehouse Location: {data[0]?.location}
+          </p>
+          <div className="flex justify-evenly ml-4 w-96 mt-9 ">
+            <button
+              className="flex pt-2 pl-2 h-14 w-20 text-center text-lg text-white rounded-2xl shadow-xl bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-blue-400 "
+              onClick={() => HandleToggleButtonDateIn(data[0]?.item_id)}
+            >
+              check in
+            </button>
+            <button
+              className="flex pt-2 pl-2 h-14 w-24 text-center text-lg text-white rounded-2xl shadow-xl h-14 bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-blue-400"
+              onClick={() => HandleToggleButtonDateOut(data[0]?.item_id)}
+            >
+              check out
+            </button>
+          </div>
         </div>
       </div>
     </div>
