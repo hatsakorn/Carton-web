@@ -2,7 +2,10 @@ import Input from "../components/Input";
 import * as authApi from "../api/auth-api";
 import { useState } from "react";
 import validateRegisterEmployee from "../validatetors/Auth-validatorEmployee";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import * as adminApi from "../api/auth-admin";
+import useAdmin from "../hooks/useAdmin";
 
 const initialInput = {
   username: "",
@@ -17,8 +20,8 @@ const initialInput = {
 export default function RegisterEmployeeForm({ onClose }) {
   const [input, setInput] = useState(initialInput);
   const [error, setError] = useState({});
-
-  const navigate = useNavigate();
+  const { fetchEmployee } = useAdmin();
+  // const navigate = useNavigate();
 
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -30,18 +33,24 @@ export default function RegisterEmployeeForm({ onClose }) {
       const result = validateRegisterEmployee(input);
       if (result) {
         setError(result);
-        console.log(result, " hIIIIIII");
+        // console.log(result, " hIIIIIII");
       } else {
         setError({});
         await authApi.registerEmployee(input);
         setInput(initialInput);
+        // await adminApi.getEmployeeI();
+        await fetchEmployee();
         onClose();
       }
-      navigate(0);
     } catch (err) {
-      console.log(err.response?.data.Message);
-      console.log(err.response.data.message);
-      console.log(input);
+      toast.error(err.response?.data.message);
+      // const a = err.response.data.message;
+      // setError(a);
+      // console.log(error, "qwwqqqqqqq");
+      // console.log({});
+      // console.log(input);
+    } finally {
+      // navigate(0);
     }
   };
   return (
@@ -53,7 +62,7 @@ export default function RegisterEmployeeForm({ onClose }) {
           name="username"
           value={input.username}
           onChange={handleChangeInput}
-          error={error.username}
+          error={error.username && error}
         />
         {error && (
           <small className=" flex -mt-3 mb-3 font-bold text-red ">

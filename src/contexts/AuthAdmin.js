@@ -17,11 +17,10 @@ export default function AdminContextProvider({ children }) {
   };
 
   const fetchEmployee = async () => {
-    const res = await adminApi.getEmployee();
+    const res = await adminApi.getEmployeeI();
     setEmployee(res.data.employee);
     // console.log(res.data, "employee");
   };
-
   useEffect(() => {
     fetchNullShelf();
     fetchEmployee();
@@ -45,7 +44,8 @@ export default function AdminContextProvider({ children }) {
         setSelectEmployee,
         selectEmployee,
         itSelfWork,
-        fetchEmployeeWork
+        fetchEmployeeWork,
+        fetchEmployee
       }}
     >
       {children}
