@@ -10,14 +10,14 @@ function NavSideBar() {
     fetchAuthUser();
   }, []);
   return (
-    <div className="flex-col flex justify-evenly text-center w-20">
+    <div className="flex-col flex justify-evenly text-center w-28 -mt-8 h-[1000px] items-center ">
       <div className="m-1 rounded-xl">
         <i className="fa-solid fa-circle-user text-zinc-50 text-3xl m-4 bg-sky-600" />
         <div className="text-white">{authenticatedUser.firstName}</div>
         <div className="text-white">{authenticatedUser.role}</div>
       </div>
-
-      <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-sky-600">
+      {/* <div className="bg-green-700"> */}
+      <div className=" hover:bg-blue-400 p-3 rounded-xl shadow-xl bg-sky-600 ">
         <Link
           to={
             authenticatedUser?.role === "EMPLOYEE"
@@ -27,7 +27,7 @@ function NavSideBar() {
               : "/homeCustomer"
           }
         >
-          <i className="fa-solid fa-house  text-zinc-50 text-3xl m-4 "></i>
+          <i className="fa-solid fa-house  text-zinc-50 text-3xl m-1"></i>
         </Link>
       </div>
 
@@ -71,6 +71,7 @@ function NavSideBar() {
       <div className="flex hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-sky-600">
         <DropDown />
       </div>
+      {/* </div> */}
     </div>
   );
 }
