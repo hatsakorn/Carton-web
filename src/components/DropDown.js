@@ -22,17 +22,17 @@ export default function DropDown() {
   }, []);
 
   return (
-    <div className=" dropdown flex m-3" ref={dropdownEl}>
+    <div className=" dropdown flex " ref={dropdownEl}>
       <button>
         <i
-          className="fa-solid fa-arrow-right-from-bracket text-zinc-50 text-3xl m-4"
+          className="fa-solid fa-arrow-right-from-bracket text-zinc-50 text-3xl p-5 relative"
           onClick={handleDropDown}
         ></i>
       </button>
 
       <div
         id="dropdown"
-        className={`z-10 bottom-10 top-96 left-21 bg-white divide-gray-100  divide-y   ${
+        className={`z-10  bg-white divide-gray-100  divide-y  absolute left-24 rounded ${
           isOpen ? "block" : "hidden"
         }`}
       >
