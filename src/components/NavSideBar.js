@@ -12,7 +12,7 @@ function NavSideBar() {
   return (
     <div className="flex-col flex justify-evenly text-center w-28 -mt-8 h-[1000px] items-center ">
       <div className="m-1 rounded-xl">
-        <i className="fa-solid fa-circle-user text-zinc-50 text-3xl m-4 bg-sky-600" />
+        <i className="fa-solid fa-circle-user text-zinc-50 text-3xl m-4" />
         <div className="text-white">{authenticatedUser.firstName}</div>
         <div className="text-white">{authenticatedUser.role}</div>
       </div>
@@ -55,7 +55,7 @@ function NavSideBar() {
           <i className="fa-solid fa-paper-plane  text-zinc-50 text-3xl m-4 "></i>
         </Link>
       </div>
-      <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl">
+      <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-sky-600">
         <Link
           to={
             authenticatedUser?.role === "EMPLOYEE"
