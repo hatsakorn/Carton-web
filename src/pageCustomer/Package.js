@@ -33,9 +33,9 @@ export default function Package() {
   };
 
   const handleCloseModal = () => {
-    setOpenAddPackageModal(false)
-    Navigate(0)
-  }
+    setOpenAddPackageModal(false);
+    Navigate(0);
+  };
 
   // const handleSubmitForm = (e) => {
   //   e.preventDefault();
@@ -43,7 +43,7 @@ export default function Package() {
 
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between ">
         <div className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
           <div className="relative  flex flex-col justify-center min-h-screen overflow-hidden  h-14 mr-20 w-screen">
             <div className="flex justify-center h-[100%] ">
