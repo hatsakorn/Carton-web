@@ -5,6 +5,7 @@ import Script from "react-load-script";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import * as packageApi from "../api/package-api";
+import { Navigate } from "react-router";
 
 export default function HomePageCustomer() {
   const { customerItem } = useCustomer();
@@ -67,7 +68,9 @@ export default function HomePageCustomer() {
             console.log(error);
           });
       },
-      onFormClosed: () => {}
+      onFormClosed: () => {
+        Navigate(0);
+      }
     });
   };
 
