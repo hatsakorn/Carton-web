@@ -6,6 +6,7 @@ import AllPackage from "../feature/package/AllPackage";
 import AddPackageModal from "../feature/package/AddPackageModal";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
+import { Navigate } from "react-router";
 
 export default function Package() {
   const [open, setOpen] = useState(false);
@@ -30,6 +31,11 @@ export default function Package() {
   const addPackageModal = () => {
     setOpenAddPackageModal(true);
   };
+
+  const handleCloseModal = () => {
+    setOpenAddPackageModal(false)
+    Navigate(0)
+  }
 
   // const handleSubmitForm = (e) => {
   //   e.preventDefault();
@@ -58,7 +64,7 @@ export default function Package() {
                       <Modal
                         setOpenAddPackageModal={setOpenAddPackageModal}
                         open={openAddPackageModal}
-                        onClose={() => setOpenAddPackageModal(false)}
+                        onClose={() => handleCloseModal()}
                       >
                         <AddPackageModal />
                       </Modal>
