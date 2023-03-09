@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "../../components/Input";
 import * as packageApi from "../../api/package-api";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const initialInput = {
   title: "",
@@ -17,12 +18,15 @@ function AddPackageModal() {
   const [input, setInput] = useState(initialInput);
   const [file, setFile] = useState(null);
 
+  const navigate = useNavigate();
+
   const onChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
   const handleSubmitPackage = async (e) => {
     e.preventDefault();
+    navigate(0);
 
     try {
       const formData = new FormData();
