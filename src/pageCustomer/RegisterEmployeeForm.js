@@ -116,7 +116,6 @@ export default function RegisterEmployeeForm({ onClose }) {
         <Input
           type="password"
           name="password"
-          type="password"
           value={input.password}
           onChange={handleChangeInput}
           error={error.password}
@@ -131,7 +130,6 @@ export default function RegisterEmployeeForm({ onClose }) {
         <Input
           type="password"
           name="confirmPassword"
-          type="password"
           value={input.confirmPassword}
           onChange={handleChangeInput}
           error={error.confirmPassword}
