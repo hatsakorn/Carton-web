@@ -10,66 +10,68 @@ function NavSideBar() {
     fetchAuthUser();
   }, []);
   return (
-    <div className="flex-col flex justify-evenly text-center w-28 -mt-8 h-[1000px] items-center ">
-      <div className="m-1 rounded-xl">
-        <i className="fa-solid fa-circle-user text-zinc-50 text-3xl m-4" />
-        <div className="text-white">{authenticatedUser.firstName}</div>
-        <div className="text-white">{authenticatedUser.role}</div>
-      </div>
-      {/* <div className="bg-green-700"> */}
-      <div className=" hover:bg-blue-400 p-3 rounded-xl shadow-xl bg-sky-600 ">
-        <Link
-          to={
-            authenticatedUser?.role === "EMPLOYEE"
-              ? "/homeEmployee"
-              : authenticatedUser?.role === "ADMIN"
-              ? "/homeAdmin"
-              : "/homeCustomer"
-          }
-        >
-          <i className="fa-solid fa-house  text-zinc-50 text-3xl m-1"></i>
-        </Link>
-      </div>
+    <div>
+      <div className="flex-col flex justify-evenly text-center w-28 -mt-8 h-[1000px] items-center ">
+        <div className="m-1 rounded-xl">
+          <i className="fa-solid fa-circle-user text-zinc-50 text-3xl m-4" />
+          <div className="text-white">{authenticatedUser.firstName}</div>
+          <div className="text-white">{authenticatedUser.role}</div>
+        </div>
+        {/* <div className="bg-green-700"> */}
+        <div className=" hover:bg-blue-400 p-3 rounded-xl shadow-xl bg-sky-600 ">
+          <Link
+            to={
+              authenticatedUser?.role === "EMPLOYEE"
+                ? "/homeEmployee"
+                : authenticatedUser?.role === "ADMIN"
+                ? "/homeAdmin"
+                : "/homeCustomer"
+            }
+          >
+            <i className="fa-solid fa-house  text-zinc-50 text-3xl m-1"></i>
+          </Link>
+        </div>
 
-      <div
-        className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-sky-600"
-        // style={{ visibility: "hidden" }}
-      >
-        <Link
-          to={authenticatedUser?.role === "EMPLOYEE" ? "/home" : "/package"}
+        <div
+          className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-sky-600"
+          // style={{ visibility: "hidden" }}
         >
-          <i className="fa-solid fa-dolly  text-zinc-50 text-3xl m-4"></i>
-        </Link>
-      </div>
+          <Link
+            to={authenticatedUser?.role === "EMPLOYEE" ? "/home" : "/package"}
+          >
+            <i className="fa-solid fa-dolly  text-zinc-50 text-3xl m-4"></i>
+          </Link>
+        </div>
 
-      <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-sky-600">
-        <Link
-          to={
-            authenticatedUser?.role === "EMPLOYEE"
-              ? "/assign"
-              : authenticatedUser?.role === "ADMIN"
-              ? "/adminAssign"
-              : "/home"
-          }
-        >
-          <i className="fa-solid fa-paper-plane  text-zinc-50 text-3xl m-4 "></i>
-        </Link>
-      </div>
-      <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-sky-600">
-        <Link
-          to={
-            authenticatedUser?.role === "EMPLOYEE"
-              ? "/scanEmployee"
-              : authenticatedUser?.role === "ADMIN"
-              ? "/home"
-              : "/ScanCustomer"
-          }
-        >
-          <i className="fa-solid fa-qrcode  text-zinc-50 text-3xl m-4"></i>
-        </Link>
-      </div>
-      <div className="flex hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-sky-600">
-        <DropDown />
+        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-sky-600">
+          <Link
+            to={
+              authenticatedUser?.role === "EMPLOYEE"
+                ? "/assign"
+                : authenticatedUser?.role === "ADMIN"
+                ? "/adminAssign"
+                : "/home"
+            }
+          >
+            <i className="fa-solid fa-paper-plane  text-zinc-50 text-3xl m-4 "></i>
+          </Link>
+        </div>
+        <div className=" hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-sky-600">
+          <Link
+            to={
+              authenticatedUser?.role === "EMPLOYEE"
+                ? "/scanEmployee"
+                : authenticatedUser?.role === "ADMIN"
+                ? "/home"
+                : "/ScanCustomer"
+            }
+          >
+            <i className="fa-solid fa-qrcode  text-zinc-50 text-3xl m-4"></i>
+          </Link>
+        </div>
+        <div className="flex hover:bg-blue-400 m-1 rounded-xl shadow-xl bg-sky-600">
+          <DropDown />
+        </div>
       </div>
       {/* </div> */}
     </div>
