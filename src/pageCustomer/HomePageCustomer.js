@@ -84,9 +84,9 @@ export default function HomePageCustomer() {
     <>
       <Script url="https://cdn.omise.co/omise.js" onLoad={handleLoadScript} />
       <div className="flex justify-between">
-        <div className="flex justify-center bg-white  rounded-xl shadow-md w-full overflow-scroll">
+        <div className="flex justify-center bg-slate-50  rounded-xl shadow-md w-full overflow-scroll">
           <div className="relative  flex flex-col mt-5 min-h-screen  rounded-l-xl h-14 w-screen ">
-            <div className=" w-11/12 bg-white rounded-r-lg  rounded-xl text-white ">
+            <div className=" w-11/12  rounded-r-lg  rounded-xl text-black ">
               {customerItem &&
                 customerItem?.map((el, index) => {
                   const startDate = new Date(el.Items[0].contractStartDate);
@@ -103,41 +103,56 @@ export default function HomePageCustomer() {
                       key={el.id}
                       className="flex-col space-x-10 mt-5 mb-3 drop-shadow-xl"
                     >
-                      <div className="bg-sky-600 shadow rounded-lg p-4 ml-5">
-                        <div className="font-bold mb-2">ID: {el.id}</div>
-                        <div className="mb-2">
-                          Details: {el.Items[0].details}
-                        </div>
-                        <div>Status: {el.status}</div>
-                        <div>Date In: {el.Items[0].dateIn}</div>
-                        <div>Date Out: {el.Items[0].dateOut}</div>
-                        <button
-                          className="my-5 h-10 w-28 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-md  text-black"
-                          onClick={() => handleToggleModal(index)}
-                        >
-                          More details
-                        </button>
-
-                        <form>
-                          <div
-                            id="credit-card"
-                            type="button"
-                            onClick={(e) => handleClick(e, el.id, amount)}
-                          >
-                            <button className="bg-gradient-to-r from-pink-500 hover:to-yellow-600  h-10 w-20 rounded-xl shadow-md  text-white">
-                              Payment
-                            </button>
+                      <div className=" bg-white shadow rounded-lg p-4 ml-20">
+                        <div className="flex justify-between">
+                          <div className="flex font-bold mb-2">ID: {el.id}</div>
+                          <div className="flex mb-2">
+                            Details: {el.Items[0].details}
                           </div>
-                        </form>
+                          <div className="flex">Status: {el.status}</div>
+                          <div className="flex">
+                            Date In:
+                            {new Date(el.Items[0].dateIn).toLocaleString(
+                              "en-us"
+                            )}
+                          </div>
+
+                          <div className="flex ">
+                            Date Out:
+                            {new Date(el.Items[0].dateOut).toLocaleString(
+                              "en-us"
+                            )}
+                          </div>
+                        </div>
+
+                        <div className=" flex justify-between">
+                          <button
+                            className=" flex m-10 h-10 w-28 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-md  text-white font-semibold"
+                            onClick={() => handleToggleModal(index)}
+                          >
+                            More details
+                          </button>
+                          <form className="flex">
+                            <div
+                              id="credit-card"
+                              type="button"
+                              onClick={(e) => handleClick(e, el.id, amount)}
+                              className="mt-10"
+                            >
+                              <button className=" bg-rose-500 hover:bg-rose-300 h-10 w-20 rounded-xl shadow-md  text-white font-semibold">
+                                Payment
+                              </button>
+                            </div>
+                          </form>
+                        </div>
 
                         {showModalIndex === index && (
-                          <div className=" bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl shadow-md pb-2 pl-5  text-white py-4 my-3">
+                          <div className="flex justify-between bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl shadow-md pb-2 pl-5  text-white py-4 my-3">
                             <h2 className="font-semibold	">Details</h2>
                             <p>Invoice Id: {el.id}</p>
                             <p>Package Id: {el.Items[0].packageId}</p>
-                            <p>Shelf Id: {el.Items[0].shelfId}</p>
                             <button
-                              className="bg-gradient-to-r from-cyan-500 to-blue-500  h-10 w-20 rounded-xl shadow-md  text-white"
+                              className="bg-gradient-to-r from-cyan-500 to-blue-500  h-10 w-20 rounded-xl shadow-md  text-white mr-5"
                               onClick={() => handleToggleModal(null)}
                             >
                               Close
