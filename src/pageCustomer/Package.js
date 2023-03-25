@@ -42,7 +42,7 @@ export default function Package() {
   return (
     <>
       <div className="flex justify-between ">
-        <div className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
+        <div className="flex justify-center bg-gradient-to-r bg-white   shadow-md w-full">
           <div className="relative  flex flex-col justify-center min-h-screen overflow-hidden  h-14 mr-20 w-screen">
             <div className="flex justify-center h-[100%] ">
               <div className=" w-11/12 overflow-scroll ">
@@ -52,7 +52,7 @@ export default function Package() {
                   <div>
                     {authenticatedUser.role === "ADMIN" && (
                       <button
-                        className="text-right bg-blue-600 rounded-md text-white p-3 mx-3 "
+                        className="text-right bg-sky-600 rounded-md text-white p-3 mx-3 "
                         onClick={addPackageModal}
                       >
                         Add Package

@@ -27,7 +27,9 @@ export default function AuthCustomerProvider({ children }) {
   }, [authenticatedUser, customerId]);
 
   return (
-    <AuthCustomer.Provider value={{ customerId, customerItem }}>
+    <AuthCustomer.Provider
+      value={{ customerId, customerItem, fetchGetCustomer }}
+    >
       {children}
     </AuthCustomer.Provider>
   );

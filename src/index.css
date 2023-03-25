@@ -9,7 +9,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #006ec5;
 }
 
 code {
@@ -18,5 +17,5 @@ code {
 }
 
 color {
-  background: #006ec5;
+  /* background: #006ec5; */
 }

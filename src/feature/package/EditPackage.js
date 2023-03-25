@@ -1,7 +1,10 @@
 // import { useState } from "react";
 import * as packageApi from "../../api/package-api";
+import useAuth from "../../hooks/useAuth";
 
 function EditPackage({ selectedEditPackage, isActive, setActive }) {
+  const { authenticatedUser, fetchAuthUser } = useAuth();
+
   const handleEditPackage = async (e) => {
     e.preventDefault();
     await packageApi.editPackage(selectedEditPackage, { isActive });
@@ -28,7 +31,15 @@ function EditPackage({ selectedEditPackage, isActive, setActive }) {
           />
           <label>InActive</label>
         </div>
-        <div className="flex justify-center bg-blue-600 rounded-md">
+        <div
+          className={`flex justify-center ${
+            authenticatedUser.role === "ADMIN"
+              ? "bg-sky-600 hover:bg-blue-400"
+              : authenticatedUser.role === "EMPLOYEE"
+              ? "bg-amber-600 hover:bg-amber-400 "
+              : "bg-green-500 hover:bg-green-400"
+          }  rounded-md`}
+        >
           <button className="text-white" type="submit">
             Edit Package
           </button>

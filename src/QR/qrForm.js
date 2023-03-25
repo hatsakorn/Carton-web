@@ -9,12 +9,14 @@ export default function qrForm({ onClose, link, data }) {
     <div className="flex justify-between">
       <div className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl ">
         <div className="flex-col h-96  m-9 w-96 rounded-2xl shadow-xl hover:scale-105 duration-300 ">
-          <h1 className="text-3xl font-semibold text-center  text-blue-700 h-10">
+          <h1
+            className={`text-3xl font-semibold text-center  text-black-600 h-10`}
+          >
             QR Code
           </h1>
           <div className=" ml-16  h-52 w-64 text-xl  bg-white text-black mt-10 font-bold">
-            <p>Customer Id:{payload.id}</p>
-            <p>Customer Name:{payload.firstName}</p>
+            <p>Customer Id: {payload.id}</p>
+            <p>Customer Name: {payload.firstName}</p>
             <p>Item Name: {data.Items[0].details}</p>
           </div>
         </div>

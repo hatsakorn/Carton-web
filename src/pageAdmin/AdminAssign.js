@@ -174,13 +174,13 @@ export default function AdminAssign() {
                   {nullShelf.map((el) => (
                     <div
                       key={el.id}
-                      className=" bg-blue-700 my-2 flex justify-between items-center p-4 rounded-md text-white font-semibold m-20 hover:bg-blue-500"
+                      className=" bg-sky-600 my-2 flex justify-between items-center p-4 rounded-md text-white font-semibold m-20 hover:bg-sky-400 "
                     >
                       <div>Item no.{el.id}</div>
                       {/* <div>customer.first.name</div> */}
                       <div>Shelf : {selectBox}</div>
                       <div className="flex items-center">
-                        <div className="mr-2">emp id </div>
+                        <div className="mr-2">emp name </div>
                         <AdminGetEmployee />
                       </div>
                       {/* <div>status:</div> */}

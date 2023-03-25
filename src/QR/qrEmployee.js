@@ -1,7 +1,9 @@
 import * as itemApi from "../api/items-api";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-export default function qrEmployee({ onClose, data }) {
+export default function QrEmployee({ onClose, data }) {
+  const navigate = useNavigate();
   const HandleToggleButtonDateIn = (itemId) => {
     const input = {
       itemId: itemId
@@ -11,6 +13,7 @@ export default function qrEmployee({ onClose, data }) {
       const res = itemApi.updateDateIn(input);
       toast.success("success.");
       onClose();
+      navigate(0);
     } catch (error) {
       toast.error(error.response?.data.message);
     }
@@ -25,6 +28,7 @@ export default function qrEmployee({ onClose, data }) {
       const res = itemApi.updateDateOut(input);
       toast.success("success.");
       onClose();
+      navigate(0);
     } catch (error) {
       toast.error(error.response?.data.message);
     }

@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 
 export default function EmployeeList() {
-  const { getEmployee } = useAdmin();
+  const { getEmployee, fetchEmployee } = useAdmin();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchEmployee();
+  }, []);
 
   const handleBackButton = () => {
     navigate(-1);
@@ -33,7 +38,6 @@ export default function EmployeeList() {
             </div>
 
             <div className="flex items-center">
-              {/* <div className=" m-3  "></div> */}
               <button className=" m-3  bg-rose-600 w-20 flex justify-center rounded-lg p-1 text-white hover:opacity-90">
                 Delete
               </button>

@@ -3,6 +3,7 @@ import Input from "../../components/Input";
 import * as packageApi from "../../api/package-api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import useAuth from "../../hooks/useAuth";
 
 const initialInput = {
   title: "",
@@ -18,6 +19,8 @@ function AddPackageModal() {
   const [input, setInput] = useState(initialInput);
   const [file, setFile] = useState(null);
 
+  const { authenticatedUser, fetchAuthUser } = useAuth();
+
   const navigate = useNavigate();
 
   const onChangeInput = (e) => {
@@ -26,7 +29,6 @@ function AddPackageModal() {
 
   const handleSubmitPackage = async (e) => {
     e.preventDefault();
-    navigate(0);
 
     try {
       const formData = new FormData();
@@ -40,13 +42,14 @@ function AddPackageModal() {
       const res = await packageApi.createPackage(formData);
       setInput(initialInput);
       toast.success("success.");
+      navigate(0);
     } catch (error) {
       toast.error(error.response?.data.message);
     }
   };
 
   return (
-    <div className="m-3">
+    <div className="m-3 ">
       <form onSubmit={handleSubmitPackage}>
         <h1>Package Name</h1>
         <Input
@@ -95,7 +98,15 @@ function AddPackageModal() {
             setFile(e.target.files[0]);
           }}
         />
-        <div className="flex justify-center bg-blue-600 rounded-md text-white p-3">
+        <div
+          className={`flex justify-center ${
+            authenticatedUser.role === "ADMIN"
+              ? "bg-sky-600 hover:bg-blue-400"
+              : authenticatedUser.role === "EMPLOYEE"
+              ? "bg-amber-600 hover:bg-amber-400 "
+              : "bg-green-500 hover:bg-green-400"
+          } rounded-md text-white p-3`}
+        >
           <button type="submit">Add Package</button>
         </div>
       </form>

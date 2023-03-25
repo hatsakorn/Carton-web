@@ -6,7 +6,11 @@ module.exports = {
     ["./src/**/*.{html,js}", "./node_modules/tw-elements/dist/js/**/*.js"]
   ],
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        bgBlueUser: "#006EC5"
+      }
+    }
   },
   plugins: [require("flowbite/plugin"), require("tw-elements/dist/plugin")]
 };

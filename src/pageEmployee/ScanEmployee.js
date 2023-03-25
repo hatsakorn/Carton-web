@@ -39,7 +39,7 @@ export default function ScanEmployee() {
   }, [result]);
 
   return (
-    <div className="flex justify-center  rounded-l-xl shadow-md w-full">
+    <div className="flex justify-center  shadow-md w-full">
       <div className=" bg-white shadow-2xl w-auto">
         <div className="flex-col justify-center text-center text-2xl mt-10">
           <h1 className=" text-3xl mb-4">Place the QR Code inside the area</h1>
@@ -54,7 +54,7 @@ export default function ScanEmployee() {
               </p>
             </div>
             <button
-              className=" bg-blue-400 h-10 w-24 rounded-xl shadow-md text-xl mt-4 ml-3 hover:scale-105 duration-300  hover:bg-blue-200"
+              className=" bg-amber-900 h-10 w-24 rounded-xl shadow-md text-xl mt-4 ml-3 hover:scale-105 duration-300  hover:bg-blue-200"
               onClick={() => setCameraOn(false)}
             >
               close
@@ -63,7 +63,7 @@ export default function ScanEmployee() {
           <div className=" flex justify-center">
             <button
               onClick={() => setCameraOn(true)}
-              className="bg-sky-600 m-3 p-1 hover:opacity-70 text-white rounded-2xl shadow-xl hover:scale-105 duration-300 h-20 w-96 "
+              className="bg-amber-900 m-3 p-1 hover:opacity-70 text-white rounded-2xl shadow-xl hover:scale-105 duration-300 h-20 w-96 "
             >
               <i className="fa-solid fa-camera text-3xl"> Scan QR Code</i>
             </button>

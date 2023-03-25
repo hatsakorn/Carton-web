@@ -17,14 +17,6 @@ function AllPackage({ showPackage, open, setOpen }) {
   const { authenticatedUser } = useAuth();
 
   useEffect(() => {
-    // const totalPages = () => {
-    //   showPackage.map((el, idx, array) => {
-    //     const item = Math.ceil(array.length / itemsPerPage);
-    //     setTotalPage(item);
-    //   });
-    // };
-    // localStorage.setItem("currentPage", currentPage);
-    // totalPages();
     setTotalPage(Math.ceil(showPackage.length / itemsPerPage));
   }, [showPackage, itemsPerPage]);
 
@@ -79,7 +71,15 @@ function AllPackage({ showPackage, open, setOpen }) {
                     <h1>Price: {e.price}</h1>
                     <h1>Duration:</h1>
                   </div>
-                  <div className="flex justify-center bg-blue-600 rounded-md hover:bg-blue-200 shadow-xl  ">
+                  <div
+                    className={`flex justify-center ${
+                      authenticatedUser.role === "ADMIN"
+                        ? "bg-sky-600 hover:bg-blue-400"
+                        : authenticatedUser.role === "EMPLOYEE"
+                        ? "bg-amber-600 hover:bg-amber-400 "
+                        : "bg-green-500 hover:bg-green-400"
+                    }  rounded-md hover:bg-blue-200 shadow-xl  `}
+                  >
                     <button
                       className="w-full h-10 text-white text-xl font-semibold "
                       onClick={() => showPackageModal(e.id, e.title)}

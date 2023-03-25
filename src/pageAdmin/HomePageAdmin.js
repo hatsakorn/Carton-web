@@ -86,7 +86,7 @@ export default function HomePageAdmin() {
             </div>
             <div className="flex flex-col w-[100%]">
               <div className="flex justify-center">
-                <div className=" w-11/12 ml-10">
+                <div className=" w-11/12">
                   <div className="grid p-5  grid-cols-8 gap-3  w-[100%] h-[350px] bg-slate-50 rounded-xl shadow-2xl">
                     {itemsToDisplay.map((el, index) => (
                       <PopupBox
@@ -124,18 +124,28 @@ export default function HomePageAdmin() {
           </div>
           <div className="flex justify-center ">
             <div className=" w-8/12 h-96 pr-10 flex-row ">
-              <div className="flex justify-evenly bg-white h-20 w-auto rounded-2xl shadow-2xl hover:scale-105 duration-300  mt-1">
+              <div className="flex justify-evenly bg-white h-32 w-auto rounded-2xl shadow-2xl hover:scale-105 duration-300  mt-1">
                 <div className="flex ">
                   <i className="fa-solid fa-box-archive h-10 w-10 text-center justify-center text-5xl mt-4 text-blue-500 hover:scale-105 duration-300  " />
                 </div>
                 <div className="flex justify-between w-80 mt-5 text-blue-900">
-                  <div className="flex bg-blue-100 w-44 h-8 rounded-xl pl-3 shadow-2xl hover:bg-blue-200">
-                    Date In:{showBox?.Items?.map((el) => el.dateIn)}
+                  <div className=" bg-blue-100 w-44 h-20 rounded-xl pl-3 shadow-2xl hover:bg-blue-200">
+                    Date In:
+                    {showBox?.Items?.map((el) => {
+                      const date = new Date(el.dateIn);
+                      const formattedDate = date.toLocaleDateString();
+                      return <div>{formattedDate}</div>;
+                    })}
                   </div>
-                  <div className="flex  bg-blue-100 w-44 h-8 rounded-xl pl-3 shadow-2xl hover:bg-blue-200 ml-5">
-                    Date Out:{showBox?.Items?.map((el) => el.dateOut)}
+                  <div className="  bg-blue-100 w-44 h-20 rounded-xl pl-3 shadow-2xl hover:bg-blue-200 ml-5">
+                    Date Out:
+                    {showBox?.Items?.map((el) => {
+                      const date = new Date(el.dateOut);
+                      const formattedDate = date.toLocaleDateString();
+                      return <div>{formattedDate}</div>;
+                    })}
                   </div>
-                  <div className="flex  bg-blue-100 w-44 h-8 rounded-xl pl-3 shadow-2xl hover:bg-blue-200 ml-5">
+                  <div className="flex  bg-blue-100 w-52 h-20  rounded-xl pl-3 shadow-2xl hover:bg-blue-200 ml-5">
                     Details: {showBox?.Items?.map((el) => el.details)}
                   </div>
                 </div>

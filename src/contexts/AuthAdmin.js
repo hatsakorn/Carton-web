@@ -45,7 +45,8 @@ export default function AdminContextProvider({ children }) {
         setSelectEmployee,
         selectEmployee,
         itSelfWork,
-        fetchEmployeeWork
+        fetchEmployeeWork,
+        fetchEmployee
       }}
     >
       {children}

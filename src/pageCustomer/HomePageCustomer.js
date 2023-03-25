@@ -6,13 +6,16 @@ import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import * as packageApi from "../api/package-api";
 import { Navigate } from "react-router";
+import useLoading from "../hooks/useLoading";
 
 export default function HomePageCustomer() {
-  const { customerItem } = useCustomer();
+  const { customerItem, fetchGetCustomer } = useCustomer();
   const { authenticatedUser, fetchAuthUser } = useAuth();
   const [showModalIndex, setShowModalIndex] = useState(null);
   const [isOmiseLoaded, setIsOmiseLoaded] = useState(false);
   const [showPackage, setShowPackage] = useState([]);
+  const [trigger, setTrigger] = useState(false);
+  const { startLoading, stopLoading } = useLoading();
 
   console.log(authenticatedUser);
 
@@ -25,6 +28,9 @@ export default function HomePageCustomer() {
     fetchAuthUser();
   }, []);
 
+  useEffect(() => {
+    fetchGetCustomer();
+  }, [trigger]);
   const handleToggleModal = (index) => {
     setShowModalIndex(index);
   };
@@ -38,6 +44,7 @@ export default function HomePageCustomer() {
       buttonLabel: "Pay with Omise"
     });
     setIsOmiseLoaded(true);
+    // setTrigger(() => !trigger);
   };
 
   const creditCardConfigure = () => {
@@ -50,6 +57,7 @@ export default function HomePageCustomer() {
   };
 
   const omiseCardHandler = async (invoiceId, amount) => {
+    startLoading();
     window.OmiseCard.open({
       amount: amount * 100,
       onCreateTokenSuccess: (token) => {
@@ -63,6 +71,8 @@ export default function HomePageCustomer() {
           })
           .then((response) => {
             console.log(response);
+            setTrigger(() => !trigger);
+            stopLoading();
           })
           .catch((error) => {
             console.log(error);
@@ -84,7 +94,7 @@ export default function HomePageCustomer() {
     <>
       <Script url="https://cdn.omise.co/omise.js" onLoad={handleLoadScript} />
       <div className="flex justify-between">
-        <div className="flex justify-center bg-slate-50  rounded-xl shadow-md w-full overflow-scroll">
+        <div className="flex justify-center bg-slate-50 shadow-md w-full overflow-scroll">
           <div className="relative  flex flex-col mt-5 min-h-screen  rounded-l-xl h-14 w-screen ">
             <div className=" w-11/12  rounded-r-lg  rounded-xl text-black ">
               {customerItem &&
@@ -127,7 +137,7 @@ export default function HomePageCustomer() {
 
                         <div className=" flex justify-between">
                           <button
-                            className=" flex m-10 h-10 w-28 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-md  text-white font-semibold"
+                            className=" flex justify-center pt-1 m-10 h-10 w-28 bg-gradient-to-r from-blue-600 to-blue-300 rounded-xl shadow-md  text-white font-semibold"
                             onClick={() => handleToggleModal(index)}
                           >
                             More details
@@ -147,9 +157,10 @@ export default function HomePageCustomer() {
                         </div>
 
                         {showModalIndex === index && (
-                          <div className="flex justify-between bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl shadow-md pb-2 pl-5  text-white py-4 my-3">
+                          <div className="flex justify-between bg-gradient-to-r from-green-500	 to-teal-700	 rounded-xl shadow-md pb-2 pl-5  text-white py-4 my-3">
                             <h2 className="font-semibold	">Details</h2>
                             <p>Invoice Id: {el.id}</p>
+                            {console.log(el)}
                             <p>Package Id: {el.Items[0].packageId}</p>
                             <button
                               className="bg-gradient-to-r from-cyan-500 to-blue-500  h-10 w-20 rounded-xl shadow-md  text-white mr-5"

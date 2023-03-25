@@ -55,10 +55,12 @@ export default function MainPageLook() {
               What is Carton ?
             </div>
             <div className=" text-xl font-semibold  ">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type
+              Our business is about warehouses where companies can retail our
+              storage from our warehouse. Companies can track their products
+              with real time updates with low prices. Our business will take
+              care of your products starting from receiving products from
+              customers, keeping their product and to delivery to customers
+              again.
             </div>
           </div>
           <div className="absolute  top-[850px] left-[820px]  z-50  h-32">
@@ -87,9 +89,9 @@ export default function MainPageLook() {
               </div>
               <div className=" flex justify-center items-center w-[800px] ">
                 <div className="w-[300px] text-sky-700 text-xl font-semibold">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
+                  At first,when customer scan Qr code to employee, our employee
+                  checks detail of the product from assigned work before take
+                  products into Carton warehouse
                 </div>
               </div>
             </div>
@@ -98,8 +100,8 @@ export default function MainPageLook() {
             <div className="flex">
               <div className=" flex justify-center items-center w-[800px] ">
                 <div className="w-[300px] text-sky-700 text-xl font-semibold">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  Moreover, taking care of customer products with safety and
+                  high security with standard ISO 27001
                 </div>
               </div>
               <div className=" w-[1400px] h-[400px] bg-no-repeat ">
@@ -121,10 +123,10 @@ export default function MainPageLook() {
               </div>
               <div className="flex justify-center items-center w-[800px] ">
                 <div className="w-[450px] bg-s text-xl font-semibold text-sky-700">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type
+                  Lastly, we have technology to track customer products in
+                  Carton warehouse, high speed delivery to customer and deliver
+                  to customer on time. We bring happyness and reliability to
+                  customer.
                 </div>
               </div>
             </div>
@@ -143,10 +145,11 @@ export default function MainPageLook() {
             <br />
             <br />
             <div className="text-sky-700 text-2xl font-semibold flex justify-center">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type
+              Nowadays, People or any business want to run business but they do
+              not have an area to stock their product or do not want to stock
+              their products with themself. The solution is to provide the area
+              that people can afford to stock their products with high security,
+              professional service provided and easy access to our warehouse.
             </div>
             <br />
             <br />

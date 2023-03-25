@@ -94,7 +94,7 @@ export default function Assign() {
                 className={`${
                   el.status === "COMPLETE"
                     ? "hidden"
-                    : "flex justify-between ml-20 w-11/12 my-3 h-30 bg-sky-500 rounded-lg items-center "
+                    : "flex justify-between ml-20 w-11/12 my-3 h-30 bg-amber-600  rounded-lg items-center "
                 }`}
               >
                 {/* <div className="flex justify-between "> */}
@@ -119,12 +119,12 @@ export default function Assign() {
                   <div className="flex">
                     <button
                       onClick={() => updateStatusStockIn(el.id)}
-                      className=" m-3  bg-sky-600 rounded-lg p-1 text-white font-semibold"
+                      className=" m-3 bg-sky-600 rounded-lg p-1 text-white font-semibold"
                     >
                       approve
                     </button>
                     <button
-                      className=" m-3  bg-sky-600 rounded-lg p-1 text-white font-semibold"
+                      className=" m-3  bg-red-600 rounded-lg p-1 text-white font-semibold"
                       onClick={() => updateStatusCancel(el.id)}
                     >
                       cancel

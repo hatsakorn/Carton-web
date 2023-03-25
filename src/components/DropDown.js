@@ -42,7 +42,7 @@ export default function DropDown() {
               <Link to="/employee">
                 <button
                   // onClick={logout}
-                  className=" text-red-600 block py-2 px-4 hover:bg-gray-100 pr-[90px]"
+                  className=" text-blue-600 block py-2 px-4 hover:bg-gray-100 pr-[90px]"
                 >
                   Register Employee
                 </button>
@@ -55,7 +55,7 @@ export default function DropDown() {
             <Link to="/mainpage">
               <button
                 onClick={logout}
-                className=" text-red-600 block py-2 px-4 hover:bg-gray-100 pr-[90px]"
+                className=" text-blue-600 block py-2 px-4 hover:bg-gray-100 pr-[90px]"
               >
                 Log out
               </button>

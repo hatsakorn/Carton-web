@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "../../components/Input";
 import * as itemsApi from "../../api/items-api";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 function PackageForm({ selectedPackageId }) {
   const initialInput = {
@@ -10,6 +11,8 @@ function PackageForm({ selectedPackageId }) {
     contractStartDate: "",
     contractEndDate: ""
   };
+  const { authenticatedUser, fetchAuthUser } = useAuth();
+
   const [input, setInput] = useState(initialInput);
 
   const navigate = useNavigate();
@@ -54,7 +57,15 @@ function PackageForm({ selectedPackageId }) {
           value={input.contractEndDate}
           onChange={handleOnChange}
         />
-        <div className="flex justify-center bg-blue-600 rounded-md text-white my-7 h-10 hover:bg-blue-200 shadow-xl">
+        <div
+          className={`flex justify-center ${
+            authenticatedUser.role === "ADMIN"
+              ? "bg-sky-600 hover:bg-blue-400"
+              : authenticatedUser.role === "EMPLOYEE"
+              ? "bg-amber-600 hover:bg-amber-400 "
+              : "bg-green-500 hover:bg-green-400"
+          }  rounded-md text-white my-7 h-10 hover:bg-blue-200 shadow-xl`}
+        >
           <button className="text-xl w-full" type="submit">
             Submit
           </button>
