@@ -65,7 +65,7 @@ export default function MainPageLook() {
           </div>
           <div className="absolute  top-[850px] left-[820px]  z-50  h-32">
             <Link to={"/login"}>
-              <button className="w-80  h-16 text-2xl font-semibold border-4 border-neutral-50 text-white rounded-full hover:bg-slate-800 hover:text-white hover:border-none  ">
+              <button className="w-80  h-16 text-2xl font-semibold border-4 border-neutral-50 text-white rounded-full hover:bg-slate-800 hover:text-white hover:border-none  mr-36">
                 Welcome to our website
               </button>
             </Link>
