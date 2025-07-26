@@ -1,4 +1,4 @@
-import { CircularProgressbar } from "react-circular-progressbar";
+// import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 // import { Progress } from "flowbite-react";
 import useAdmin from "../hooks/useAdmin";
@@ -8,11 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 export default function Assign() {
-  const percentage = 5;
+  // const percentage = 5;
   const { itSelfWork, fetchEmployeeWork } = useAdmin();
 
   useEffect(() => {
     fetchEmployeeWork();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const navigate = useNavigate();

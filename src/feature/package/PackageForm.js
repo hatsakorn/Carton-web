@@ -11,7 +11,7 @@ function PackageForm({ selectedPackageId }) {
     contractStartDate: "",
     contractEndDate: ""
   };
-  const { authenticatedUser, fetchAuthUser } = useAuth();
+  const { authenticatedUser } = useAuth();
 
   const [input, setInput] = useState(initialInput);
 

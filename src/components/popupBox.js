@@ -3,7 +3,7 @@ import useAuth from "../hooks/useAuth";
 import useWarehouse from "../hooks/useWarehouse";
 
 function PopupBox({ onClick, available, text, children }) {
-  const { authenticatedUser, fetchAuthUser } = useAuth();
+  const { authenticatedUser } = useAuth();
   const [show, setShow] = useState(false);
   const { shelfSql } = useWarehouse(true);
   // const [detail, setDetail] = useState({});

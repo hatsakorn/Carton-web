@@ -1,12 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import { getMainCustomerById } from "../api/auth-customer";
 import useAuth from "../hooks/useAuth";
-import { removeAccessToken } from "../utils/local-storage";
+// import { removeAccessToken } from "../utils/local-storage";
 
 export const AuthCustomer = createContext();
 
 export default function AuthCustomerProvider({ children }) {
-  const [customerId, setCustomerId] = useState([]);
+  // const [customerId, setCustomerId] = useState([]);
   const { authenticatedUser } = useAuth();
   const [customerItem, setCustomerItem] = useState([]);
 
@@ -24,12 +24,10 @@ export default function AuthCustomerProvider({ children }) {
     if (authenticatedUser?.id) {
       fetchGetCustomer();
     }
-  }, [authenticatedUser, customerId]);
+  }, [authenticatedUser]);
 
   return (
-    <AuthCustomer.Provider
-      value={{ customerId, customerItem, fetchGetCustomer }}
-    >
+    <AuthCustomer.Provider value={{ customerItem, fetchGetCustomer }}>
       {children}
     </AuthCustomer.Provider>
   );

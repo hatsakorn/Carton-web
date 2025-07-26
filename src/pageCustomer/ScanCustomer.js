@@ -2,7 +2,7 @@ import { useState } from "react";
 import QrForm from "../QR/qrForm";
 import Modal from "../components/Modal";
 import useCustomer from "../hooks/useCustomer";
-import * as itemsApi from "../api/items-api";
+// import * as itemsApi from "../api/items-api";
 import useAuth from "../hooks/useAuth";
 
 export default function ScanCustomer() {

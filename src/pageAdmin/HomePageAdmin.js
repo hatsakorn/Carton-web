@@ -1,4 +1,4 @@
-import { ListGroup, Pagination, Progress } from "flowbite-react";
+import { Pagination } from "flowbite-react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import useWarehouse from "../hooks/useWarehouse";
@@ -10,7 +10,7 @@ export default function HomePageAdmin() {
   const { shelfSql, fetchWarehouseData } = useWarehouse(true);
   const [section, setSection] = useState(1);
   const [totalSection, setTotalSection] = useState(1);
-  const [itemList, setItemList] = useState([]);
+  // const [itemList, setItemList] = useState([]);
   const [itemPerpage, setItemPerpage] = useState(40);
   const [showBox, setShowBox] = useState(0);
 
@@ -19,6 +19,7 @@ export default function HomePageAdmin() {
   useEffect(() => {
     fetchWarehouseData();
     fetchAuthUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function updateBackgroundColor(el) {
@@ -46,17 +47,17 @@ export default function HomePageAdmin() {
 
   useEffect(() => {
     setTotalSection(Math.ceil(shelfSql.length / 40));
-    const allItem = () => {
-      const a = shelfSql.filter((e) => e.Items);
-      const d = a.map((e) => e.Items);
-      const b = d.map((e) => e);
-      setItemList(b);
-      // console.log(b);
+    // const allItem = () => {
+    //   const a = shelfSql.filter((e) => e.Items);
+    //   const d = a.map((e) => e.Items);
+    //   const b = d.map((e) => e);
+    //   setItemList(b);
+    // console.log(b);
 
-      // console.log(itemList);
-    };
+    // console.log(itemList);
+    // };
 
-    allItem();
+    // allItem();
   }, [shelfSql]);
 
   const handleChangeSection = (event) => {

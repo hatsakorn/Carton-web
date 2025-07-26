@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import useAuth from "../hooks/useAuth";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function DropDown() {
   const [isOpen, setOpen] = useState(false);

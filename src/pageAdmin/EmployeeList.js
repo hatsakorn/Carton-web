@@ -8,6 +8,7 @@ export default function EmployeeList() {
 
   useEffect(() => {
     fetchEmployee();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleBackButton = () => {

@@ -39,17 +39,18 @@ export default function AdminAssign() {
 
   useEffect(() => {
     setTotalSection(Math.ceil(shelfSql.length / 40));
-    const allItem = () => {
-      const a = shelfSql.filter((e) => e.Items);
-      const d = a.map((e) => e.Items);
-      const b = d.map((e) => e);
-      // setItemList(b);
-    };
-    allItem();
+    // const allItem = () => {
+    //   const a = shelfSql.filter((e) => e.Items);
+    //   const d = a.map((e) => e.Items);
+    //   const b = d.map((e) => e);
+    // setItemList(b);
+    // };
+    // allItem();
   }, [shelfSql]);
 
   useEffect(() => {
     fetchAuthUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChangeSection = (event) => {

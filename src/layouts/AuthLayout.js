@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import NavSideBar from "../components/NavSideBar";
 import useAuth from "../hooks/useAuth";
@@ -8,6 +8,7 @@ function AuthLayout() {
 
   useEffect(() => {
     fetchAuthUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>

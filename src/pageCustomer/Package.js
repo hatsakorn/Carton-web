@@ -25,6 +25,7 @@ export default function Package() {
     };
     fetchPackage();
     fetchAuthUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addPackageModal = () => {

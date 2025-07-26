@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import DropDown from "../components/DropDown";
 import useAuth from "../hooks/useAuth";
@@ -9,6 +9,7 @@ function NavSideBar() {
   // setRole(authenticatedUser);
   useEffect(() => {
     fetchAuthUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

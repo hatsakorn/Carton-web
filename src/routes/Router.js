@@ -16,9 +16,9 @@ import ScanEmployee from "../pageEmployee/ScanEmployee";
 import HomeAdmin from "../pageAdmin/HomePageAdmin";
 import HomePageEmployee from "../pageEmployee/HomePageEmployee";
 import AdminAssign from "../pageAdmin/AdminAssign";
-import ProtectedAdminRoute from "../feature/auth/ProtectedAdminRoute";
+// import ProtectedAdminRoute from "../feature/auth/ProtectedAdminRoute";
 import HomePage from "../page/HomePage";
-import ProtectedEmployeeRoute from "../feature/auth/ProtectEmployeeRoute";
+// import ProtectedEmployeeRoute from "../feature/auth/ProtectEmployeeRoute";
 import MainPageLook from "../pageAdmin/MainPageLook";
 import PreventEmployeeRoute from "../feature/auth/PreventEmployeeRoute";
 

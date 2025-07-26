@@ -3,7 +3,7 @@ import * as packageApi from "../../api/package-api";
 import useAuth from "../../hooks/useAuth";
 
 function EditPackage({ selectedEditPackage, isActive, setActive }) {
-  const { authenticatedUser, fetchAuthUser } = useAuth();
+  const { authenticatedUser } = useAuth();
 
   const handleEditPackage = async (e) => {
     e.preventDefault();

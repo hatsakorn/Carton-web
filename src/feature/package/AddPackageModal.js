@@ -19,7 +19,7 @@ function AddPackageModal() {
   const [input, setInput] = useState(initialInput);
   const [file, setFile] = useState(null);
 
-  const { authenticatedUser, fetchAuthUser } = useAuth();
+  const { authenticatedUser } = useAuth();
 
   const navigate = useNavigate();
 
@@ -40,9 +40,11 @@ function AddPackageModal() {
       formData.append("price", input.price);
       formData.append("isActive", input.isActive);
       const res = await packageApi.createPackage(formData);
-      setInput(initialInput);
-      toast.success("success.");
-      navigate(0);
+      if (res) {
+        setInput(initialInput);
+        toast.success("success.");
+        navigate(0);
+      }
     } catch (error) {
       toast.error(error.response?.data.message);
     }

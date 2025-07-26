@@ -12,7 +12,7 @@ export default function HomePageCustomer() {
   const { customerItem, fetchGetCustomer } = useCustomer();
   const { authenticatedUser, fetchAuthUser } = useAuth();
   const [showModalIndex, setShowModalIndex] = useState(null);
-  const [isOmiseLoaded, setIsOmiseLoaded] = useState(false);
+  // const [isOmiseLoaded, setIsOmiseLoaded] = useState(false);
   const [showPackage, setShowPackage] = useState([]);
   const [trigger, setTrigger] = useState(false);
   const { startLoading, stopLoading } = useLoading();
@@ -26,10 +26,12 @@ export default function HomePageCustomer() {
     };
     fetchPackage();
     fetchAuthUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     fetchGetCustomer();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trigger]);
   const handleToggleModal = (index) => {
     setShowModalIndex(index);
@@ -43,7 +45,7 @@ export default function HomePageCustomer() {
       submitLabel: "Pay NOW",
       buttonLabel: "Pay with Omise"
     });
-    setIsOmiseLoaded(true);
+    // setIsOmiseLoaded(true);
     // setTrigger(() => !trigger);
   };
 

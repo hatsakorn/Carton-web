@@ -11,9 +11,11 @@ export default function QrEmployee({ onClose, data }) {
 
     try {
       const res = itemApi.updateDateIn(input);
-      toast.success("success.");
-      onClose();
-      navigate(0);
+      if (res) {
+        toast.success("success.");
+        onClose();
+        navigate(0);
+      }
     } catch (error) {
       toast.error(error.response?.data.message);
     }
@@ -26,9 +28,11 @@ export default function QrEmployee({ onClose, data }) {
 
     try {
       const res = itemApi.updateDateOut(input);
-      toast.success("success.");
-      onClose();
-      navigate(0);
+      if (res) {
+        toast.success("success.");
+        onClose();
+        navigate(0);
+      }
     } catch (error) {
       toast.error(error.response?.data.message);
     }
