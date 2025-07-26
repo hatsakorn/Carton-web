@@ -1,16 +1,19 @@
 import { useState } from "react";
+import useLoading from "../hooks/useLoading";
 import Modal from "../components/Modal";
 import RegisterFrom from "../auth/RegisterForm";
 import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const initialInput = {
   username: "",
   password: ""
 };
 
-export default function åLogin() {
+export default function Login() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState(initialInput);
+  const { startLoading, stopLoading } = useLoading();
 
   const { login } = useAuth();
 
@@ -21,10 +24,14 @@ export default function åLogin() {
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     try {
+      startLoading();
       await login(input);
       setInput(initialInput);
+      toast.success("successssssssssssssssss.");
     } catch (err) {
-      console.log(err);
+      toast.error(err.response?.data.message);
+    } finally {
+      stopLoading();
     }
   };
 
@@ -89,12 +96,7 @@ export default function åLogin() {
               >
                 Register
               </button>
-              <Modal
-                open={open}
-                onClose={() => setOpen(false)}
-                // title={"Create an Account"}
-              >
-                {/* <RegisterModalT onClose={() => setOpen(false)} /> */}
+              <Modal open={open} onClose={() => setOpen(false)}>
                 <RegisterFrom onClose={() => setOpen(false)} />
               </Modal>
             </div>

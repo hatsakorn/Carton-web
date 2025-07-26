@@ -5,13 +5,26 @@ import App from "./App";
 import "tw-elements";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import AuthContextProvider from "./contexts/AuthContext";
+import AuthCustomerProvider from "./contexts/AuthCustomer";
+import AuthWarehouseProvider from "./contexts/AuthWarehouse";
+import AdminContextProvider from "./contexts/AuthAdmin";
+import LoadingContextProvider from "./contexts/LoadingContext";
+import "react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <App />
-    </AuthContextProvider>
+    <LoadingContextProvider>
+      <AuthContextProvider>
+        <AdminContextProvider>
+          <AuthCustomerProvider>
+            <AuthWarehouseProvider>
+              <App />
+            </AuthWarehouseProvider>
+          </AuthCustomerProvider>
+        </AdminContextProvider>
+      </AuthContextProvider>
+    </LoadingContextProvider>
   </React.StrictMode>
 );
 

@@ -1,23 +1,41 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate
+} from "react-router-dom";
 import Assign from "../pageAdmin/Assign";
-import HomeAdmin from "../pageAdmin/HomeAdmi";
-import HomePage from "../pageCustomer/HomePage";
 import Package from "../pageCustomer/Package";
-import Example from "../template/Example";
 import LoginPage from "../pageCustomer/LoginPage";
 import Employee from "../pageAdmin/Employee";
-// import Scan from "../pageEmployee/Scan";
 import RedirectAuthenticate from "../feature/auth/RedirectAuthenticate";
 import AuthLayout from "../layouts/AuthLayout";
-import Scan from "../pageEmployee/Scan";
-import HomePage1 from "../page/HomePage";
+import HomePageCustomer from "../pageCustomer/HomePageCustomer";
+// import MainPage from "../page/MainPage";
+import ScanCustomer from "../pageCustomer/ScanCustomer";
+import ScanEmployee from "../pageEmployee/ScanEmployee";
+import HomeAdmin from "../pageAdmin/HomePageAdmin";
+import HomePageEmployee from "../pageEmployee/HomePageEmployee";
+import AdminAssign from "../pageAdmin/AdminAssign";
+import ProtectedAdminRoute from "../feature/auth/ProtectedAdminRoute";
+import HomePage from "../page/HomePage";
+import ProtectedEmployeeRoute from "../feature/auth/ProtectEmployeeRoute";
+import MainPageLook from "../pageAdmin/MainPageLook";
+import PreventEmployeeRoute from "../feature/auth/PreventEmployeeRoute";
 
 const router = createBrowserRouter([
   // for test
-  { path: "/example", element: <Example /> },
-  //for customer
   {
     path: "/",
+    element: <Navigate to="/mainpage" />
+  },
+
+  {
+    path: "/mainpage",
+    element: <MainPageLook />
+  },
+  //for customer
+  {
+    path: "/login",
     element: (
       <RedirectAuthenticate>
         <LoginPage />
@@ -25,21 +43,64 @@ const router = createBrowserRouter([
     )
   },
   {
+    path: "/home",
+    element: <HomePage />
+  },
+
+  // for customer
+  {
     element: <AuthLayout />,
     children: [
-      { path: "/home", element: <HomePage /> },
-      { path: "/package", element: <Package /> },
+      {
+        path: "/homeCustomer",
+        element: <HomePageCustomer />
+      },
+      {
+        path: "/package",
+        element: (
+          <PreventEmployeeRoute>
+            <Package />
+          </PreventEmployeeRoute>
+        )
+      },
+      {
+        path: "/ScanCustomer",
+        element: <ScanCustomer />
+      }
+    ]
+  },
+  {
+    element: (
+      // <ProtectedAdminRoute>
+      <AuthLayout />
+      // </ProtectedAdminRoute>
+    ),
+    children: [
       // for Admin
-      { path: "/homeAdmin", element: <HomeAdmin /> },
+      {
+        path: "/homeAdmin",
+        element: <HomeAdmin />
+      },
+      { path: "/adminAssign", element: <AdminAssign /> }
+    ]
+  },
+  { path: "/employee", element: <Employee /> },
+
+  // for employee
+  {
+    element: (
+      // <ProtectedEmployeeRoute>
+      <AuthLayout />
+      // </ProtectedEmployeeRoute>
+    ),
+    children: [
+      { path: "/homeEmployee", element: <HomePageEmployee /> },
       { path: "/assign", element: <Assign /> },
       { path: "/employee", element: <Employee /> },
-      { path: "/scan", element: <Scan /> },
-      { path: "/HomePage", element: <HomePage1 /> }
+      // for Employee
+      { path: "/scanEmployee", element: <ScanEmployee /> }
     ]
   }
-  // { path: "/invoice" }
-
-  //for employee
 ]);
 
 export default function Router() {

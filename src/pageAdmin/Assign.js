@@ -1,18 +1,43 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { Progress } from "flowbite-react";
+// import { Progress } from "flowbite-react";
+import useAdmin from "../hooks/useAdmin";
+// import { Progress } from "flowbite-react";
+import * as employeeApi from "../api/auth-admin";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-export default function HomePage() {
+export default function Assign() {
   const percentage = 5;
+  const { itSelfWork, fetchEmployeeWork } = useAdmin();
+
+  useEffect(() => {
+    fetchEmployeeWork();
+  }, []);
+
+  const navigate = useNavigate();
+  const updateStatusStockIn = async (taskId) => {
+    await employeeApi.taskStatusFromEmployee(taskId, {
+      status: "COMPLETE"
+    });
+    navigate(0);
+  };
+
+  const updateStatusCancel = async (taskId) => {
+    await employeeApi.taskStatusFromEmployee(taskId, {
+      status: "REJECT"
+    });
+    navigate(0);
+  };
 
   return (
-    <div className="flex justify-between bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
+    <div className="flex justify-between bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full min-h-screen">
       <div className="w-full justify-between">
         <div className="flex-row justify-between">
           <div className="flex justify-between my-5">
-            <div className="flex ml-5">Warehouse Logistics</div>
+            <div className="flex ml-5 font-semibold text-2xl">Assign</div>
             {/* <form className="flex items-center mr-5">
-              <label for="simple-search" class="sr-only">
+              <label for="simple-search" className="sr-only">
                 Search
               </label>
               <div className="relative w-full">
@@ -51,9 +76,9 @@ export default function HomePage() {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   ></path>
                 </svg>
@@ -62,29 +87,57 @@ export default function HomePage() {
             </form> */}
           </div>
 
-          <div className="">
-            <div className="flex justify-between ml-20 w-[650px] h-30 bg-sky-500 rounded-lg ">
-              <div className="flex justify-between ">
-                <div className=" w-96 flex justify-between items-center">
-                  <div className=" text-gray-50 ml-3">Order no:</div>
-                  <div className="text-gray-50 ">User id:</div>
+          <div className="flex flex-col ">
+            {itSelfWork.map((el) => (
+              <div
+                key={el.id}
+                className={`${
+                  el.status === "COMPLETE"
+                    ? "hidden"
+                    : "flex justify-between ml-20 w-11/12 my-3 h-30 bg-amber-600  rounded-lg items-center "
+                }`}
+              >
+                {/* <div className="flex justify-between "> */}
+                {/* <div className=" w-96 flex justify-between items-center"> */}
+                <div className=" text-gray-50 ml-3 font-semibold">
+                  Order no: {el.itemId}
                 </div>
-              </div>
+                <div className="font-semibold">Task : {el.task}</div>
+                <div className="text-gray-50 font-semibold ">
+                  status: {el.status}
+                </div>
+                {/* </div> */}
+                {/* </div> */}
 
-              <div className="flex">
-                <button className=" m-3  bg-sky-600 rounded-lg p-1 text-white">
-                  approve
-                </button>
-                <button className=" m-3  bg-sky-600 rounded-lg p-1 text-white">
-                  cancle
-                </button>
+                {el.status === "REJECT" ? (
+                  <div className="flex mr-10">
+                    <div className=" my-3 px-4  bg-rose-900 rounded-lg p-1 text-white font-semibold">
+                      Task has been cancel
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex">
+                    <button
+                      onClick={() => updateStatusStockIn(el.id)}
+                      className=" m-3 bg-sky-600 rounded-lg p-1 text-white font-semibold"
+                    >
+                      approve
+                    </button>
+                    <button
+                      className=" m-3  bg-red-600 rounded-lg p-1 text-white font-semibold"
+                      onClick={() => updateStatusCancel(el.id)}
+                    >
+                      cancel
+                    </button>
+                  </div>
+                )}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
-      <div className="relative  flex-col mt-10 flex justify-between min-h-screen overflow-hidden h-14 mr-10 ">
+      {/* <div className="relative  flex-col mt-10 flex justify-between min-h-screen overflow-hidden h-14 mr-10 ">
         <div className=" w-70 h-70 p-6  bg-blue-700  rounded-xl shadow-md lg:max-w-xl">
           <CircularProgressbar
             className=" p-7"
@@ -120,7 +173,7 @@ export default function HomePage() {
             <span className="flex ml-10">sdfsdfs</span>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

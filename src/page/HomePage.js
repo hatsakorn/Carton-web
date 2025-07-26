@@ -1,21 +1,17 @@
-import "react-circular-progressbar/dist/styles.css";
+import React from "react";
+import AuthLayout from "../layouts/AuthLayout";
 
-export default function HomePage1() {
+function HomePage() {
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex">
+        <AuthLayout />
         <div className="flex justify-center bg-gradient-to-r bg-white  rounded-l-xl shadow-md w-full">
-          <div className="relative  flex flex-col justify-center min-h-screen overflow-hidden  h-14 mr-20 w-screen">
-            <div className="flex justify-center">
-              <div className=" w-11/12 ">
-                <h1 className="text-2xl font-semibold">fgddffgd</h1>
-                <div className=" grid grid-cols-2 mt-10 gap-y-10  ">
-                  <div className="flex">1</div>
-                  <div className="flex">1</div>
-                  <div className="flex">1</div>
-                  <div className="flex">1</div>
-                  <div className="flex">1</div>
-                </div>
+          <div className="relative  flex flex-col mt-5 min-h-screen overflow-hidden  rounded-l-xl h-14 mr-20 w-screen">
+            <div className=" w-11/12 bg-sky-600 rounded-r-lg ml-10  rounded-xl text-white"></div>
+            <div className="flex justify-center items-center h-screen">
+              <div className={`text-6xl text-red-600`}>
+                You are unauthorized!
               </div>
             </div>
           </div>
@@ -24,3 +20,5 @@ export default function HomePage1() {
     </>
   );
 }
+
+export default HomePage;

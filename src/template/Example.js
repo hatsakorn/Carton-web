@@ -1,28 +1,37 @@
 import { useState } from "react";
-import Modal from "../components/Modal";
-// import RegisterModalT from "./RegisterModalT";
-import AssignModal from "../pageAdmin/AssignModal";
-import RegisterEmployeeForm from "../pageCustomer/RegisterEmployeeForm";
 
 export default function Example() {
-  const [open, setOpen] = useState(false);
+  const [dropdownStates, setDropdownStates] = useState({});
+
+  const toggleDropdown = (id) => {
+    setDropdownStates((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id]
+    }));
+  };
+
+  const myArray = [
+    { id: 1, name: "John" },
+    { id: 2, name: "Jane" },
+    { id: 3, name: "Bob" }
+  ];
+
   return (
-    <>
-      <button
-        onClick={() => setOpen(true)}
-        className="bg-sky-600 rounded m-3 p-1 hover:opacity-70"
-      >
-        Register
-      </button>
-      <Modal
-        open={open}
-        onClose={() => setOpen(false)}
-        // title={"Create an Account"}
-      >
-        {/* <RegisterModalT onClose={() => setOpen(false)} /> */}
-        {/* <RegisterEmployeeForm onClose={() => setOpen(false)} /> */}
-        <AssignModal onClose={() => setOpen(false)} />
-      </Modal>
-    </>
+    <div>
+      {myArray.map((item) => (
+        <div key={item.id}>
+          <button onClick={() => toggleDropdown(item.id)}>
+            Toggle Dropdown
+          </button>
+          <div
+            className={`relative bg-stone-600 top-[10px] ${
+              dropdownStates[item.id] ? "" : "hidden"
+            }`}
+          >
+            Dropdown content for item {item.name}
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }

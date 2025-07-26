@@ -1,9 +1,9 @@
 import { Progress } from "flowbite-react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import NavSideBar from "../components/NavSideBar";
+// import NavSideBar from "../components/NavSideBar";
 
-export default function HomeAdmin() {
+export default function EmployeeHome() {
   const percentage = 5;
 
   return (
@@ -145,9 +145,9 @@ export default function HomeAdmin() {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M19 9l-7 7-7-7"
                       ></path>
                     </svg>
@@ -162,7 +162,7 @@ export default function HomeAdmin() {
                     >
                       <li>
                         <a
-                          href="#"
+                          href="/"
                           className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Emp0001
@@ -170,7 +170,7 @@ export default function HomeAdmin() {
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href="/"
                           className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Emp0002
@@ -178,7 +178,7 @@ export default function HomeAdmin() {
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href="/"
                           className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Emp0003
@@ -186,7 +186,7 @@ export default function HomeAdmin() {
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href="/"
                           className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Emp0004
